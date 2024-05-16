@@ -14,11 +14,7 @@ class Index extends Component
 
     public function render()
     {
-        if (request()->session()->get('inmobiliaria') == 'sayco') {
-            $this->clientes = Clientes::where('inmobiliaria', true)->orWhere('inmobiliaria', null)->get();
-        } else {
-            $this->clientes = Clientes::where('inmobiliaria', false)->orWhere('inmobiliaria', null)->get();
-        }
+            $this->clientes = Clientes::all();  
         return view('livewire.clientes.index', [
             'clientes' => $this->clientes]);
     }

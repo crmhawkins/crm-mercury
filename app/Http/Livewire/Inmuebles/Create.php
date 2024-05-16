@@ -6,6 +6,7 @@ use App\Models\Caracteristicas;
 use App\Models\Inmuebles;
 use App\Models\TipoVivienda;
 use App\Models\User;
+use App\Models\Propietarios;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Illuminate\Http\Request;
@@ -14,38 +15,59 @@ class Create extends Component
 {
     use LivewireAlert;
 
-    public $caracteristicas;
-
-    public $titulo;
-    public $descripcion;
+    //public $caracteristicas;
+    //public $titulo;
+    //public $descripcion;
     public $m2;
     public $m2_construidos;
-    public $valor_referencia;
+
+    //public $valor_referencia;
+
     public $habitaciones;
     public $banos;
+
     public $cod_postal;
-    public $tipo_vivienda_id;
-    public $ubicacion;
-    public $cert_energetico;
-    public $cert_energetico_elegido;
-    public $inmobiliaria = null;
-    public $estado;
+
+    //public $ubicacion;
+    public $direccion;
+    public $localidad;
+
+    //public $cert_energetico;
+    //public $cert_energetico_elegido;
+    //public $inmobiliaria = null;
+    //public $estado;
     public $disponibilidad;
-    public $otras_caracteristicasArray = [];
+    //public $otras_caracteristicasArray = [];
 
-    public $otras_caracteristicas;
-    public $referencia_catastral;
+    //public $otras_caracteristicas;
+    //public $referencia_catastral;
 
-    public $vendedores;
-    public $vendedor_id;
-    public $vendedor_nombre;
-    public $vendedor_dni;
-    public $vendedor_ubicacion;
-    public $vendedor_telefono;
-    public $vendedor_correo;
-    public $tipos_vivienda;
+    //public $vendedores;
+    //public $vendedor_id;
+    //public $vendedor_nombre;
+    //public $vendedor_dni;
+    //public $vendedor_ubicacion;
+    //public $vendedor_telefono;
+    //public $vendedor_correo;
+    public $propietario;
+    public $propietario_id;
+    public $propietario_nombre;
+    public $propietario_dni;
+    public $propietario_telefono;
+    public $propietario_correo;
+
+    public $dormitorios;
+    public $piscina;
+    public $garaje;
+    public $ibi;
+
+    public $coste_basura;
+    public $precio_venta;
+    public $alquiler_semana;
+    public $alquiler_mes;
+
+    
     public $ruta_imagenes;
-
     public $galeriaArray = [];
     public $galeria;
 
@@ -55,9 +77,7 @@ class Create extends Component
 
     public function mount()
     {
-        $this->tipos_vivienda = TipoVivienda::all();
-        $this->vendedores = User::all();
-        $this->caracteristicas = Caracteristicas::all();
+        $this->propietarios = Propietarios::all();
     }
 
     // Renderizado del Componente
@@ -68,55 +88,55 @@ class Create extends Component
 
     public function submit()
     {
-        if ($this->inmobiliaria == null) {
-            if (request()->session()->get('inmobiliaria') == 'sayco') {
-                $this->inmobiliaria = true;
-            } else {
-                $this->inmobiliaria = false;
-            }
-        } else {
-            $this->inmobiliaria = null;
-        }
-
-        $this->otras_caracteristicas = json_encode($this->otras_caracteristicasArray);
+        
         $this->galeria = json_encode($this->galeriaArray);
 
         $validatedData = $this->validate(
             [
-                'titulo' => 'required',
-                'descripcion' => 'required',
                 'm2' => 'required',
                 'm2_construidos' => 'required',
-                'valor_referencia' => 'required',
                 'habitaciones' => 'required',
                 'banos' => 'required',
-                'tipo_vivienda_id' => 'required',
-                'vendedor_id' => 'required',
-                'ubicacion' => 'required',
                 'cod_postal' => 'required',
-                'cert_energetico' => 'required',
-                'cert_energetico_elegido' => 'nullable',
                 'estado' => 'required',
                 'galeria' => 'nullable',
-                'disponibilidad' => 'required',
-                'otras_caracteristicas' => 'nullable',
-                'referencia_catastral' => 'required',
-                'inmobiliaria' => 'nullable',
+                'direccion' => 'required',
+                'localidad' => 'required',
+                'propietario_id' => 'required',
+                'dormitorios' => 'required',
+                'piscina' => 'required',
+                'garaje' => 'required',
+                'ibi' => 'required',
+                'coste_basura' => 'required',
+                'precio_venta' => 'required',
+                'alquiler_semana' => 'required',
+                'alquiler_mes' => 'required',
+                'disponibilidad' => 'required', 
+
             ],
             // Mensajes de error
             [
-                'titulo.required' => 'El título es obligatorio.',
-                'descripcion.required' => 'Se requiere añadir descripción.',
-                'm2.required' => 'Indica los m2 del inmueble.',
-                'm2_construidos.required' => 'Indica los m2 construidos del inmueble.',
-                'valor_referencia.required' => 'Indica el valor de referencia del inmueble.',
-                'habitaciones.required' => 'Indica las habitaciones del inmueble.',
-                'banos.required' => 'Indica los baños del inmueble.',
-                'tipo_vivienda_id.required' => 'Indica el tipo de vivienda del inmueble.',
-                'vendedor_id.required' => 'Indica al vendedor del inmueble.',
-                'ubicacion.required' => 'Indica la ubicación del inmueble.',
-                'cod_postal.required' => 'El código postal es obligatorio.',
-                'cert_energetico.required' => 'Indica si existe un certificado energético o no.',
+
+                'm2.required' => 'El campo m2 es obligatorio',
+                'm2_construidos.required' => 'El campo m2 construidos es obligatorio',
+                'habitaciones.required' => 'El campo habitaciones es obligatorio',
+                'banos.required' => 'El campo baños es obligatorio',
+                'cod_postal.required' => 'El campo código postal es obligatorio',
+                'estado.required' => 'El campo estado es obligatorio',
+                'direccion.required' => 'El campo dirección es obligatorio',
+                'localidad.required' => 'El campo localidad es obligatorio',
+                'propietario_id.required' => 'El campo propietario es obligatorio',
+                'dormitorios.required' => 'El campo dormitorios es obligatorio',
+                'piscina.required' => 'El campo piscina es obligatorio',
+                'garaje.required' => 'El campo garaje es obligatorio',
+                'ibi.required' => 'El campo ibi es obligatorio',
+                'coste_basura.required' => 'El campo coste basura es obligatorio',
+                'precio_venta.required' => 'El campo precio venta es obligatorio',
+                'alquiler_semana.required' => 'El campo alquiler semana es obligatorio',
+                'alquiler_mes.required' => 'El campo alquiler mes es obligatorio',
+                'disponibilidad.required' => 'El campo disponibilidad es obligatorio',
+
+
             ]
         );
 

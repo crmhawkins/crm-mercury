@@ -15,28 +15,24 @@
                 <table class="table" id="tableCliente">
                     <thead>
                         <tr>
-                            <th scope="col">Nombre completo</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellidos</th>
                             <th scope="col">DNI</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Más información</th>
+                            <th scope="col">Búsqueda</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($clientes as $cliente)
                             <tr>
-                                <td>{{ $cliente->nombre_completo }}</td>
+                                <td>{{ $cliente->nombre }}</td>
+                                <td>{{ $cliente->apellido }}</td>
                                 <td>{{ $cliente->dni }}</td>
                                 <td>{{ $cliente->email }}</td>
-                                <td style="display:none;"></td>
+                                <td style="text-transform: capitalize">{{ $cliente->busqueda }}</td>
                                 <td> <button type="button"
-                                        @if (
-                                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                                                (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                                                (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                                                (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null)) class="btn btn-primary boton-producto"
-                                onclick="Livewire.emit('seleccionarProducto', {{ $cliente->id }});"
-                                @else                                         class="btn btn-secondary boton-producto" disabled @endif>Ver/Editar</button>
+                                         class="btn btn-primary boton-producto" onclick="Livewire.emit('seleccionarProducto', {{ $cliente->id }});">Ver/Editar</button>
                                 </td>
                             </tr>
                         @endforeach

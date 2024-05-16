@@ -26,15 +26,8 @@ class TabsComponent extends Component
 
     public function selectProducto($cliente)
     {
-        if (
-            request()->session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1 ||
-            request()->session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null ||
-            request()->session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0 ||
-            request()->session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null
-        ) {
-            $this->cliente = $cliente;
+           $this->cliente = $cliente;
             $this->tab = "tab2";
-        } else {
-        }
+       
     }
 }

@@ -2,83 +2,31 @@
     <form wire:submit.prevent="submit">
         <input type="hidden" name="csrf-token" value="{{ csrf_token() }}">
         <div class="row justify-content-center">
+            
             <div class="col">
                 <div class="card mb-3" style="max-width: 40rem">
                     <h5 class="card-header">
-                        Datos básicos
+                        Datos del inmueble
                     </h5>
                     <div class="card-body">
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="titulo" class="col-sm-3 col-form-label"> <strong>Título</strong></label>
+                            <label for="direccion" class="col-sm-3 col-form-label"> <strong>Dirección</strong></label>
                             <div class="col-sm-12">
-                                <input type="text" wire:model="titulo" class="form-control" name="titulo"
-                                    id="titulo" placeholder="Título">
-                                @error('titulo')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="mb-3 row d-flex align-items-center">
-                            <label for="dni" class="col-sm-3 col-form-label"> <strong>Descripción</strong></label>
-                            <div class="col-sm-12">
-                                <textarea wire:model="descripcion" rows=3 class="form-control" name="descripcion" id="descripcion"
-                                    placeholder="Características del inmueble"></textarea>
-                                @error('dni')
+                                <input type="text" wire:model="direccion" class="form-control" name="direccion"
+                                    id="direccion" placeholder="direccion">
+                                @error('direccion')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="referencia_catastral" class="col-sm-4 col-form-label"> <strong>Referencia
-                                    catastral</strong></label>
+                            <label for="localidad" class="col-sm-3 col-form-label"> <strong>Localidad</strong></label>
                             <div class="col-sm-12">
-                                <input type="text" wire:model="referencia_catastral" class="form-control"
-                                    name="referencia_catastral" id="referencia_catastral"
-                                    placeholder="Referencia catastral del inmueble">
-                                @error('referencia_catastral')
+                                <textarea wire:model="localidad" rows=3 class="form-control" name="localidad" id="localidad"
+                                    placeholder="Localidad"></textarea>
+                                @error('localidad')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                            </div>
-                        </div>
-                        <div class="mb-3 row d-flex align-items-center">
-                            <label for="valor_referencia" class="col-sm-4 col-form-label"> <strong>Valor de
-                                    referencia</strong></label>
-                            <div class="col-sm-12">
-                                <input type="number" step="0.01" wire:model="valor_referencia" class="form-control"
-                                    name="valor_referencia" id="valor_referencia"
-                                    placeholder="Valor de referencia del inmueble">
-                                @error('valor_referencia')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-3" style="max-width: 40rem">
-                    <h5 class="card-header">
-                        Datos de inmueble
-                    </h5>
-                    <div class="card-body">
-                        <div class="mb-3 row d-flex align-items-center">
-                            <label for="tipo_vivienda_id" class="col-sm-4 col-form-label"> <strong>Tipo de
-                                    vivienda:</strong></label>
-                            <div x-data="" x-init="$('#select2-tipo_vivienda_id-create').select2();
-                            $('#select2-tipo_vivienda_id-create').on('change', function(e) {
-                                var data = $('#select2-tipo_vivienda_id-create').select2('val');
-                                @this.set('tipo_vivienda_id', data);
-                            });">
-                                <div class="col" wire:ignore>
-                                    <select class="form-control" id="select2-tipo_vivienda_id-create">
-                                        <option value="">-- Elige un tipo de vivienda --</option>
-                                        @foreach ($tipos_vivienda as $tipo)
-                                            <option value={{ $tipo->id }}>{{ $tipo->nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
@@ -103,66 +51,6 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="mb-3 row d-flex align-items-center">
-                            <label for="cod_postal" class="col-sm-4 col-form-label"> <strong>¿Tiene certificado
-                                    energético?</strong></label>
-                            <div class="col">
-                                <input type="checkbox" wire:model="cert_energetico" name="cert_energetico"
-                                    id="cert_energetico">
-                                @error('ubicacion')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <label for="inmobiliaria" class="col-sm-4 col-form-label"> <strong>¿Este inmueble pertenece
-                                    a
-                                    ambas
-                                    inmobiliarias?</strong></label>
-                            <div class="col">
-                                <input type="checkbox" wire:model="inmobiliaria" name="inmobiliaria"
-                                    id="inmobiliaria">
-                                @error('inmobiliaria')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        @if ($cert_energetico == 1)
-                            <div class="mb-3 row d-flex align-items-center">
-                                <label for="cert_energetico_elegido" class="col-sm-3 col-form-label">
-                                    <strong><strong>Etiqueta
-                                            del
-                                            certificado energético:</strong></strong></label>
-                                <div x-data="" x-init="$('#select2-cert_energetico_elegido-create').select2();
-                                $('#select2-cert_energetico_elegido-create').on('change', function(e) {
-                                    var data = $('#select2-cert_energetico_elegido-create').select2('val');
-                                    @this.set('cert_energetico_elegido', data);
-                                });">
-                                    <div class="col" wire:ignore>
-                                        <select class="form-control" id="select2-cert_energetico_elegido-create">
-                                            <option value="">-- Elige la etiqueta del certificado --</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                            <option value="F">F</option>
-                                            <option value="G">G</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                        <div class="mb-3 row d-flex align-items-center">
-                            <label for="ubicacion" class="col-sm-3 col-form-label"> <strong>Ubicación</strong></label>
-                            <div class="col-sm-12">
-                                <input type="text" wire:model="ubicacion" class="form-control" name="ubicacion"
-                                    id="ubicacion" placeholder="Ubicación del inmueble">
-                                @error('ubicacion')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
                         <div class="mb-3 row d-flex align-items-center">
                             <label for="cod_postal" class="col-sm-3 col-form-label"> <strong>Código
                                     postal</strong></label>
@@ -174,6 +62,62 @@
                                 @enderror
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3" style="max-width: 40rem">
+                    <h5 class="card-header">
+                        Datos monetarios
+                    </h5>
+                    <div class="card-body">
+                        
+                        
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="ibi" class="col-sm-3 col-form-label"> <strong>IBI</strong></label>
+                            <div class="col-sm-12">
+                                <input type="text" wire:model="ibi" class="form-control" name="ibi"
+                                    id="ibi" placeholder="IBI del inmueble">
+                                @error('ibi')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="precio" class="col-sm-3 col-form-label"> <strong>Precio</strong></label>
+                            <div class="col-sm-12">
+                                <input type="text" wire:model="precio_venta" class="form-control" name="precio"
+                                    id="precio" placeholder="Precio del inmueble">
+                                @error('precio_venta')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="precio" class="col-sm-4 col-form-label"> <strong>Precio alquiler semana</strong></label>
+                            <div class="col-sm-12">
+                                <input type="text" wire:model="alquiler_semana" class="form-control" name="precio"
+                                    id="alquiler_semana" placeholder="Alquiler a la semana">
+                                @error('alquiler_semana')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="precio" class="col-sm-4 col-form-label"> <strong>Precio alquiler mes</strong></label>
+                            <div class="col-sm-12">
+                                <input type="text" wire:model="alquiler_mes" class="form-control" name="precio"
+                                    id="alquiler_mes" placeholder="Alquiler al mes">
+                                @error('alquiler_mes')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        
+
                     </div>
                 </div>
             </div>
@@ -207,23 +151,36 @@
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="estado" class="col-sm-3 col-form-label"> <strong>Estado</strong></label>
-                            <div x-data="" x-init="$('#select2-estado-create').select2();
-                            $('#select2-estado-create').on('change', function(e) {
-                                var data = $('#select2-estado-create').select2('val');
-                                @this.set('estado', data);
-                                console.log(data);
-                            });">
-                                <div class="col" wire:ignore>
-                                    <select class="form-control" id="select2-estado-create">
-                                        <option value="">-- Estado del inmueble --</option>
-                                        <option value="Obra nueva">Obra nueva</option>
-                                        <option value="Buen estado">Buen estado</option>
-                                        <option value="A reformar">A reformar</option>
-                                    </select>
-                                </div>
+                            <label for="garaje" class="col-sm-3 col-form-label"> <strong>Garaje</strong></label>
+                            <div class="col-sm-12">
+                                <input type="number" wire:model="garaje" class="form-control" name="garaje"
+                                    id="garaje" placeholder="Plazas de garaje">
+                                @error('garaje')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="piscina" class="col-sm-3 col-form-label"> <strong>Piscina</strong></label>
+                            <div class="col-sm-12">
+                                <input type="number" wire:model="piscina" class="form-control" name="piscina"
+                                    id="piscina" placeholder="Piscina del inmueble">
+                                @error('piscina')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="dormitorios" class="col-sm-3 col-form-label"> <strong>Dormitorios</strong></label>
+                            <div class="col-sm-12">
+                                <input type="number" wire:model="dormitorios" class="form-control" name="dormitorios"
+                                    id="dormitorios" placeholder="Dormitorios del inmueble">
+                                @error('dormitorios')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        
                         <div class="mb-3 row d-flex align-items-center">
                             <label for="disponibilidad" class="col-sm-3 col-form-label">
                                 <strong>Disponibilidad</strong></label>
@@ -242,36 +199,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-3 row d-flex align-items-center">
-                            <label for="otras_caracteristicasArray" class="col-sm-4 col-form-label"> <strong>Otras
-                                    características</strong></label>
-                            <div class="col-sm-11 border rounded-2"
-                                style="overflow-y:scroll; height:5rem; margin-left:11px;">
-                                @foreach ($caracteristicas as $caracteristica)
-                                    <div class="mb-1">
-                                        <input type="checkbox" value="{{ $caracteristica->id }}"
-                                            wire:model="otras_caracteristicasArray"
-                                            @if (in_array($caracteristica->id, $otras_caracteristicasArray)) checked @endif>
-                                        {{ $caracteristica->nombre }}
-                                    </div>
-                                @endforeach
-                                @error('otras_caracteristicas')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="card mb-3" style="max-width: 40rem;">
                     <h5 class="card-header">
-                        Vendedor asignado
+                        Propietario
                     </h5>
                     <div class="card-body">
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="vendedor" class="col-sm-3 col-form-label">
-                                <strong>Vendedor:</strong></label>
+                            <label for="propietario" class="col-sm-3 col-form-label">
+                                <strong>Propietario:</strong></label>
                             <div x-data="" x-init="$('#select2-vendedor-create').select2();
                             $('#select2-vendedor-create').on('change', function(e) {
                                 var data = $('#select2-vendedor-create').select2('val');
@@ -281,9 +220,9 @@
                                 <div class="col" wire:ignore>
                                     <select class="form-control" id="select2-vendedor-create">
                                         <option value="">-- Elige un vendedor --</option>
-                                        @foreach ($vendedores as $vendedor)
-                                            <option value={{ $vendedor->id }}>
-                                                {{ $vendedor->nombre_completo }}
+                                        @foreach ($propietarios as $propietario)
+                                            <option value={{ $propietario->id }}>
+                                                {{ $propietario->nombre }} - {{ $propietario->dni }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -291,10 +230,20 @@
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="titulo" class="col-sm-3 col-form-label"> <strong>Nombre</strong></label>
+                            <label for="nombre" class="col-sm-3 col-form-label"> <strong>Nombre</strong></label>
                             <div class="col-sm-12">
-                                <input type="text" disabled wire:model="vendedor_nombre" class="form-control"
-                                    name="vendedor_nombre" id="vendedor_nombre" placeholder="Nombre">
+                                <input type="text" disabled wire:model="propietario_nombre" class="form-control"
+                                    name="propietario_nombre" id="propietario_nombre" placeholder="Nombre">
+                                @error('vendedor_nombre')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="propietario_apellidos" class="col-sm-3 col-form-label"> <strong>Apellidos</strong></label>
+                            <div class="col-sm-12">
+                                <input type="text" disabled wire:model="propietario_apellidos" class="form-control"
+                                    name="propietario_apellidos" id="propietario_apellidos" placeholder="Apellidos">
                                 @error('vendedor_nombre')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -311,33 +260,23 @@
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="titulo" class="col-sm-3 col-form-label">
-                                <strong>Ubicación</strong></label>
-                            <div class="col-sm-12">
-                                <input type="text" disabled wire:model="vendedor_ubicacion" class="form-control"
-                                    name="vendedor_ubicacion" id="vendedor_ubicacion" placeholder="Ubicación">
-                                @error('vendedor_ubicacion')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="mb-3 row d-flex align-items-center">
-                            <label for="titulo" class="col-sm-3 col-form-label">
+                            <label for="propietario_telefono" class="col-sm-3 col-form-label">
                                 <strong>Teléfono</strong></label>
                             <div class="col-sm-12">
-                                <input type="text" disabled wire:model="vendedor_telefono" class="form-control"
-                                    name="vendedor_telefono" id="vendedor_telefono" placeholder="Teléfono">
+                                <input type="text" disabled wire:model="propietario_telefono" class="form-control"
+                                    name="propietario_telefono" id="propietario_telefono" placeholder="Teléfono">
                                 @error('titulo')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
+                        
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="titulo" class="col-sm-3 col-form-label"> <strong>Correo</strong></label>
+                            <label for="propietario_correo" class="col-sm-3 col-form-label"> <strong>Correo</strong></label>
                             <div class="col-sm-12">
-                                <input type="text" disabled wire:model="vendedor_correo" class="form-control"
-                                    name="vendedor_correo" id="vendedor_correo" placeholder="Correo">
-                                @error('vendedor_correo')
+                                <input type="text" disabled wire:model="propietario_correo" class="form-control"
+                                    name="propietario_correo" id="propietario_correo" placeholder="Correo">
+                                @error('propietario_correo')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
