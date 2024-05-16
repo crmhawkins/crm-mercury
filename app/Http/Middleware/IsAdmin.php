@@ -18,11 +18,7 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         if (Auth::user() && Auth::user()->role == 'admin') {
-            if ($request->session()->has('inmobiliaria')) {
-
-            }else{
-                $request->session()->put('inmobiliaria', 'sayco');
-            }
+           
                 return $next($request);
         } else{
             return redirect()->route('login');

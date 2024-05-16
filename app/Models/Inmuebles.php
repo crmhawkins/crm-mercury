@@ -31,7 +31,25 @@ class Inmuebles extends Model
         'disponibilidad',
         'otras_caracteristicas',
         'referencia_catastral',
+        'dormitorios',
+        'piscina',
+        'garaje',
+        'ibi',
+        'coste_basura',
+        'precio_venta',
+        'alquiler_semana',
+        'alquiler_mes',
+        'propietario_id',
+        'direccion',
+        'localidad',
+
+
 
     ];
+
+    public function propietario()
+    {
+        return $this->belongsTo(Propietarios::class);
+    }
 
 }

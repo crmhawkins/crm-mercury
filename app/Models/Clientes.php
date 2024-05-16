@@ -19,6 +19,10 @@ class Clientes extends Model
         'intereses',
         'inmuebles_intereses',
         'inmobiliaria',
+        'direccion',
+        'busqueda',
+        'nombre',
+        'apellido',
     ];
 
 }

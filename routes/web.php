@@ -7,6 +7,7 @@ use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\InmueblesController;
 use App\Http\Controllers\TipoViviendaController;
 use App\Http\Controllers\VendedoresController;
+use App\Http\Controllers\PropietariosController;
 use App\Models\Caracteristicas;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -35,9 +36,7 @@ Route::get('/', function () {
     }
 })->name('/');
 
-Route::get('/seleccion', [App\Http\Controllers\HomeController::class, 'index'])->name('seleccion');
-
-
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('seleccion');
 
 Auth::routes();
 
@@ -53,6 +52,8 @@ Route::group(['middleware' => 'is.admin', 'prefix' => 'admin'], function () {
     Route::get('facturacion', [FacturaController::class, 'index'])->name('facturacion.index');
     Route::get('agenda', [AgendaController::class, 'index'])->name('agenda.index');
     Route::get('vendedores', [VendedoresController::class, 'index'])->name('vendedores.index');
+    Route::get('propietarios', [PropietariosController::class, 'index'])->name('propietarios.index');
+
     Route::get('caracteristicas', [CaracteristicasController::class, 'index'])->name('caracteristicas.index');
 });
 

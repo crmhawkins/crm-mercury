@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('facturas', function (Blueprint $table) {
-            $table->string("fecha_vencimiento")->nullable();
+            //si no existe la columna fecha_vencimiento la crea
+            if (!Schema::hasColumn('facturas', 'fecha_vencimiento')){
+                $table->string("fecha_vencimiento")->nullable();
+            }
         });
     }
 

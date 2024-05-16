@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('inmuebles', function (Blueprint $table) {
-            //si existe la columna vendedor_id la crea
-            if (!Schema::hasColumn('inmuebles', 'vendedor_id')){
-                $table->string("vendedor_id")->nullable();
-            }
-        
+        Schema::create('propietarios', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('apellidos');
+            $table->string('dni');
+            $table->timestamps();
         });
     }
 
@@ -29,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('inmuebles', function (Blueprint $table) {
-            $table->dropColumn("vendedor_id");
-        });
+        Schema::dropIfExists('propietarios');
     }
 };

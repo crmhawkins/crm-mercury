@@ -24,33 +24,18 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('seleccion');
+        return view('agenda.index');
     }
 
     public function home(Request $request)
     {
-        $boton = $request->query('boton');
 
-        if ($boton == 'sayco') {
-            $request->session()->put('inmobiliaria', 'sayco');
-        } else if ($boton == 'sancer') {
-            $request->session()->put('inmobiliaria', 'sancer');
-        }
-
-        $user = $request->user();
-        return view('agenda.index', compact('user'));
+        return view('agenda.index');
 
     }
 
     public function cambio(Request $request)
     {
-        $boton = $request->query('boton');
-
-        if ($boton == 'sayco') {
-            $request->session()->put('inmobiliaria', 'sayco');
-        } else if ($boton == 'sancer') {
-            $request->session()->put('inmobiliaria', 'sancer');
-        }
             return redirect()->back();
     }
 }
