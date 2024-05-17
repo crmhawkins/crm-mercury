@@ -29,14 +29,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if (Auth::user()) {
+    if (Auth::user()->role == 'admin') {
         return Redirect::route('agenda.index');
     } else {
         return Redirect::route('login');
     }
 })->name('/');
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('seleccion');
+//Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('seleccion');
 
 Auth::routes();
 

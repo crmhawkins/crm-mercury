@@ -19,23 +19,21 @@ class Index extends Component
     protected $paginationTheme = 'bootstrap';
     public $inmuebles;
     public $acordeon_activo;
-    public $caracteristicas;
     public $clientes;
     public $cliente_id = 1;
     public $imagenes_correo = [];
-    public $otras_caracteristicasArray = [];
 
     public $m2_max;
     public $opcionesPrecio;
     public $opcionesTamano;
-    public $estadoSeleccionados = [];
+    //public $estadoSeleccionados = [];
+    public $localidad;
     public $habitacionesSeleccionadas = [];
     public $banosSeleccionados = [];
     public $m2_min;
     public $valor_min;
     public $valor_max;
     public $ubicacion;
-    public $tipos_vivienda;
     public $tipos_seleccionados = [];
     public $disponibilidad_seleccionados = [];
     protected $listeners = ['refreshComponent' => '$refresh'];
@@ -44,10 +42,8 @@ class Index extends Component
     {
         $this->opcionesPrecio = $this->opcionesDePrecio();
         $this->opcionesTamano = $this->opcionesDeTamano();
-        $this->caracteristicas = Caracteristicas::all();
         $this->clientes = Clientes::all();
         $this->inmuebles = Inmuebles::all();
-        $this->tipos_vivienda = TipoVivienda::all();
     }
 
     private function opcionesDePrecio()
@@ -78,26 +74,22 @@ class Index extends Component
             }
         }
 
-        if (!empty($this->estadoSeleccionados)) {
-            $query->whereIn('estado', $this->estadoSeleccionados);
-        }
+        
         if (!empty($this->tipos_seleccionados)) {
             $query->whereIn('tipo_vivienda_id', $this->tipos_seleccionados);
         }
         if (!empty($this->disponibilidad_seleccionados)) {
             $query->whereIn('disponibilidad', $this->disponibilidad_seleccionados);
         }
-        if (!empty($this->otras_caracteristicasArray)) {
-            $query->whereJsonContains('otras_caracteristicas', $this->otras_caracteristicasArray);
-        }
+        
         if ($this->valor_min != null & $this->valor_max != null) {
             $query->whereBetween('valor_referencia', [floatval($this->valor_min), floatval($this->valor_max)]);
         }
         if ($this->m2_min != null & $this->m2_max != null) {
             $query->whereBetween('m2', [$this->m2_min, $this->m2_max]);
         }
-        if ($this->ubicacion != "" && $this->ubicacion != null) {
-            $query->where('ubicacion', 'LIKE',"%". $this->ubicacion ."%")->orWhere('cod_postal', 'LIKE',"%". $this->ubicacion ."%");
+        if ($this->ubicacion != "" && $this->localidad != null) {
+            $query->where('localidad', 'LIKE',"%". $this->localidad ."%")->orWhere('cod_postal', 'LIKE',"%". $this->localidad ."%");
         }
         $this->inmuebles = $query->get();
 
@@ -120,12 +112,10 @@ class Index extends Component
         if (
             $propertyName == 'habitacionesSeleccionadas' ||
             $propertyName == 'banosSeleccionados' ||
-            $propertyName == 'otras_caracteristicasArray' ||
             $propertyName == 'valor_min' ||
             $propertyName == 'valor_max' ||
             $propertyName == 'm2_min' ||
             $propertyName == 'm2_max' ||
-            $propertyName == 'tipos_seleccionados' ||
             $propertyName == 'disponibilidad_seleccionados' ||
             $propertyName == 'ubicacion'
         ) {

@@ -15,6 +15,8 @@ class Propietarios extends Model
         'nombre',
         'apellidos',
         'dni',
+        'telefono',
+        'correo',
     ];
 
     public function inmuebles()

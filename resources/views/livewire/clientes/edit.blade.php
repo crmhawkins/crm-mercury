@@ -79,7 +79,7 @@
                                 <select class="form-select" wire:model="busqueda" name="busqueda" id="busqueda">
                                     <option value="">-- Búsqueda --</option>
                                     <option value="Alquiler">Alquiler</option>
-                                    <option value="Venta">Venta</option>
+                                    <option value="Compra">Compra</option>
                                 </select>
                                 @error('busqueda')
                                     <span class="text-danger">{{ $message }}</span>

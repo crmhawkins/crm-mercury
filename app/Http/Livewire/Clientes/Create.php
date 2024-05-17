@@ -61,6 +61,8 @@ class Create extends Component
             ]
         );
 
+        //dd($this->busqueda);
+
         // Guardar datos validados
         $clientesSave = Clientes::create($validatedData);
 

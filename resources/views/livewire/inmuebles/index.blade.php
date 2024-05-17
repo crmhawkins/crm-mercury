@@ -128,28 +128,8 @@
                             A la venta
                         </label>
                     </div>
-                    <div class="mb-3 row d-flex align-items-center">
-                        <h6> Tipo de vivienda </h6>
-                        @foreach ($tipos_vivienda as $tipo)
-                            <label>
-                                <input type="checkbox" value="{{ $tipo->id }}" wire:model.lazy="tipos_seleccionados"
-                                    @if (in_array($tipo->id, $tipos_seleccionados)) checked @endif>
-                                {{ $tipo->nombre }}
-                            </label>
-                        @endforeach
-                    </div>
-                    <div class="mb-3 row d-flex align-items-center">
-                        <h6> Otras
-                            características </h6>
-                        @foreach ($caracteristicas as $caracteristica)
-                            <label>
-                                <input type="checkbox" value="{{ $caracteristica->id }}"
-                                    wire:model="otras_caracteristicasArray"
-                                    @if (in_array($caracteristica->id, $otras_caracteristicasArray)) checked @endif>
-                                {{ $caracteristica->nombre }}
-                            </label>
-                        @endforeach
-                    </div>
+                    
+                    
                 </div>
             </div>
         </div>
@@ -159,18 +139,57 @@
                 @foreach ($inmuebles as $inmueble)
                     <div class="card mb-3" style="width: 60rem;">
                         <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ json_decode($inmueble->galeria, true)[1] }}" width="100%" height="auto"
-                                    class="rounded-start" alt="...">
+                            <div class="col-md-3">
+                                <img src="{{ json_decode($inmueble->galeria, true)[1] }}" width="200px" height="270px"
+                                    class="rounded-start" alt="..." style="object-fit: cover; width: 200px; height: 270px;">
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-9" style="position:relative; min-height: 270px;">
+                                <div style="position: absolute; top:10px; right:10px;">
+                                    <span class="badge bg-dark" >{{ $inmueble->localidad }} , {{ $inmueble->cod_postal }}</span>
+                                </div>
                                 <div class="card-body">
-                                    <h4 class="card-title">{{ $inmueble->titulo }}</h4>
-                                    <h5 class="card-title">{{ $inmueble->valor_referencia }}€</h5>
-                                    <h6 class="card-title">{{ $inmueble->habitaciones }} hab. &nbsp;
-                                        {{ $inmueble->m2 }}m<sup>2</sup></h6>
+                                    <h4 class="card-title">{{ $inmueble->direccion }} @if($inmueble->disponibilidad == "Alquiler")
+                                                                                        <span class="badge badge-danger text-white bg-success" style="font-size: 0.9rem">Alquiler</span> 
+                                                                                    @elseif($inmueble->disponibilidad == "Venta") 
+                                                                                        <span class="badge badge-danger text-white bg-warning" style="font-size: 0.9rem">Venta</span> 
+                                                                                    @endif
+                                    </h4>
+                                    <br>
+                                <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center" style="width: 90%">
+                                    <div>
+                                        <h6 class="card-title" style="font-size: 1.2rem;">
+                                            @if($inmueble->disponibilidad == "Alquiler")
+                                                <span>{{ $inmueble->alquiler_mes }} €/mes</span> <br>
+                                                <span>{{ $inmueble->alquiler_semana }} €/semana </span>
+                                            @elseif($inmueble->disponibilidad == "Venta")
+                                                {{ $inmueble->precio_venta }} €
+                                            @endif
+    
+                                        </h6>
+                                    </div>
+                                    <div class="bg-light p-2 rounded" style="width: fit-content">
+                                        <h5 class="card-title" style="font-size: 1rem; margin-bottom: 15px;">
+                                            <i class="fa-solid fa-house"></i> {{ $inmueble->habitaciones }} hab. &nbsp; 
+                                            <i class="fa-solid fa-bath"></i> {{ $inmueble->banos }} baños &nbsp; 
+                                            <i class="fa-solid fa-bed"></i> {{ $inmueble->dormitorios }} dorm. &nbsp;
+                                            <br>
+                                            <br>
+                                            @if(isset($inmueble->piscina) && $inmueble->piscina == 1)
+                                            <i class="fa-solid fa-swimming-pool"></i> Piscina <i class="fa-solid fa-square-check text-success"></i>
+                                            @endif
+                                            @if(isset($inmueble->garaje) && $inmueble->garaje == 1)
+                                            &nbsp; <i class="fa-solid fa-warehouse"></i> Garaje <i class="fa-solid fa-square-check text-success"></i>
+                                            @endif
+                                        </h5>
+                                        <h6 class="card-title"><i class="fa-solid fa-ruler"></i>
+                                                {{ $inmueble->m2 }}m<sup>2</sup> &nbsp; <i class="fa-solid fa-ruler"></i> {{ $inmueble->m2_construidos }} m<sup>2</sup> construidos  </h6>
+                                    </div>
+                                </div>
+                                
+                                    
+                                        
                                     <p class="card-text">{{ $inmueble->descripcion }}</p>
-                                    <h2 class="accordion-header row" id="heading{{ $inmueble->id }}">
+                                    <div class="accordion-header row" id="heading{{ $inmueble->id }}" style="position:absolute; bottom:10px; width: 100%;">
                                         <div class="col-6">
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#collapse{{ $inmueble->id }}"
@@ -181,17 +200,12 @@
                                         </div>
                                         <div class="col-6">
                                             <button type="button"
-                                                @if (
-                                                    (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                                                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                                                        (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                                                        (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null)) class="accordion-button collapsed text-end"
-                                                            onclick="Livewire.emit('seleccionarProducto', {{ $inmueble->id }});"
-                                                            @else class="accordion-button collapsed text-end" disabled @endif>
+                                                 class="accordion-button collapsed text-end"
+                                                            onclick="Livewire.emit('seleccionarProducto', {{ $inmueble->id }});">
                                                 <h4>Editar</h4>
                                             </button>
                                         </div>
-                                    </h2>
+                                    </div>
                                 </div>
                             </div>
                         </div>

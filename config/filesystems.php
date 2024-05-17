@@ -38,8 +38,8 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => public_path(), // Esta línea es importante, ahora apunta al directorio public
+            'url' => env('APP_URL') . '/',
             'visibility' => 'public',
             'throw' => false,
         ],

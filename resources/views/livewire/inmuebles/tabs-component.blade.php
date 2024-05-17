@@ -3,11 +3,7 @@
         @if ($inmueble != null)
             @if ($tab == 'tab1')
                 <div style="border-bottom: 1px solid black !important;">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                    
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-primary btn-block"
@@ -19,7 +15,6 @@
                             </div>
                         </div>
                         <br>
-                    @endif
                     <div class="row">
                         <div class="ms-auto col-4 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
@@ -41,11 +36,7 @@
                 @livewire('inmuebles.create', key('tab1'))
             @elseif ($tab == 'tab2')
                 <div style="border-bottom: 1px solid black !important;">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                    
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
@@ -57,7 +48,6 @@
                             </div>
                         </div>
                         <br>
-                    @endif
                     <div class="row">
                         <div class="ms-auto col-4 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
@@ -79,11 +69,7 @@
                 @livewire('inmuebles.edit', ['identificador' => $inmueble], key('tab2'))
             @elseif ($tab == 'tab3')
                 <div style="border-bottom: 1px solid black !important;">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                   
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
@@ -95,7 +81,6 @@
                             </div>
                         </div>
                         <br>
-                    @endif
                     <div class="row">
                         <div class="ms-auto col-4 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
@@ -117,11 +102,7 @@
                 @livewire('inmuebles.index', key('tab3'))
             @elseif ($tab == 'tab4')
                 <div style="border-bottom: 1px solid black !important;">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                   
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
@@ -133,7 +114,6 @@
                             </div>
                         </div>
                         <br>
-                    @endif
                     <div class="row">
                         <div class="ms-auto col-4 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
@@ -153,11 +133,7 @@
                 <br>
             @elseif ($tab == 'tab5')
                 <div style="border-bottom: 1px solid black !important;">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                    
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
@@ -169,7 +145,6 @@
                             </div>
                         </div>
                         <br>
-                    @endif
                     <div class="row">
                         <div class="ms-auto col-4 d-grid gap-2">
                             <button type="button" class="btn btn-primary btn-block" wire:click="cambioTab('tab5')">Ver
@@ -192,11 +167,7 @@
         @else
             @if ($tab == 'tab1')
                 <div style="border-bottom: 1px solid black !important;">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                   
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-primary btn-block"
@@ -208,7 +179,6 @@
                             </div>
                         </div>
                         <br>
-                    @endif
                     <div class="row">
                         <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
@@ -226,11 +196,7 @@
                 @livewire('inmuebles.create')
             @elseif ($tab == 'tab3')
                 <div style="border-bottom: 1px solid black !important;">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                   
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
@@ -242,7 +208,6 @@
                             </div>
                         </div>
                         <br>
-                    @endif
                     <div class="row">
                         <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-primary btn-block"
@@ -260,11 +225,7 @@
                 @livewire('inmuebles.index')
             @elseif ($tab == 'tab4')
                 <div style="border-bottom: 1px solid black !important;">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                    
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
@@ -276,7 +237,6 @@
                             </div>
                         </div>
                         <br>
-                    @endif
                     <div class="row">
                         <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
@@ -304,11 +264,7 @@
         @if ($inmueble != null)
             @if ($tab == 'tab1')
                 <ul class="nav nav-tabs nav-fill">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                    
                         <li class="nav-item">
                             <button class="nav-link active" wire:click.prevent="cambioTab('tab1')">
                                 <h3>Alta</h3>
@@ -319,7 +275,6 @@
                                 <h5>Editar</h5>
                             </button>
                         </li>
-                    @endif
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab5')">
                             <h5>Ver detalles</h5>
@@ -340,11 +295,7 @@
                 @livewire('inmuebles.create', key('tab1'))
             @elseif ($tab == 'tab2')
                 <ul class="nav nav-tabs nav-fill">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                    
                         <li class="nav-item">
                             <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
                                 <h5>Alta</h5>
@@ -355,7 +306,6 @@
                                 <h3>Editar</h3>
                             </button>
                         </li>
-                    @endif
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab5')">
                             <h5>Ver detalles</h5>
@@ -379,11 +329,7 @@
                 <br>
             @elseif ($tab == 'tab3')
                 <ul class="nav nav-tabs nav-fill">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                    
                         <li class="nav-item">
                             <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
                                 <h5>Alta</h5>
@@ -394,7 +340,6 @@
                                 <h5>Editar</h5>
                             </button>
                         </li>
-                    @endif
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab5')">
                             <h5>Ver detalles</h5>
@@ -416,11 +361,7 @@
                 @livewire('inmuebles.index', key('tab3'))
             @elseif ($tab == 'tab4')
                 <ul class="nav nav-tabs nav-fill">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                    
                         <li class="nav-item">
                             <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
                                 <h5>Alta</h5>
@@ -431,7 +372,6 @@
                                 <h5>Editar</h5>
                             </button>
                         </li>
-                    @endif
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab5')">
                             <h5>Ver detalles</h5>
@@ -453,11 +393,7 @@
                 @livewire('inmuebles.index', key('tab3'))
             @elseif ($tab == 'tab5')
                 <ul class="nav nav-tabs nav-fill">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                    
                         <li class="nav-item">
                             <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
                                 <h5>Alta</h5>
@@ -468,7 +404,6 @@
                                 <h5>Editar</h5>
                             </button>
                         </li>
-                    @endif
                     <li class="nav-item">
                         <button class="nav-link active" wire:click.prevent="cambioTab('tab5')">
                             <h5>Ver detalles</h5>
@@ -492,11 +427,7 @@
         @else
             @if ($tab == 'tab1')
                 <ul class="nav nav-tabs nav-fill">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                    
                         <li class="nav-item">
                             <button class="nav-link active" wire:click.prevent="cambioTab('tab1')">
                                 <h3>Alta</h3>
@@ -507,7 +438,6 @@
                                 <h5>Editar</h5>
                             </button>
                         </li>
-                    @endif
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab5')" disabled>
                             <h5>Ver detalles</h5>
@@ -529,11 +459,7 @@
                 @livewire('inmuebles.create', key('tab1'))
             @elseif ($tab == 'tab3')
                 <ul class="nav nav-tabs nav-fill">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                   
                         <li class="nav-item">
                             <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
                                 <h5>Alta</h5>
@@ -544,7 +470,6 @@
                                 <h5>Editar</h5>
                             </button>
                         </li>
-                    @endif
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab5')" disabled>
                             <h5>Ver detalles</h5>
@@ -565,11 +490,7 @@
                 @livewire('inmuebles.index', key('tab3'))
             @elseif ($tab == 'tab4')
                 <ul class="nav nav-tabs nav-fill">
-                    @if (
-                        (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === 1) ||
-                            (Request::session()->get('inmobiliaria') == 'sayco' && Auth::user()->inmobiliaria === null) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
-                            (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null))
+                   
                         <li class="nav-item">
                             <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
                                 <h5>Alta</h5>
@@ -580,7 +501,6 @@
                                 <h5>Editar</h5>
                             </button>
                         </li>
-                    @endif
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab5')" disabled>
                             <h5>Ver detalles</h5>

@@ -52,13 +52,14 @@ class Create extends Component
     public $propietario;
     public $propietario_id;
     public $propietario_nombre;
+    public $propietario_apellidos;
     public $propietario_dni;
     public $propietario_telefono;
     public $propietario_correo;
 
     public $dormitorios;
-    public $piscina;
-    public $garaje;
+    public $piscina = 0;
+    public $garaje = 0;
     public $ibi;
 
     public $coste_basura;
@@ -90,6 +91,7 @@ class Create extends Component
     {
         
         $this->galeria = json_encode($this->galeriaArray);
+        //dd($this->disponibilidad);
 
         $validatedData = $this->validate(
             [
@@ -98,7 +100,6 @@ class Create extends Component
                 'habitaciones' => 'required',
                 'banos' => 'required',
                 'cod_postal' => 'required',
-                'estado' => 'required',
                 'galeria' => 'nullable',
                 'direccion' => 'required',
                 'localidad' => 'required',
@@ -198,19 +199,18 @@ class Create extends Component
 
     public function updated()
     {
-        if ($this->vendedor_id == "") {
-            $this->vendedor_nombre = "";
-            $this->vendedor_dni = "";
-            $this->vendedor_ubicacion = "";
-            $this->vendedor_telefono = "";
-            $this->vendedor_correo = "";
+        if ($this->propietario_id == "") {
+            $this->propietario_nombre = "";
+            $this->propietario_dni = "";
+            $this->propietario_telefono = "";
+            $this->propietario_correo = "";
         } else {
-            $vendedor = User::where('id', $this->vendedor_id)->first();
-            $this->vendedor_nombre = $vendedor->nombre_completo;
-            $this->vendedor_dni = $vendedor->dni;
-            $this->vendedor_ubicacion  = $vendedor->ubicacion;
-            $this->vendedor_telefono = $vendedor->telefono;
-            $this->vendedor_correo = $vendedor->email;
+            $propietario = Propietarios::where('id', $this->propietario_id)->first();
+            $this->propietario_nombre = $propietario->nombre;
+            $this->propietario_apellidos = $propietario->apellidos;
+            $this->propietario_dni = $propietario->dni;
+            $this->propietario_telefono = $propietario->telefono;
+            $this->propietario_correo = $propietario->correo;
         }
     }
 }

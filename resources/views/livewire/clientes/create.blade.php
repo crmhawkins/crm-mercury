@@ -82,8 +82,8 @@
                             <div class="col-sm-10">
                                 <select class="form-select" wire:model="busqueda" name="busqueda" id="busqueda">
                                     <option value="">-- seleccione --</option>
-                                    <option value="compra">Compra</option>
-                                    <option value="alquiler">Alquiler</option>
+                                    <option value="Compra">Compra</option>
+                                    <option value="Alquiler">Alquiler</option>
                             </div>
                         </div>
                     </div>
@@ -174,8 +174,8 @@
                             <div class="col-sm-10">
                                 <select class="form-select" wire:model="busqueda" name="busqueda" id="busqueda">
                                     <option value="">-- seleccione --</option>
-                                    <option value="compra">Compra</option>
-                                    <option value="alquiler">Alquiler</option>
+                                    <option value="Compra">Compra</option>
+                                    <option value="Alquiler">Alquiler</option>
                                 </select>
                                 @error('busqueda')
                                     <span class="text-danger">{{ $message }}</span>
