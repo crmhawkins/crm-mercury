@@ -9,6 +9,7 @@ use Livewire\Component;
 use App\Models\Inmuebles;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Models\Clientes;
+use App\Models\Propietarios;
 class Show extends Component
 {
     use LivewireAlert;
@@ -16,36 +17,43 @@ class Show extends Component
     public $identificador;
 
     public $inmuebles;
-    public $caracteristicas;
 
-    public $titulo;
-    public $descripcion;
     public $m2;
     public $m2_construidos;
-    public $valor_referencia;
     public $habitaciones;
     public $banos;
     public $cod_postal;
-    public $tipo_vivienda_id;
-    public $ubicacion;
-    public $cert_energetico;
-    public $cert_energetico_elegido;
-    public $inmobiliaria = null;
-    public $estado;
     public $disponibilidad;
-    public $otras_caracteristicasArray = [];
+    public $direccion;
+    public $localidad;
+    // public $vendedores;
+    // public $vendedor_id;
+    // public $vendedor_nombre;
+    // public $vendedor_dni;
+    // public $vendedor_ubicacion;
+    // public $vendedor_telefono;
+    // public $vendedor_correo;
 
-    public $otras_caracteristicas;
-    public $referencia_catastral;
+    public $propietario;
+    public $propietario_id;
+    public $propietario_nombre;
+    public $propietario_apellidos;
+    public $propietario_dni;
+    public $propietario_telefono;
+    public $propietario_correo;
+    public $propietarios = [];
 
-    public $vendedores;
-    public $vendedor_id;
-    public $vendedor_nombre;
-    public $vendedor_dni;
-    public $vendedor_ubicacion;
-    public $vendedor_telefono;
-    public $vendedor_correo;
-    public $tipos_vivienda;
+    public $dormitorios;
+    public $piscina = 0;
+    public $garaje = 0;
+    public $ibi;
+
+    public $coste_basura;
+    public $precio_venta;
+    public $alquiler_semana;
+    public $alquiler_mes;
+
+
     public $ruta_imagenes;
     public $imagenes_correo = [];
     public $galeriaArray = [];
@@ -56,52 +64,37 @@ public $clientes;
     public function mount()
     {
         $this->inmuebles = Inmuebles::find($this->identificador);
-        $this->tipos_vivienda = TipoVivienda::all();
-        $this->vendedores = User::all();
-        $this->caracteristicas = Caracteristicas::all();
+        $this->propietarios = Propietarios::all();
         $this->clientes = Clientes::all();
 
-        $this->titulo = $this->inmuebles->titulo;
-        $this->descripcion = $this->inmuebles->descripcion;
         $this->m2 = $this->inmuebles->m2;
         $this->m2_construidos = $this->inmuebles->m2_construidos;
-        $this->valor_referencia = $this->inmuebles->valor_referencia;
         $this->habitaciones = $this->inmuebles->habitaciones;
         $this->banos = $this->inmuebles->banos;
         $this->cod_postal = $this->inmuebles->cod_postal;
-        $this->tipo_vivienda_id = $this->inmuebles->tipo_vivienda_id;
-        $this->ubicacion = $this->inmuebles->ubicacion;
-        $this->cert_energetico = $this->inmuebles->cert_energetico;
-        $this->cert_energetico_elegido = $this->inmuebles->cert_energetico_elegido;
-        if ($this->inmuebles->inmobiliaria != null) {
-            $this->inmobiliaria = null;
-        } else {
-            $this->inmobiliaria = true;
-        };
-        $this->estado = $this->inmuebles->estado;
+   
         $this->disponibilidad = $this->inmuebles->disponibilidad;
-        $this->otras_caracteristicasArray = json_decode($this->inmuebles->otras_caracteristicas, true);
-        $this->referencia_catastral = $this->inmuebles->referencia_catastral;
+
         if ($this->inmuebles->galeria != null) {
             $this->galeriaArray = json_decode($this->inmuebles->galeria, true);
         } else {
             $this->galeriaArray = [];
         }
-        $this->vendedor_id = $this->inmuebles->vendedor_id;
+        $this->propietario_id = $this->inmuebles->propietario_id;
 
-        if ($this->vendedor_id == "") {
-            $this->vendedor_nombre = "";
-            $this->vendedor_dni = "";
-            $this->vendedor_ubicacion = "";
-            $this->vendedor_telefono = "";
-            $this->vendedor_correo = "";
+        if ($this->propietario_id == "") {
+            $this->propietario_nombre = "";
+            $this->propietario_apellidos = "";
+            $this->propietario_dni = "";
+            $this->propietario_telefono = "";
+            $this->propietario_correo = "";
         } else {
-            $vendedor = User::where('id', $this->vendedor_id)->first();
-            $this->vendedor_nombre = $vendedor->nombre_completo;
-            $this->vendedor_dni = $vendedor->dni;
-            $this->vendedor_ubicacion  = $vendedor->ubicacion;
-            $this->vendedor_telefono = $vendedor->telefono;
-            $this->vendedor_correo = $vendedor->email;
+            $propietario = Propietarios::where('id', $this->propietario_id)->first();
+            $this->propietario_nombre = $propietario->nombre;
+            $this->propietario_apellidos  = $propietario->apellidos;
+            $this->propietario_dni = $propietario->dni;
+            $this->propietario_telefono = $propietario->telefono;
+            $this->propietario_correo = $propietario->correo;
         }
     }
 
@@ -135,7 +128,7 @@ public $clientes;
                 'habitaciones' => 'required',
                 'banos' => 'required',
                 'tipo_vivienda_id' => 'required',
-                'vendedor_id' => 'required',
+                'propietario_id' => 'required',
                 'ubicacion' => 'required',
                 'cod_postal' => 'required',
                 'cert_energetico' => 'required',
@@ -157,7 +150,7 @@ public $clientes;
                 'habitaciones.required' => 'Indica las habitaciones del inmueble.',
                 'banos.required' => 'Indica los baños del inmueble.',
                 'tipo_vivienda_id.required' => 'Indica el tipo de vivienda del inmueble.',
-                'vendedor_id.required' => 'Indica al vendedor del inmueble.',
+                'propietario_id.required' => 'Indica al propietario del inmueble.',
                 'ubicacion.required' => 'Indica la ubicación del inmueble.',
                 'cod_postal.required' => 'El código postal es obligatorio.',
                 'cert_energetico.required' => 'Indica si existe un certificado energético o no.',
@@ -178,7 +171,7 @@ public $clientes;
             'habitaciones' => $this->habitaciones,
             'banos' => $this->banos,
             'tipo_vivienda_id' => $this->tipo_vivienda_id,
-            'vendedor_id' => $this->vendedor_id,
+            'propietario_id' => $this->propietario_id,
             'ubicacion' => $this->ubicacion,
             'cod_postal' => $this->cod_postal,
             'cert_energetico' => $this->cert_energetico,
@@ -274,19 +267,19 @@ public $clientes;
 
     public function updated()
     {
-        if ($this->vendedor_id == "") {
-            $this->vendedor_nombre = "";
-            $this->vendedor_dni = "";
-            $this->vendedor_ubicacion = "";
-            $this->vendedor_telefono = "";
-            $this->vendedor_correo = "";
+        if ($this->propietario_id == "") {
+            $this->propietario_nombre = "";
+            $this->propietario_apellidos = "";
+            $this->propietario_dni = "";
+            $this->propietario_telefono = "";
+            $this->propietario_correo = "";
         } else {
-            $vendedor = User::where('id', $this->vendedor_id)->first();
-            $this->vendedor_nombre = $vendedor->nombre_completo;
-            $this->vendedor_dni = $vendedor->dni;
-            $this->vendedor_ubicacion  = $vendedor->ubicacion;
-            $this->vendedor_telefono = $vendedor->telefono;
-            $this->vendedor_correo = $vendedor->email;
+            $propietario = Propietarios::where('id', $this->propietario_id)->first();
+            $this->propietario_nombre = $propietario->nombre;
+            $this->propietario_apellidos  = $propietario->apellidos;
+            $this->propietario_dni = $propietario->dni;
+            $this->propietario_telefono = $propietario->telefono;
+            $this->propietario_correo = $propietario->correo;
         }
     }
     public function deleteImagen($key)

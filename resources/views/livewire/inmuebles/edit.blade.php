@@ -216,14 +216,9 @@
                         <div class="mb-3 row d-flex align-items-center">
                             <label for="propietario" class="col-sm-3 col-form-label">
                                 <strong>Propietario:</strong></label>
-                            <div x-data="" x-init="$('#select2-vendedor-create').select2();
-                            $('#select2-vendedor-create').on('change', function(e) {
-                                var data = $('#select2-vendedor-create').select2('val');
-                                @this.set('propietario_id', data);
-                                console.log(data);
-                            });">
+                            <div>
                                 <div class="col" wire:ignore>
-                                    <select class="form-control" id="select2-vendedor-create">
+                                    <select class="form-control" id="select2-vendedor-create" wire:model="propietario_id">
                                         <option value="">-- Elige un propietario --</option>
                                         @foreach ($propietarios as $propietario)
                                             <option value={{ $propietario->id }}>

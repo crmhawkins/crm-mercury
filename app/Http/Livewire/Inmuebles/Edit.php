@@ -109,7 +109,7 @@ class Edit extends Component
             $this->propietario_dni = $propietario->dni;
             $this->propietario_ubicacion  = $propietario->ubicacion;
             $this->propietario_telefono = $propietario->telefono;
-            $this->propietario_correo = $propietario->email;
+            $this->propietario_correo = $propietario->correo;
         }
     }
 
@@ -295,7 +295,7 @@ class Edit extends Component
             $this->propietario_dni = $propietario->dni;
             $this->propietario_ubicacion  = $propietario->ubicacion;
             $this->propietario_telefono = $propietario->telefono;
-            $this->propietario_correo = $propietario->email;
+            $this->propietario_correo = $propietario->correo;
         }
     }
 }

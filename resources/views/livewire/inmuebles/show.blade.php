@@ -12,54 +12,29 @@
                         <div class="row d-flex align-items-start">
                             <div class="col-6">
                                 <h3>Datos básicos</h3>
-                                <p><b>Inmueble:</b> {{ $titulo }}<br>
-                                    <b>Descripción:</b> {{ $descripcion }}<br>
-                                    <b>Referencia catastral:</b> {{ $referencia_catastral }}<br>
-                                    <b>Valor de referencia:</b> {{ $valor_referencia }}
                                 </p>
                             </div>
                             <div class="col-6">
                                 <h3>Datos de inmueble</h3>
-                                <p><b>Tipo de vivienda:</b>
-                                    {{ $tipos_vivienda->where('id', $tipo_vivienda_id)->first()->nombre }}<br>
-                                    <b>M<sup>2</sup>:</b> {{ $m2 }}<br>
-                                    <b>M<sup>2</sup> construidos:</b> {{ $m2_construidos }}<br>
-                                    <b>¿Tiene certificado energético?</b> {{ $cert_energetico == true ? 'Sí' : 'No' }}
-                                    <br>
-                                    @if ($cert_energetico == 1)
-                                        <b>Etiqueta del certificado energético:</b> {{ $cert_energetico_elegido }} <br>
-                                    @endif
-                                    <b>¿Este inmueble pertenece a ambas inmobiliarias?</b>
-                                    {{ $inmobiliaria == true ? 'Sí' : 'No' }} <br>
-                                    <b>Ubicación:</b> {{ $ubicacion }} <br>
-                                    <b>Código postal:</b> {{ $cod_postal }} <br>
-
-                                </p>
+                               
                             </div>
                             <div class="col-6">
                                 <h3>Características de inmueble</h3>
                                 <p><b>Habitaciones:</b> {{ $habitaciones }}<br>
                                     <b>Baños:</b> {{ $banos }}<br>
-                                    <b>Estado:</b> {{ $estado }}<br>
                                     <b>Disponibilidad:</b> {{ $disponibilidad }} <br>
-                                    <b>Otras características:</b>
-                                    @foreach ($caracteristicas as $caracteristica)
-                                        @if (in_array($caracteristica->id, $otras_caracteristicasArray))
-                                            {{ $caracteristica->nombre }},
-                                        @endif
-                                    @endforeach <br>
+                                     <br>
                                 </p>
                             </div>
                             <div class="col-6">
                                 <h3>Características de inmueble</h3>
-                                <p><b>Vendedor:</b>
-                                    {{ $vendedores->where('id', $vendedor_id)->first()->nombre_completo }}<br>
-                                    <b>DNI:</b> {{ $vendedores->where('id', $vendedor_id)->first()->dni }}<br>
-                                    <b>Ubicación:</b>
-                                    {{ $vendedores->where('id', $vendedor_id)->first()->ubicacion }}<br>
-                                    <b>Teléfono:</b> {{ $vendedores->where('id', $vendedor_id)->first()->telefono }}
+                                <p><b>Propietario:</b>
+                                    {{ $propietarios->where('id', $propietario_id)->first()->nombre }} 
+                                    {{ $propietarios->where('id', $propietario_id)->first()->apellidos }}<br>
+                                    <b>DNI:</b> {{ $propietarios->where('id', $propietario_id)->first()->dni }}<br>                                   
+                                    <b>Teléfono:</b> {{ $propietarios->where('id', $propietario_id)->first()->telefono }}
                                     <br>
-                                    <b>Correo:</b> {{ $vendedores->where('id', $vendedor_id)->first()->email }} <br>
+                                    <b>Correo:</b> {{ $propietarios->where('id', $propietario_id)->first()->correo }} <br>
                                 </p>
                             </div>
                         </div>
@@ -69,15 +44,14 @@
             <div class="col-6">
                 <div class="card mb-3">
                     <h5 class="card-header">
-                        Seleccionar y enviar imágenes
+                        Galería
                     </h5>
                     <div class="card-body">
                         <div class="row">
-                            <h5> Imágenes del inmueble </h5>
                             @foreach ($galeriaArray as $key => $imagen)
                                 <div class="col-4">
                                     <div class="card">
-                                        <img src="{{ $imagen }}" class="card-img-top" alt="Imagen del inmueble">
+                                        <img src="{{ $imagen }}" class="card-img-top" alt="Imagen del inmueble" width="100px" height="100px" style="object-fit: cover; width: 100%; height:150px;">
                                         <div class="card-body">
                                             @if (in_array($key, $imagenes_correo))
                                                 <button type="button" class="btn btn-dark text-white"
@@ -96,7 +70,7 @@
                         </div>
                         <hr />
 
-                        <h5>Seleccionar cliente</h5>
+                        {{-- <h5>Seleccionar cliente</h5>
                         <div class="mb-3 row d-flex align-items-center">
                             <div x-data="" x-init="$('#select2-cliente-{{ $identificador }}').select2();
                             $('#select2-cliente-{{ $identificador }}').on('change', function(e) {
@@ -119,24 +93,15 @@
                             wire:click.prevent="enviarCorreoImagenes({{ $identificador }})"
                             id="enviarCorreoImagenes-{{ $identificador }}"
                             wire:key="btn-correo-imgs-{{ $identificador }}">Enviar
-                            imágenes</button>
+                            imágenes</button> --}}
 
                     </div>
                 </div>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <div class="col-4">
-                <div class="card mb-3">
-                    <h5 class="card-header">
-                        Documentos
-                    </h5>
-                    <div class="card-body">
-                        @livewire('inmuebles.documentos-create', ['inmueble_id' => $identificador], key(time() . $identificador))
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
+            
+            {{-- <div class="col-4">
                 <div class="card mb-3">
                     <h5 class="card-header">
                         Contrato de arras
@@ -145,8 +110,8 @@
                         @livewire('inmuebles.contrato-create', ['inmueble_id' => $identificador], key(time() . $identificador))
                     </div>
                 </div>
-            </div>
-            <div class="col-4">
+            </div> --}}
+            <div class="col-6">
                 <div class="card mb-3">
                     <h5 class="card-header">
                         Hojas de visita
@@ -165,7 +130,7 @@
                                     hojas ya creadas</button>
                             </li>
                         </ul>
-                        <div class="tab-content" id="myTabContent">
+                        <div class="tab-content" id="myTabContent" style="width: 100%;">
                             <div class="tab-pane fade show active" id="home" role="tabpanel"
                                 aria-labelledby="home-tab">
                                 @livewire('inmuebles.visita-create', ['inmueble_id' => $identificador], key(time() . 'inmueble-' . $identificador))
@@ -199,6 +164,16 @@
                             return false;
                         });
                     </script>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card mb-3">
+                    <h5 class="card-header">
+                        Documentos
+                    </h5>
+                    <div class="card-body">
+                        @livewire('inmuebles.documentos-create', ['inmueble_id' => $identificador], key(time() . $identificador))
+                    </div>
                 </div>
             </div>
         </div>

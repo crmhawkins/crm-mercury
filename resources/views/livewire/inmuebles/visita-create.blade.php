@@ -19,7 +19,7 @@
                 <select class="form-control" id="select2-cliente_firma-{{ $inmueble_id }}">
                     @foreach ($clientes as $cliente)
                         <option value="{{ $cliente->id }}">
-                            {{ $cliente->nombre_completo }}
+                            {{ $cliente->nombre}} {{ $cliente->apellido }} - {{ $cliente->dni }}
                         </option>
                     @endforeach
                 </select>
