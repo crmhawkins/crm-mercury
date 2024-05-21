@@ -92,7 +92,9 @@ class Create extends Component
         
         $this->galeria = json_encode($this->galeriaArray);
         //dd($this->disponibilidad);
-
+        if($this->propietario_id == ""){
+            $this->propietario_id = null;
+        }
         $validatedData = $this->validate(
             [
                 'm2' => 'required',
@@ -103,7 +105,7 @@ class Create extends Component
                 'galeria' => 'nullable',
                 'direccion' => 'required',
                 'localidad' => 'required',
-                'propietario_id' => 'required',
+                'propietario_id' => 'nullable',
                 'dormitorios' => 'required',
                 'piscina' => 'required',
                 'garaje' => 'required',
@@ -126,7 +128,6 @@ class Create extends Component
                 'estado.required' => 'El campo estado es obligatorio',
                 'direccion.required' => 'El campo dirección es obligatorio',
                 'localidad.required' => 'El campo localidad es obligatorio',
-                'propietario_id.required' => 'El campo propietario es obligatorio',
                 'dormitorios.required' => 'El campo dormitorios es obligatorio',
                 'piscina.required' => 'El campo piscina es obligatorio',
                 'garaje.required' => 'El campo garaje es obligatorio',

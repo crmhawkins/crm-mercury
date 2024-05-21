@@ -1,5 +1,5 @@
 <div class="container mx-auto">
-    <form wire:submit.prevent="submit">
+    <form wire:submit.prevent="">
         <input type="hidden" name="csrf-token" value="{{ csrf_token() }}">
         <div class="card mb-3">
             <h5 class="card-header">
@@ -32,6 +32,26 @@
                         <input type="text" wire:model="dni" class="form-control" name="dni" id="dni"
                             placeholder="Añade la identificación del propietario.">
                         @error('dni')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="mb-3 row d-flex align-items-center">
+                    <label for="telefono" class="col-sm-2 col-form-label"> <strong>Telefono</strong> </label>
+                    <div class="col-sm-10">
+                        <input type="text" wire:model="telefono" class="form-control" name="telefono" id="telefono"
+                            placeholder="Añade el teléfono del propietario.">
+                        @error('telefono')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="mb-3 row d-flex align-items-center">
+                    <label for="correo" class="col-sm-2 col-form-label"> <strong>Email</strong> </label>
+                    <div class="col-sm-10">
+                        <input type="text" wire:model="correo" class="form-control" name="correo" id="correo"
+                            placeholder="Añade el correo del propietario.">
+                        @error('correo')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

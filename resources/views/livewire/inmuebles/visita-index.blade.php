@@ -7,9 +7,12 @@
         <div class="col">
     <h6>Hojas de visita del inmueble</h6>
     <hr/>
-    <ul>
+    <ul class="d-flex flex-row flex-wrap gap-2 ">
         @foreach($hojas_visita as $hoja)
-        <li> {{Clientes::where('id', $hoja->cliente_id)->first()->nombre_completo}} - {{substr($hoja->fecha, 0, 10)}}: <a href="{{('../' . $hoja->ruta)}}" class="btn btn-primary"> Ver documento </a></li>
+
+            <li class="border rounded d-flex flex-column p-2 justify-content-center gap-2 align-items-center" style="width: fit-content; list-style: none"> 
+                <span class="fw-bold">{{Clientes::where('id', $hoja->cliente_id)->first()->nombre}} - {{ Clientes::where('id', $hoja->cliente_id)->first()->dni }}</span><span>{{substr($hoja->fecha, 0, 10)}}</span><a href="{{('../' . $hoja->ruta)}}" target="blank_" class="btn btn-primary"> Ver documento </a>
+            </li>
         @endforeach
     </ul>
 </div>

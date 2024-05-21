@@ -7,10 +7,11 @@
     <div class="card-body">
         @if($docs != null)
             @foreach (json_decode($docs->rutas, true) as $documentoIndex => $document)
-            <li class="mb-1"><a href="{{$document}}" class="btn btn-primary"> Ver documento "{{basename(urldecode($document))}}"</a></li>
-			<li class="mb-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$documentoIndex}}">
- Enviar documento "{{basename(urldecode($document))}}"</button></li>
-<div class="modal fade" id="exampleModal{{$documentoIndex}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$documentoIndex}}" aria-hidden="true">
+
+            <li class="mb-1"><a href="{{$document}}" class="btn btn-primary" target="blank_"> Ver documento "{{basename(urldecode($document))}}"</a></li>
+			{{-- <li class="mb-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$documentoIndex}}">
+                Enviar documento "{{basename(urldecode($document))}}"</button></li> --}}
+{{-- <div class="modal fade" id="exampleModal{{$documentoIndex}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$documentoIndex}}" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -32,7 +33,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
             @endforeach
         @endif
     </div>

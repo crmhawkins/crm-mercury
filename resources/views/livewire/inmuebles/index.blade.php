@@ -18,17 +18,17 @@
         <div class="col-2">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5>Filtros de búsqueda</h5>
+                    <h5 class="fw-bold">Filtros de búsqueda</h5>
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6> Ubicación </h6>
+                        <h6 class="fw-bold"> Ubicación </h6>
                         <input type="text" wire:model="ubicacion">
                     </div>
                     @if (is_array($opcionesPrecio) && !empty($opcionesPrecio))
                         <div class="mb-3 row d-flex align-items-center">
-                            <h6> Valor de referencia </h6>
+                            <h6 class="fw-bold"> Precio/venta </h6>
 
                             <div class="col-6">
-                                <select wire:model="valor_min" class="w-100">
+                                <select wire:model="valor_venta_min" class="w-100">
                                     <option value="1">Mínimo</option>
                                     @foreach ($opcionesPrecio as $opcion)
                                         <option value="{{ $opcion }}">{{ $opcion }} €</option>
@@ -36,7 +36,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <select wire:model="valor_max" class="w-100">
+                                <select wire:model="valor_venta_max" class="w-100">
                                     @foreach ($opcionesPrecio as $opcion)
                                         <option value="{{ $opcion }}">{{ $opcion }} €</option>
                                     @endforeach
@@ -46,7 +46,7 @@
                     @endif
                     @if (is_array($opcionesTamano) && !empty($opcionesTamano))
                         <div class="mb-3 row d-flex align-items-center">
-                            <h6> Valor de referencia </h6>
+                            <h6 class="fw-bold"> Metros cuadrados</h6>
                             <div class="col-6">
                                 <select wire:model="m2_min" class="w-100">
                                     <option value="1">Mínimo</option>
@@ -65,7 +65,7 @@
                         </div>
                     @endif
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6> Habitaciones </h6>
+                        <h6 class="fw-bold"> Habitaciones </h6>
                         <label>
                             <input type="checkbox" wire:model="habitacionesSeleccionadas" value=0>
                             0 habitaciones (estudios)
@@ -88,7 +88,7 @@
                         </label>
                     </div>
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6> Baños </h6>
+                        <h6 class="fw-bold"> Baños </h6>
                         <label>
                             <input type="checkbox" wire:model="banosSeleccionados" value=1>
                             1
@@ -102,7 +102,7 @@
                             3 baños o más
                         </label>
                     </div>
-                    <div class="mb-3 row d-flex align-items-center">
+                    {{-- <div class="mb-3 row d-flex align-items-center">
                         <h6> Estado </h6>
                         <label>
                             <input type="checkbox" wire:model="estadoSeleccionados" value="Obra nueva">
@@ -116,9 +116,9 @@
                             <input type="checkbox" wire:model="estadoSeleccionados" value="A reformar">
                             A reformar
                         </label>
-                    </div>
+                    </div> --}}
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6> Disponibilidad </h6>
+                        <h6 class="fw-bold"> Disponibilidad </h6>
                         <label>
                             <input type="checkbox" wire:model="disponibilidad_seleccionados" value="Alquiler">
                             En alquiler
@@ -145,10 +145,10 @@
                             </div>
                             <div class="col-md-9" style="position:relative; min-height: 270px;">
                                 <div style="position: absolute; top:10px; right:10px;">
-                                    <span class="badge bg-dark" >{{ $inmueble->localidad }} , {{ $inmueble->cod_postal }}</span>
+                                    <span class="badge bg-dark" ><i class="fa-solid fa-location-dot"></i> {{ $inmueble->localidad }} , {{ $inmueble->cod_postal }}</span>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title">{{ $inmueble->direccion }} @if($inmueble->disponibilidad == "Alquiler")
+                                    <h4 class="card-title d-flex gap-1 align-items-center"><span class="fw-bold">{{ $inmueble->direccion }}</span> @if($inmueble->disponibilidad == "Alquiler")
                                                                                         <span class="badge badge-danger text-white bg-success" style="font-size: 0.9rem">Alquiler</span> 
                                                                                     @elseif($inmueble->disponibilidad == "Venta") 
                                                                                         <span class="badge badge-danger text-white bg-warning" style="font-size: 0.9rem">Venta</span> 
@@ -195,14 +195,14 @@
                                                 data-bs-toggle="collapse" data-bs-target="#collapse{{ $inmueble->id }}"
                                                 aria-expanded="false" aria-controls="collapse{{ $inmueble->id }}"
                                                 onclick="Livewire.emit('seleccionarProducto2', {{ $inmueble->id }});">
-                                                <h4>Ver detalles</h4>
+                                                <h4 class="fw-bold">Ver detalles</h4>
                                             </button>
                                         </div>
                                         <div class="col-6">
                                             <button type="button"
                                                  class="accordion-button collapsed text-end"
                                                             onclick="Livewire.emit('seleccionarProducto', {{ $inmueble->id }});">
-                                                <h4>Editar</h4>
+                                                <h4 class="fw-bold">Editar</h4>
                                             </button>
                                         </div>
                                     </div>

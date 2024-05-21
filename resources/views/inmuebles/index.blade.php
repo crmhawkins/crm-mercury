@@ -23,5 +23,5 @@
 @section('encabezado', 'Inmuebles')
 @section('subtitulo', 'Consulta y creación de inmuebles')
 
-@livewire('inmuebles.tabs-component')
+@livewire('inmuebles.tabs-component', ['idinmueble'=>$idinmueble])
 @endsection

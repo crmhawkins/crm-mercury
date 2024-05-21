@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Propietarios;
 
 use App\Models\Propietarios;
+use App\Models\Inmuebles;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -16,6 +17,9 @@ class Edit extends Component
     public $nombre;
     public $apellidos;
     public $dni;
+    public $telefono;
+    public $correo;
+    public $inmuebles;
    
     public function mount()
     {
@@ -23,6 +27,10 @@ class Edit extends Component
         $this->nombre = $this->propietarios->nombre;
         $this->apellidos = $this->propietarios->apellidos;
         $this->dni = $this->propietarios->dni;
+        $this->telefono = $this->propietarios->telefono;
+        $this->correo = $this->propietarios->correo;
+        $this->inmuebles = Inmuebles::where('propietario_id', $this->identificador)->get();
+
 
     }
 
@@ -40,6 +48,8 @@ class Edit extends Component
                 'nombre' => 'required',
                 'apellidos' => 'required',
                 'dni' => 'required',
+                'telefono' => 'nullable',
+                'correo' => 'nullable',
 
             ],
             // Mensajes de error
@@ -60,6 +70,8 @@ class Edit extends Component
             'nombre' => $this->nombre,
             'apellidos' => $this->apellidos,
             'dni' => $this->dni,
+            'telefono' => $this->telefono,
+            'correo' => $this->correo,
 
         ]);
 
@@ -82,6 +94,8 @@ class Edit extends Component
             ]);
         }
     }
+
+    
 
     public function destroy()
     {
@@ -118,7 +132,14 @@ class Edit extends Component
     // Función para cuando se llama a la alerta
     public function confirmDelete()
     {
-        $propietarios = User::find($this->identificador);
+        $propietarios = Propietarios::find($this->identificador);
+        $inmuebles = Inmuebles::where('propietario_id', $this->identificador)->get();
+
+        foreach ($inmuebles as $inmueble) {
+            $inmueble->propietario_id = null;
+            $inmueble->save();
+        }
+
         $propietarios->delete();
         return redirect()->route('propietarios.index');
     }

@@ -29,11 +29,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if (Auth::user()->role == 'admin') {
-        return Redirect::route('agenda.index');
-    } else {
+   if(Auth::user()){
+        if (Auth::user()->role == 'admin') {
+            return Redirect::route('inmuebles.index');
+        } else {
+            return Redirect::route('login');
+        }
+   }else{
         return Redirect::route('login');
-    }
+   }
+   
 })->name('/');
 
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('seleccion');
@@ -41,7 +46,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
-Route::get('/cambio', [App\Http\Controllers\HomeController::class, 'cambio'])->name('cambio');
+//Route::get('/cambio', [App\Http\Controllers\HomeController::class, 'cambio'])->name('cambio');
 
 // Route::get('/clients', [App\Http\Controllers\ClientController::class, 'index'])->name('clients.index');
 

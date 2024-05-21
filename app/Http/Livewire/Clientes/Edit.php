@@ -9,7 +9,9 @@ use Livewire\Component;
 use App\Models\Clientes;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithPagination;
-
+use App\Models\HojaVisita;
+use DateTime;
+use IntlDateFormatter;
 class Edit extends Component
 {
     use LivewireAlert;
@@ -28,6 +30,10 @@ class Edit extends Component
 
     public $clientes;
 
+    public $visitas;
+    //conjunto visita e inmueble
+    public $visita_inmueble = [];
+
     public function mount()
     {
         $this->clientes = Clientes::find($this->identificador);
@@ -38,6 +44,37 @@ class Edit extends Component
         $this->email = $this->clientes->email;
         $this->direccion = $this->clientes->direccion;
         $this->busqueda = $this->clientes->busqueda;
+        $this->visitas = HojaVisita::where('cliente_id', $this->identificador)->get();
+        if($this->visitas->count() > 0){
+            $this->visita_inmueble = collect();
+            foreach ($this->visitas as $visita) {
+                $inmueble = Inmuebles::find($visita->inmueble_id);
+                $this->visita_inmueble->push([
+                    'visita' => $visita,
+                    'inmueble' => $inmueble
+                ]);
+            }
+        }
+        //dd($this->visita_inmueble);
+
+    }
+
+
+    public function formatearFecha($fecha) {
+       // Convertir la fecha a objeto DateTime
+       $date = new DateTime($fecha);
+        
+       // Array con los nombres de los meses en español
+       $meses = [
+           'January' => 'Enero', 'February' => 'Febrero', 'March' => 'Marzo', 'April' => 'Abril',
+           'May' => 'Mayo', 'June' => 'Junio', 'July' => 'Julio', 'August' => 'Agosto',
+           'September' => 'Septiembre', 'October' => 'Octubre', 'November' => 'Noviembre', 'December' => 'Diciembre'
+       ];
+
+       // Formatear la fecha en el formato deseado
+       $fecha_formateada = $date->format('d') . ' de ' . $meses[$date->format('F')] . ' de ' . $date->format('Y');
+
+       return $fecha_formateada;
     }
 
     public function render()

@@ -20,11 +20,9 @@ class Edit extends Component
 
     public $m2;
     public $m2_construidos;
-    public $valor_referencia;
     public $habitaciones;
     public $banos;
     public $cod_postal;
-    public $inmobiliaria = null;
     public $disponibilidad;
     public $direccion;
     public $localidad;
@@ -60,14 +58,24 @@ class Edit extends Component
 
     public $galeriaArray = [];
     public $galeria;
-
     protected $listeners = ['fileSelected'];
 
     public function mount()
     {
-        $this->inmuebles = Inmuebles::find($this->identificador);
-        $this->propietarios = Propietarios::all();
+        //dd($this->identificador);
+        //si el identificador es un numero busca el inmueble por id
+        if (is_numeric($this->identificador)) {
+            $this->inmuebles = Inmuebles::where('id', $this->identificador)->first();
+        } else {
+            //si el identificador es un array busca el inmueble por id
+            $this->inmuebles = Inmuebles::where('id', $this->identificador['id'])->first();
+        }
+        //dd($this->identificador);
+        //dd($this->inmuebles);
 
+        //dd($this->inmuebles);
+        $this->propietarios = Propietarios::all();
+        //dd($this->inmuebles);
         $this->m2 = $this->inmuebles->m2;
         $this->m2_construidos = $this->inmuebles->m2_construidos;
         $this->direccion = $this->inmuebles->direccion;
@@ -120,55 +128,53 @@ class Edit extends Component
 
     public function update()
     {
-        if ($this->inmobiliaria == null) {
-            if (request()->session()->get('inmobiliaria') == 'sayco') {
-                $this->inmobiliaria = true;
-            } else {
-                $this->inmobiliaria = false;
-            }
-        } else {
-            $this->inmobiliaria = null;
-        }
+        
 
-        $this->otras_caracteristicas = json_encode($this->otras_caracteristicasArray);
         $this->galeria = json_encode($this->galeriaArray);
 
         $validatedData = $this->validate(
             [
-                'titulo' => 'required',
-                'descripcion' => 'required',
                 'm2' => 'required',
                 'm2_construidos' => 'required',
-                'valor_referencia' => 'required',
                 'habitaciones' => 'required',
                 'banos' => 'required',
-                'tipo_vivienda_id' => 'required',
+                'dormitorios' => 'required',
+                'piscina' => 'required',
+                'garaje' => 'required',
                 'propietario_id' => 'required',
-                'ubicacion' => 'required',
                 'cod_postal' => 'required',
-                'cert_energetico' => 'required',
-                'cert_energetico_elegido' => 'nullable',
-                'estado' => 'required',
+                'direccion' => 'required',
+                'localidad' => 'required',
                 'galeria' => 'nullable',
                 'disponibilidad' => 'required',
-                'otras_caracteristicas' => 'nullable',
-                'referencia_catastral' => 'required',
-                'inmobiliaria' => 'nullable',
+                'ibi' => 'required',
+                'coste_basura' => 'required',
+                'precio_venta' => 'required',
+                'alquiler_semana' => 'required',
+                'alquiler_mes' => 'required',
+
+
             ],
             // Mensajes de error
             [
-                'titulo.required' => 'El título es obligatorio.',
-                'descripcion.required' => 'Se requiere añadir descripción.',
-                'm2.required' => 'Indica los m2 del inmueble.',
-                'm2_construidos.required' => 'Indica los m2 construidos del inmueble.',
-                'valor_referencia.required' => 'Indica el valor de referencia del inmueble.',
-                'habitaciones.required' => 'Indica las habitaciones del inmueble.',
-                'banos.required' => 'Indica los baños del inmueble.',
-                'tipo_vivienda_id.required' => 'Indica el tipo de vivienda del inmueble.',
-                'propietario_id.required' => 'Indica al propietario del inmueble.',
-                'ubicacion.required' => 'Indica la ubicación del inmueble.',
-                'cod_postal.required' => 'El código postal es obligatorio.',
-                'cert_energetico.required' => 'Indica si existe un certificado energético o no.',
+                'm2.required' => 'El campo es obligatorio.',
+                'm2_construidos.required' => 'El campo es obligatorio.',
+                'habitaciones.required' => 'El campo es obligatorio.',
+                'banos.required' => 'El campo es obligatorio.',
+                'dormitorios.required' => 'El campo es obligatorio.',
+                'piscina.required' => 'El campo es obligatorio.',
+                'garaje.required' => 'El campo es obligatorio.',
+                'propietario_id.required' => 'El campo es obligatorio.',
+                'cod_postal.required' => 'El campo es obligatorio.',
+                'direccion.required' => 'El campo es obligatorio.',
+                'localidad.required' => 'El campo es obligatorio.',
+                'galeria.required' => 'El campo es obligatorio.',
+                'disponibilidad.required' => 'El campo es obligatorio.',
+                'ibi.required' => 'El campo es obligatorio.',
+                'coste_basura.required' => 'El campo es obligatorio.',
+                'precio_venta.required' => 'El campo es obligatorio.',
+                'alquiler_semana.required' => 'El campo es obligatorio.',
+                'alquiler_mes.required' => 'El campo es obligatorio.',
             ]
         );
 
@@ -178,25 +184,24 @@ class Edit extends Component
 
         // Guardar datos validados
         $inmueblesSave = $inmuebles->update([
-            'titulo' => $this->titulo,
-            'descripcion' => $this->descripcion,
             'm2' => $this->m2,
             'm2_construidos' => $this->m2_construidos,
-            'valor_referencia' => $this->valor_referencia,
             'habitaciones' => $this->habitaciones,
             'banos' => $this->banos,
-            'tipo_vivienda_id' => $this->tipo_vivienda_id,
+            'dormitorios' => $this->dormitorios,
+            'piscina' => $this->piscina,
+            'garaje' => $this->garaje,
             'propietario_id' => $this->propietario_id,
-            'ubicacion' => $this->ubicacion,
             'cod_postal' => $this->cod_postal,
-            'cert_energetico' => $this->cert_energetico,
-            'cert_energetico_elegido' => $this->cert_energetico_elegido,
-            'estado' => $this->estado,
+            'direccion' => $this->direccion,
+            'localidad' => $this->localidad,
             'galeria' => $this->galeria,
             'disponibilidad' => $this->disponibilidad,
-            'otras_caracteristicas' => $this->otras_caracteristicas,
-            'referencia_catastral' => $this->referencia_catastral,
-            'inmobiliaria' => $this->inmobiliaria
+            'ibi' => $this->ibi,
+            'coste_basura' => $this->coste_basura,
+            'precio_venta' => $this->precio_venta,
+            'alquiler_semana' => $this->alquiler_semana,
+            'alquiler_mes' => $this->alquiler_mes,
 
         ]);
 
@@ -222,8 +227,6 @@ class Edit extends Component
 
     public function destroy()
     {
-        // $product = Productos::find($this->identificador);
-        // $product->delete();
 
         $this->alert('warning', '¿Seguro que desea borrar el inmuebles? No hay vuelta atrás', [
             'position' => 'center',

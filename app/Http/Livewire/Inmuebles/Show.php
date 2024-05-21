@@ -17,7 +17,7 @@ class Show extends Component
     public $identificador;
 
     public $inmuebles;
-
+    public $inmueble;
     public $m2;
     public $m2_construidos;
     public $habitaciones;
@@ -58,12 +58,15 @@ class Show extends Component
     public $imagenes_correo = [];
     public $galeriaArray = [];
     public $galeria;
-public $clientes;
+    public $clientes;
     protected $listeners = ['fileSelected'];
 
     public function mount()
     {
-        $this->inmuebles = Inmuebles::find($this->identificador);
+        //dd($this->inmueble);
+        
+        $this->inmuebles = Inmuebles::where('id', $this->identificador->id)->first();
+        //dd($this->inmuebles , $this->identificador->id);
         $this->propietarios = Propietarios::all();
         $this->clientes = Clientes::all();
 
@@ -72,6 +75,18 @@ public $clientes;
         $this->habitaciones = $this->inmuebles->habitaciones;
         $this->banos = $this->inmuebles->banos;
         $this->cod_postal = $this->inmuebles->cod_postal;
+
+        $this->direccion = $this->inmuebles->direccion;
+        $this->localidad = $this->inmuebles->localidad;
+        $this->dormitorios = $this->inmuebles->dormitorios;
+        $this->piscina = $this->inmuebles->piscina;
+        $this->garaje = $this->inmuebles->garaje;
+        $this->ibi = $this->inmuebles->ibi;
+        $this->coste_basura = $this->inmuebles->coste_basura;
+        $this->precio_venta = $this->inmuebles->precio_venta;
+        $this->alquiler_semana = $this->inmuebles->alquiler_semana;
+        $this->alquiler_mes = $this->inmuebles->alquiler_mes;
+
    
         $this->disponibilidad = $this->inmuebles->disponibilidad;
 
@@ -81,6 +96,7 @@ public $clientes;
             $this->galeriaArray = [];
         }
         $this->propietario_id = $this->inmuebles->propietario_id;
+       
 
         if ($this->propietario_id == "") {
             $this->propietario_nombre = "";
@@ -90,6 +106,7 @@ public $clientes;
             $this->propietario_correo = "";
         } else {
             $propietario = Propietarios::where('id', $this->propietario_id)->first();
+            //dd($propietario);
             $this->propietario_nombre = $propietario->nombre;
             $this->propietario_apellidos  = $propietario->apellidos;
             $this->propietario_dni = $propietario->dni;
@@ -105,85 +122,66 @@ public $clientes;
 
     public function update()
     {
-        if ($this->inmobiliaria == null) {
-            if (request()->session()->get('inmobiliaria') == 'sayco') {
-                $this->inmobiliaria = true;
-            } else {
-                $this->inmobiliaria = false;
-            }
-        } else {
-            $this->inmobiliaria = null;
-        }
-
-        $this->otras_caracteristicas = json_encode($this->otras_caracteristicasArray);
+        
         $this->galeria = json_encode($this->galeriaArray);
 
         $validatedData = $this->validate(
             [
-                'titulo' => 'required',
-                'descripcion' => 'required',
+                'direccion' => 'required',
+                'localidad' => 'required',
+
                 'm2' => 'required',
                 'm2_construidos' => 'required',
-                'valor_referencia' => 'required',
                 'habitaciones' => 'required',
                 'banos' => 'required',
-                'tipo_vivienda_id' => 'required',
+                'dormitorios' => 'nullable',
+                'piscina' => 'nullable',
+                'garaje' => 'nullable',
                 'propietario_id' => 'required',
-                'ubicacion' => 'required',
                 'cod_postal' => 'required',
-                'cert_energetico' => 'required',
-                'cert_energetico_elegido' => 'nullable',
-                'estado' => 'required',
                 'galeria' => 'nullable',
                 'disponibilidad' => 'required',
-                'otras_caracteristicas' => 'nullable',
-                'referencia_catastral' => 'required',
-                'inmobiliaria' => 'nullable',
             ],
             // Mensajes de error
             [
-                'titulo.required' => 'El título es obligatorio.',
-                'descripcion.required' => 'Se requiere añadir descripción.',
-                'm2.required' => 'Indica los m2 del inmueble.',
-                'm2_construidos.required' => 'Indica los m2 construidos del inmueble.',
-                'valor_referencia.required' => 'Indica el valor de referencia del inmueble.',
-                'habitaciones.required' => 'Indica las habitaciones del inmueble.',
-                'banos.required' => 'Indica los baños del inmueble.',
-                'tipo_vivienda_id.required' => 'Indica el tipo de vivienda del inmueble.',
-                'propietario_id.required' => 'Indica al propietario del inmueble.',
-                'ubicacion.required' => 'Indica la ubicación del inmueble.',
-                'cod_postal.required' => 'El código postal es obligatorio.',
-                'cert_energetico.required' => 'Indica si existe un certificado energético o no.',
+                'direccion.required' => 'El campo dirección es obligatorio',
+                'localidad.required' => 'El campo localidad es obligatorio',
+                'm2.required' => 'El campo m2 es obligatorio',
+                'm2_construidos.required' => 'El campo m2 construidos es obligatorio',
+                'habitaciones.required' => 'El campo habitaciones es obligatorio',
+                'banos.required' => 'El campo baños es obligatorio',
+                'propietario_id.required' => 'El campo propietario es obligatorio',
+                'cod_postal.required' => 'El campo código postal es obligatorio',
+                'disponibilidad.required' => 'El campo disponibilidad es obligatorio',
             ]
         );
 
         // Guardar datos validados
         // Encuentra el alumno identificado
         $inmuebles = Inmuebles::find($this->identificador);
+        $inmueblesSave = true;
+        // // Guardar datos validados
+        // $inmueblesSave = $inmuebles->update([
+        //     'direccion' => $this->direccion,
+        //     'descripcion' => $this->descripcion,
+        //     'm2' => $this->m2,
+        //     'm2_construidos' => $this->m2_construidos,
+        //     'valor_referencia' => $this->valor_referencia,
+        //     'habitaciones' => $this->habitaciones,
+        //     'banos' => $this->banos,
+        //     'tipo_vivienda_id' => $this->tipo_vivienda_id,
+        //     'propietario_id' => $this->propietario_id,
+        //     'ubicacion' => $this->ubicacion,
+        //     'cod_postal' => $this->cod_postal,
+        //     'cert_energetico' => $this->cert_energetico,
+        //     'cert_energetico_elegido' => $this->cert_energetico_elegido,
+        //     'estado' => $this->estado,
+        //     'galeria' => $this->galeria,
+        //     'disponibilidad' => $this->disponibilidad,
+        //     'otras_caracteristicas' => $this->otras_caracteristicas,
+        //     'referencia_catastral' => $this->referencia_catastral,
 
-        // Guardar datos validados
-        $inmueblesSave = $inmuebles->update([
-            'titulo' => $this->titulo,
-            'descripcion' => $this->descripcion,
-            'm2' => $this->m2,
-            'm2_construidos' => $this->m2_construidos,
-            'valor_referencia' => $this->valor_referencia,
-            'habitaciones' => $this->habitaciones,
-            'banos' => $this->banos,
-            'tipo_vivienda_id' => $this->tipo_vivienda_id,
-            'propietario_id' => $this->propietario_id,
-            'ubicacion' => $this->ubicacion,
-            'cod_postal' => $this->cod_postal,
-            'cert_energetico' => $this->cert_energetico,
-            'cert_energetico_elegido' => $this->cert_energetico_elegido,
-            'estado' => $this->estado,
-            'galeria' => $this->galeria,
-            'disponibilidad' => $this->disponibilidad,
-            'otras_caracteristicas' => $this->otras_caracteristicas,
-            'referencia_catastral' => $this->referencia_catastral,
-            'inmobiliaria' => $this->inmobiliaria
-
-        ]);
+        // ]);
 
         // Alertas de guardado exitoso
         if ($inmueblesSave) {
@@ -298,11 +296,7 @@ public $clientes;
         $inmueble = Inmuebles::where('id', $inmueble_id)->first();
         $cliente = Clientes::where('id', $this->cliente_id)->first();
 
-        if (request()->session()->get('inmobiliaria') == 'sayco') {
-            $nombre_inmobiliaria = "INMOBILIARIA SAYCO";
-        } else {
-            $nombre_inmobiliaria = "INMOBILIARIA SANCER";
-        }
+       
 
         $imagenes_adjuntadas = [];
 
@@ -314,16 +308,16 @@ public $clientes;
 
         $texto = 'Buenas, ' . $cliente->nombre . '. Te enviamos una selección de imágenes del inmueble ' . $inmueble->titulo;
 
-        Mail::raw($texto, function ($message) use ($cliente, $nombre_inmobiliaria, $inmueble, $imagenes_adjuntadas) {
-            $message->from('admin@grupocerban.com', $nombre_inmobiliaria);
-            $message->to($cliente->email, $cliente->nombre_completo);
-            $message->to(env('MAIL_USERNAME'));
-            $message->subject($nombre_inmobiliaria . " - Imágenes del inmueble" . $inmueble->titulo);
+        // Mail::raw($texto, function ($message) use ($cliente, $nombre_inmobiliaria, $inmueble, $imagenes_adjuntadas) {
+        //     $message->from('admin@grupocerban.com', $nombre_inmobiliaria);
+        //     $message->to($cliente->email, $cliente->nombre_completo);
+        //     $message->to(env('MAIL_USERNAME'));
+        //     $message->subject($nombre_inmobiliaria . " - Imágenes del inmueble" . $inmueble->titulo);
 
-            foreach ($imagenes_adjuntadas as $ruta_imagen) {
-                $message->attach($ruta_imagen);
-            }
-        });
+        //     foreach ($imagenes_adjuntadas as $ruta_imagen) {
+        //         $message->attach($ruta_imagen);
+        //     }
+        // });
     }
 
     public function addImagen($key)

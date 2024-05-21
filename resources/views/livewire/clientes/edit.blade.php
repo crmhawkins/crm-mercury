@@ -1,5 +1,5 @@
 <div class="container mx-auto">
-    <form wire:submit.prevent="update">
+    <form wire:submit.prevent="">
         <input type="hidden" name="csrf-token" value="{{ csrf_token() }}">
         <div class="row justify-content-center">
             <div class="col">
@@ -98,7 +98,28 @@
                     </h5>
                     <div class="card-body">
                         <div class="row justify-content-center">
-                            
+                           @if(count($visita_inmueble) > 0)
+                                @foreach ($visita_inmueble as $item )
+                                    
+                                <div class="col-md-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> {{ $this->formatearFecha($item['visita']['fecha']) }}</h5>
+                                            <p class="card-text">
+                                                <strong>Dirección:</strong> {{ $item['inmueble']['direccion'] }} - {{ $item['inmueble']['localidad']; }} , {{ $item['inmueble']['cod_postal']; }}<br>
+                                                <strong>Metros cuadrados:</strong> <?php echo $item['inmueble']['m2']; ?> m²<br>
+                                                <strong>Habitaciones:</strong> {{ $item['inmueble']['habitaciones'] }}<br>
+                                                <strong>Disponibilidad:</strong> {{$item['inmueble']['disponibilidad'] }} <br>
+                                            </p>
+                                            <a href="/{{ $item['visita']['ruta'] }}" class="btn btn-primary" target="_blank">Ver documento de visita</a>
+                                            <a href="inmuebles?idinmueble={{ $item['inmueble']['id'] }}" class="btn btn-secondary" >Ver inmueble</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                @endforeach
+                           @endif
                         </div>
                        
 
@@ -106,8 +127,9 @@
                 </div>
             </div>
         </div>
-        <div class="mb-3 row d-flex align-items-center">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+        <div class="mb-3 row d-flex align-items-center gap-2">
+            <button type="submit" class="btn btn-primary" wire:click="update()">Guardar</button>
+            <button type="button" class="btn btn-danger" wire:click="destroy()">Eliminar</button>
         </div>
     </form>
 </div>

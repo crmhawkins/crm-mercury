@@ -16,6 +16,8 @@ class Create extends Component
     public $nombre;
     public $apellidos;
     public $dni;
+    public $telefono;
+    public $correo;
 
 
     public function mount()
@@ -41,12 +43,15 @@ class Create extends Component
                 'nombre' => 'required',
                 'apellidos' => 'required',
                 'dni' => 'required',
+                'telefono' => 'nullable',
+                'correo' => 'nullable',
             ],
             // Mensajes de error
             [
                 'nombre.required' => 'El nombre es obligatorio.',
                 'apellidos.required' => 'El nombre es obligatorio.',
                 'dni.required' => 'El nombre es obligatorio.',
+                
             ]
         );
 

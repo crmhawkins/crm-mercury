@@ -1,5 +1,5 @@
 <div class="container mx-auto">
-    <form wire:submit.prevent="update">
+    <form wire:submit.prevent="">
         <input type="hidden" name="csrf-token" value="{{ csrf_token() }}">
         <div class="row justify-content-center">
             <div class="col">
@@ -361,8 +361,9 @@
                 return false;
             });
         </script>
-        <div class="mb-3 row d-flex align-items-center">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+        <div class="mb-3 row d-flex align-items-center gap-2">
+            <button type="submit" class="btn btn-primary" wire:click="update()">Guardar</button>
+            <button type="button" class="btn btn-danger" wire:click="destroy()">Eliminar</button>
         </div>
     </form>
 </div>

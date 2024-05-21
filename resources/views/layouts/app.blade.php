@@ -25,7 +25,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-
+    <link rel="stylesheet" href="/assets/style.css">
     @livewireStyles
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

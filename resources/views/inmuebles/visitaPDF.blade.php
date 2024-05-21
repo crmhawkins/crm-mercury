@@ -6,6 +6,7 @@
         use App\Models\Caracteristicas;
     @endphp
     <title>Hoja de Visita</title>
+    
     <style type="text/css">
         body {
             font-family: 'Roboto Condensed', sans-serif;
@@ -107,11 +108,14 @@
 <body>
     <h1>Hoja de Visita</h1>
 
+    <p>Fecha: {{ $datos['fecha'] }}</p>
+
     <h2>Información del Cliente</h2>
     <table>
         <tr>
             <th>Nombre Completo</th>
-            <td>{{ $datos['cliente']['nombre_completo'] }}</td>
+            {{ var_dump($datos) }} 
+            <td>{{ $datos['cliente']['nombre'] }} {{ $datos['cliente']['apellidos'] }}</td>
         </tr>
         <tr>
             <th>DNI</th>
@@ -121,59 +125,35 @@
             <th>Email</th>
             <td>{{ $datos['cliente']['email'] }}</td>
         </tr>
+        <tr>
+            <th>Teléfono</th>
+            <td>{{ $datos['cliente']['telefono'] }}</td>
+        </tr>
     </table>
 
     <h2>Información del Inmueble</h2>
     <table>
         <tr>
-            <th>Título</th>
-            <td>{{ $datos['inmueble']['titulo'] }}</td>
+            <th>Dirección</th>
+            <td>{{ $datos['inmueble']['direccion'] }}</td>
 
-            <th>Descripción</th>
-            <td>{{ $datos['inmueble']['descripcion'] }}</td>
+            <th>localidad</th>
+            <td>{{ $datos['inmueble']['localidad'] }}</td>
         </tr>
         <tr>
-            <th>Ubicación</th>
-            <td>{{ $datos['inmueble']['ubicacion'] }}</td>
+            <th>Cod. Postal</th>
+            <td>{{ $datos['inmueble']['cod_postal'] }}</td>
 
-            <th>Tipo de operación</th>
+            <th>Disponibilidad</th>
             <td>{{ $datos['inmueble']['disponibilidad'] }}</td>
         </tr>
-        <tr>
-            <th>Metros cuadrados</th>
-            <td>{{ $datos['inmueble']['m2'] }}</td>
-
-            <th>Habitaciones</th>
-            <td>{{ $datos['inmueble']['habitaciones'] }}</td>
-        </tr>
-        <tr>
-            <th>Baños</th>
-            <td>{{ $datos['inmueble']['banos'] }}</td>
-
-            <th>Tipo de inmueble</th>
-            <td>{{ $datos['inmueble']['tipo_vivienda_id'] }}</td>
-        </tr>
-        <tr>
-            <th>Estado del inmueble</th>
-            <td>{{ $datos['inmueble']['estado'] }}</td>
-            <th>Certificado energético</th>
-            <td>{{ $datos['inmueble']['cert_energetico_elegido'] }}</td>
-        </tr>
-        <tr>
-            <th colspan="2">Otras características</th>
-            <td colspan="2">
-                <ul>
-                    @foreach (json_decode($datos['inmueble']['otras_caracteristicas'], true) as $caracteristica)
-                        <li> {{ Caracteristicas::where('id', $caracteristica)->first()->nombre }} </li>
-                    @endforeach
-                </ul>
-            </td>
-        </tr>
+        
+        
         <!-- Añade más filas de tabla según sea necesario para mostrar la información del inmueble -->
     </table>
 
     <h2>Firma</h2>
-    <img src="{{ public_path('storage/' . $datos['firma']) }}" alt="Firma del Cliente">
+    <img src="{{ public_path($datos['firma']) }}" alt="Firma del Cliente">
 </body>
 
 </html>

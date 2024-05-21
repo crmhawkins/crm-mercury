@@ -15,6 +15,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Propietarios;
 
 class VisitaCreate extends Component
 {
@@ -24,14 +25,16 @@ class VisitaCreate extends Component
     public $fecha;
     public $ruta;
     public $firma;
-    public $cliente_id = 1;
+    public $cliente_id;
     public $signature;
+    public $inmueble;
 
     protected $listeners = ['saveSignature'];
 
     public function mount($inmueble_id = null)
     {
         $this->inmueble_id = $inmueble_id;
+        $this->inmueble = Inmuebles::where('id', $inmueble_id)->first();
         $this->clientes = Clientes::all();
     }
     public function render()
@@ -41,13 +44,13 @@ class VisitaCreate extends Component
 
     public function saveSignature()
     {
-        $this->alert('warning', "hola");
+        $this->alert('success', "Firmado con exito");
 
         $encoded_image = explode(",", $this->signature)[1];
         $decoded_image = base64_decode($encoded_image);
         $imageName = Str::random(10) . '.' . "png";
 
-        $rutaDirectorio = 'firmas_clientes/' . request()->session()->get('inmobiliaria');
+        $rutaDirectorio = 'firmas_clientes' ;
 
         // Crea el directorio si no existe
         if (!File::exists(public_path($rutaDirectorio))) {
@@ -61,41 +64,48 @@ class VisitaCreate extends Component
     }
     public function submit()
     {
-
+        if($this->cliente_id == null || $this->cliente_id == 0 || $this->cliente_id == ""){
+            $this->alert('error', '¡Selecciona un cliente!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+            ]);
+            return;
+        }
         $clientePDF = Clientes::where('id', $this->cliente_id)->first();
         $inmueblePDF = Inmuebles::where('id', $this->inmueble_id)->first();
 
+        //dd($this->cliente_id,$clientePDF, $inmueblePDF);
+
+        $propietario = Propietarios::where('id', $inmueblePDF->propietario_id)->first();
+
+
         $pdf = Pdf::loadView('inmuebles.visitaPDF', ['datos' => [
+            'fecha' => $this->fecha,
             'firma' => $this->firma,
             'cliente' => [
-                'nombre_completo' => $clientePDF->nombre_completo,
+                'nombre' => $clientePDF->nombre,
+                'apellidos' => $clientePDF->apellidos,
                 'dni' => $clientePDF->dni,
                 'email' => $clientePDF->email,
+                'telefono' => $clientePDF->telefono,
             ],
             'inmueble' => [
-                'titulo' => $inmueblePDF->titulo,
-                'descripcion' => $inmueblePDF->descripcion,
                 'm2' => $inmueblePDF->m2,
                 'm2_construidos' => $inmueblePDF->m2_construidos,
-                'valor_referencia' => $inmueblePDF->valor_referencia,
                 'habitaciones' => $inmueblePDF->habitaciones,
                 'banos' => $inmueblePDF->banos,
-                'tipo_vivienda_id' => TipoVivienda::where('id', $inmueblePDF->tipo_vivienda_id)->first()->nombre,
-                'vendedor_id' => User::where('id', $inmueblePDF->vendedor_id)->first()->nombre_completo,
-                'ubicacion' => $inmueblePDF->ubicacion,
+                'propietario_id' => $propietario ? $propietario->nombre : 'No asignado',
+                'direccion' => $inmueblePDF->direccion,
+                'localidad' => $inmueblePDF->localidad,
                 'cod_postal' => $inmueblePDF->cod_postal,
-                'cert_energetico' => $inmueblePDF->cert_energetico,
-                'cert_energetico_elegido' => $inmueblePDF->cert_energetico_elegido,
-                'estado' => $inmueblePDF->estado,
                 'galeria' => $inmueblePDF->galeria,
                 'disponibilidad' => $inmueblePDF->disponibilidad,
-                'otras_caracteristicas' => $inmueblePDF->otras_caracteristicas,
-                'referencia_catastral' => $inmueblePDF->referencia_catastral,
             ]
         ]]);
 
         // Ruta del directorio donde se guardará el archivo
-        $rutaDirectorio = 'hojas_visita/' . request()->session()->get('inmobiliaria');
+        $rutaDirectorio = 'hojas_visita/' ;
 
         // Crea el directorio si no existe
         if (!File::exists(public_path($rutaDirectorio))) {
@@ -115,32 +125,27 @@ class VisitaCreate extends Component
 		$rutaMail = $this->ruta;
 
         $eventoSave = Evento::create([
-            'titulo' => 'Cita con ' .  $clientePDF->nombre_completo,
-            'descripcion' => 'Cliente citado :' . $clientePDF->nombre_completo . "<br>" . 'Inmueble en relación a la cita: ' . $clientePDF->titulo,
+            'titulo' => 'Cita con ' .  $clientePDF->nombre . ' ' . $clientePDF->apellidos,
+            'descripcion' => 'Cliente citado :' . $clientePDF->nombre . ' ' . $clientePDF->apellidos . "<br>" . 'Inmueble en relación a la cita: ' . $inmueblePDF->direccion,
             'fecha_inicio' => $this->fecha,
             'fecha_fin' => $this->fecha,
             'tipo_tarea' => 'opcion_1',
             'cliente_id' => $this->cliente_id,
             'inmueble_id' => $this->inmueble_id,
-            'inmobiliaria' => $inmueblePDF->inmobiliaria,
+            'inmobiliaria' => null,
         ]);
 		
-		if (request()->session()->get('inmobiliaria') == 'sayco') {
-        $nombre_inmobiliaria = "INMOBILIARIA SAYCO";
-    } else {
-        $nombre_inmobiliaria = "INMOBILIARIA SANCER";
-    }
 		
-		$texto = 'Buenas, ' . $clientePDF->nombre_completo . ". Se le adjunta la hoja de visita del inmueble que ha firmado."; 
+		$texto = 'Buenas, ' . $clientePDF->nombre . ' ' . $clientePDF->apellidos . ". Se le adjunta la hoja de visita del inmueble que ha firmado."; 
 		
-		Mail::raw($texto, function ($message) use ($clientePDF, $nombre_inmobiliaria, $inmueblePDF, $rutaMail) {
-    $message->from('admin@grupocerban.com', $nombre_inmobiliaria);
-    $message->to($clientePDF->email, $clientePDF->nombre_completo);
-	$message->to(env('MAIL_USERNAME'));
-    $message->subject($nombre_inmobiliaria . " - Hoja de visita del inmueble " . $inmueblePDF->titulo);
-	$message->attach($rutaMail);
+	// Mail::raw($texto, function ($message) use ($clientePDF, $inmueblePDF, $rutaMail) {
+    // $message->from('admin@admin.com', 'Mercury');
+    // $message->to($clientePDF->email, $clientePDF->nombre . ' ' . $clientePDF->apellidos);
+	// $message->to(env('MAIL_USERNAME'));
+    // $message->subject("Mercury - Hoja de visita del inmueble " . $inmueblePDF->direccion);
+	// $message->attach($rutaMail);
 
-});
+    // });
 
         $validatedData = $this->validate(
             [

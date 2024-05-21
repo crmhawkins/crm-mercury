@@ -24,10 +24,10 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-4 d-grid gap-2">
+                        {{-- <div class="ms-auto col-4 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <br>
                 </div>
@@ -57,10 +57,10 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-4 d-grid gap-2">
+                        {{-- <div class="ms-auto col-4 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <br>
                 </div>
@@ -90,10 +90,10 @@
                             <button type="button" class="btn btn-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-4 d-grid gap-2">
+                        {{-- <div class="ms-auto col-4 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <br>
                 </div>
@@ -123,10 +123,10 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-4 d-grid gap-2">
+                        {{-- <div class="ms-auto col-4 d-grid gap-2">
                             <button type="button" class="btn btn-primary btn-block"
                                 wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <br>
                 </div>
@@ -154,10 +154,10 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-4 d-grid gap-2">
+                        {{-- <div class="ms-auto col-4 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <br>
                 </div>
@@ -184,10 +184,10 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-6 d-grid gap-2">
+                        {{-- <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <br>
                 </div>
@@ -213,10 +213,10 @@
                             <button type="button" class="btn btn-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-6 d-grid gap-2">
+                        {{-- <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <br>
                 </div>
@@ -242,22 +242,22 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-6 d-grid gap-2">
+                        {{-- <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-primary btn-block"
                                 wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <br>
                 </div>
                 <br>
-                <div class="ms-auto col d-grid gap-2">
+                {{-- <div class="ms-auto col d-grid gap-2">
                     <a class="btn btn-primary btn-lg" href="{{ route('vendedores.index') }}"> Consultar y
                         editar vendedores </a>
                     <a class="btn btn-primary btn-lg" href="{{ route('tipovivienda.index') }}"> Consultar y
                         editar tipos de vivienda </a>
                     <a class="btn btn-primary btn-lg" href="{{ route('caracteristicas.index') }}"> Consultar y editar
                         características de inmueble </a>
-                </div>
+                </div> --}}
             @endif
         @endif
     @elsemobile
@@ -285,11 +285,11 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
                             <h5>Opciones</h5>
                         </button>
-                    </li>
+                    </li> --}}
                 </ul>
 
                 @livewire('inmuebles.create', key('tab1'))
@@ -316,11 +316,11 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
                             <h5>Opciones</h5>
                         </button>
-                    </li>
+                    </li> --}}
                 </ul>
                 <br>
 
@@ -350,11 +350,11 @@
                             <h3>Buscar</h3>
                         </button>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
                             <h5>Opciones</h5>
                         </button>
-                    </li>
+                    </li> --}}
                 </ul>
                 <br>
 
@@ -382,11 +382,11 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <button class="nav-link active" wire:click.prevent="cambioTab('tab4')">
                             <h3>Opciones</h3>
                         </button>
-                    </li>
+                    </li> --}}
                 </ul>
                 <br>
 
@@ -414,11 +414,11 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
                             <h3>Opciones</h3>
                         </button>
-                    </li>
+                    </li> --}}
                 </ul>
                 <br>
 
@@ -448,11 +448,11 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
                             <h5>Opciones</h5>
                         </button>
-                    </li>
+                    </li> --}}
                 </ul>
                 <br>
 
@@ -480,11 +480,11 @@
                             <h3>Buscar</h3>
                         </button>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
                             <h5>Opciones</h5>
                         </button>
-                    </li>
+                    </li> --}}
                 </ul>
                 <br>
                 @livewire('inmuebles.index', key('tab3'))
@@ -511,22 +511,22 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <button class="nav-link active" wire:click.prevent="cambioTab('tab4')">
                             <h3>Opciones</h3>
                         </button>
-                    </li>
+                    </li> --}}
                 </ul>
                 <br>
 
-                <div class="ms-auto col d-grid gap-2">
+                {{-- <div class="ms-auto col d-grid gap-2">
                     <a class="btn btn-primary btn-lg" href="{{ route('vendedores.index') }}"> Consultar y
                         editar vendedores </a>
                     <a class="btn btn-primary btn-lg" href="{{ route('tipovivienda.index') }}"> Consultar y
                         editar tipos de vivienda </a>
                     <a class="btn btn-primary btn-lg" href="{{ route('caracteristicas.index') }}"> Consultar y editar
                         características de inmueble </a>
-                </div>
+                </div> --}}
             @endif
         @endif
     @endmobile

@@ -14,6 +14,10 @@ class InmueblesController extends Controller
      */
     public function index(Request $request)
     {
-        return view('inmuebles.index');
+        //devolver la request
+
+        $idinmueble = $request->idinmueble;
+
+        return view('inmuebles.index' , ['idinmueble' => $idinmueble] );
     }
 }

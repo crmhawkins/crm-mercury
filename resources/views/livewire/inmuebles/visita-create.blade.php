@@ -4,9 +4,7 @@
             background-color: #fff;
         }
     </style>
-    <h5 class="card-header">
-        Datos básicos
-    </h5>
+    
     <div class="card-body">
         <h5>Seleccionar cliente</h5>
         <div class="mb-3 row d-flex align-items-center" wire:ignore>
@@ -16,7 +14,8 @@
                 @this.set('cliente_id', data);
                 console.log(data);
             });" wire:ignore>
-                <select class="form-control" id="select2-cliente_firma-{{ $inmueble_id }}">
+                <select class="form-control" id="select2-cliente_firma-{{ $inmueble_id }}" wire:model="cliente_id">
+                    <option value="">-- Seleccionar cliente --</option>
                     @foreach ($clientes as $cliente)
                         <option value="{{ $cliente->id }}">
                             {{ $cliente->nombre}} {{ $cliente->apellido }} - {{ $cliente->dni }}
@@ -39,7 +38,7 @@
                 <h5> Firma </h5>
                 @if ($firma == null)
                     <div class="col">
-                        <canvas id="signature-pad" class="signature-pad border" width="500" height="250"></canvas>
+                        <canvas id="signature-pad" class="signature-pad border" width="500" height="150"></canvas>
                     </div>
             </div>
 
@@ -47,7 +46,7 @@
                 firma</button>
         @else
             <div class="col">
-                <img src='{{ asset('storage/' . $firma) }}'>
+                <img src='{{ asset($firma) }}'>
             </div>
         </div>
         <button class="btn btn-primary" wire:click.prevent="submit">Crear hoja de visita</button>
