@@ -41,6 +41,14 @@ class DocumentosCreate extends Component
         return view('livewire.inmuebles.documentos-create');
     }
 
+    public function deleteDocumento($ruta){
+        //dd($this->docs->rutas);
+        $this->docs->rutas = json_decode($this->docs->rutas);
+        $this->docs->rutas = array_diff($this->docs->rutas, [$ruta]);
+        $this->docs->rutas = json_encode($this->docs->rutas);
+        $this->docs->save();
+    }
+
     public function addDocumento()
     {
         // Comprobar si existe un DocInmueble con el inmueble_id especificado
@@ -87,13 +95,13 @@ class DocumentosCreate extends Component
     
     $texto = 'Buenas, ' . $cliente->nombre_completo .'. Te enviamos un documento perteneciente al inmueble  ' . $inmueble->titulo;
 
-Mail::raw($texto, function ($message) use ($cliente, $nombre_inmobiliaria, $inmueble, $documento) {
-    $message->from('admin@grupocerban.com', $nombre_inmobiliaria);
-    $message->to($cliente->email, $cliente->nombre_completo);
-	$message->to(env('MAIL_USERNAME'));
-    $message->subject($nombre_inmobiliaria . " - Documento del inmueble " . $inmueble->titulo);
-	$message->attach($documento);
+// Mail::raw($texto, function ($message) use ($cliente, $nombre_inmobiliaria, $inmueble, $documento) {
+//     $message->from('admin@grupocerban.com', $nombre_inmobiliaria);
+//     $message->to($cliente->email, $cliente->nombre_completo);
+// 	$message->to(env('MAIL_USERNAME'));
+//     $message->subject($nombre_inmobiliaria . " - Documento del inmueble " . $inmueble->titulo);
+// 	$message->attach($documento);
 
-});
+// });
 }
 }
