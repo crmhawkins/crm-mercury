@@ -63,9 +63,13 @@ class Show extends Component
 
     public function mount()
     {
-        //dd($this->inmueble);
         
-        $this->inmuebles = Inmuebles::where('id', $this->identificador->id)->first();
+        if (is_numeric($this->identificador)) {
+            $this->inmuebles = Inmuebles::where('id', $this->identificador)->first();
+        } else {
+            //si el identificador es un array busca el inmueble por id
+            $this->inmuebles = Inmuebles::where('id', $this->identificador['id'])->first();
+        }
         //dd($this->inmuebles , $this->identificador->id);
         $this->propietarios = Propietarios::all();
         $this->clientes = Clientes::all();

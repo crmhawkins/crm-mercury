@@ -3,7 +3,7 @@
         <input type="hidden" name="csrf-token" value="{{ csrf_token() }}">
         <div class="card mb-3">
             <h5 class="card-header">
-                Registrar nuevo vendedor
+                Editar Propietario
             </h5>
             <div class="card-body">
                 <div class="mb-3 row d-flex align-items-center">
@@ -58,6 +58,52 @@
                 </div>
                 
                 
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="card mb-3">
+                    <h5 class="card-header">
+                        Propiedades del propietario
+                    </h5>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                           
+                            @foreach ($inmuebles as $inmueble)
+                                @php
+                                    $imagen = null;
+                                    $imagenes = json_decode($inmueble->galeria, true); // Agregamos true para obtener un array asociativo
+                                @endphp
+                                <div class="col-4">
+                                    <div class="card" style="width: 18rem; min-height: 350px; display:grid; grid-template-rows: 200px 1fr; gap: 10px;">
+                                        @if($imagenes != null && count($imagenes) > 0)
+                                            @php($imagen = $imagenes[1])
+                                            <img src="{{ $imagen }}" class="card-img-top mb-2" width="100%" height="200px" alt="Imagen del inmueble" style="object-fit: cover">
+                                        @endif
+                                        <div class="" style="display: grid; grid-template-rows: 1fr 1fr 1fr;">
+                                            <h5 class="card-title text-center">{{ $inmueble->direccion }}</h5>
+                                            @if($inmueble->disponibilidad == 'Venta')
+                                                <small class="badge text-dark">{{ $inmueble->precio_venta }} €</small>
+                                            @else
+                                                <small class="badge text-dark">{{ $inmueble->alquiler_mes }} €/mes</small>
+                                                <small class="badge text-dark">{{ $inmueble->alquiler_semana }} €/semana</small>
+                                            @endif
+                                            <a href="/admin/inmuebles?idinmueble={{ $inmueble->id }}" class="btn btn-primary" style="align-self: end">Ver</a>
+                                        </div>
+                                        <div class="@if($inmueble->disponibilidad == "Venta") bg-warning @else bg-success @endif p-1 rounded text-light"  style="position:absolute; top:10px; right:10px;  ">
+                                            <small class="fw-bold">{{ $inmueble->disponibilidad }}</small>
+                                        </div>
+                                        <div class="bg-dark p-1 rounded text-light"  style="position:absolute; top:10px; left:10px;">
+                                            <small class="fw-bold">{{ $inmueble->localidad }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="mb-3 row d-flex align-items-center gap-2">

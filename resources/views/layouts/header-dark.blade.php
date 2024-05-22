@@ -38,9 +38,9 @@
     @mobile
         <div class="container-fluid">
             <div class="navbar-brand">
-                {{-- <img class="img-fluid" src="{{ asset('images/logo' . Request::session()->get('inmobiliaria') . '.png') }}"
-                    alt="Logo"> --}}
-                <h1 class="text-white;">Mercury CRM</h1>
+                <img class="img-fluid" src="{{ asset('images/logo.png') }}"
+                    alt="Logo" width="120px" height="100px">
+                {{-- <h1 class="text-white;">Mercury CRM</h1> --}}
                 <button class="navbar-toggler float-end !important" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -88,6 +88,19 @@
                             </a>
                         @endif
                     </li>
+                    <li class="nav-item mx-2">
+                        @if (Request::is('admin/clientes'))
+                            <a class="btn btn-md btn-light text-dark  d-block w-100 p-2" href="/admin/usuarios">
+                                <i class="fa-solid fa-user-gear"></i>
+                                <strong>Usuarios</strong>
+                            </a>
+                        @else
+                            <a class="btn btn-md btn-outline-light d-block w-100 p-2" href="/admin/usuarios">
+                                <i class="fa-solid fa-user-gear"></i>
+                                <strong>Usuarios</strong>
+                            </a>
+                        @endif
+                    </li>
                     
                     {{-- <li class="nav-item mx-2">
                         @if (Request::is('admin/facturacion'))
@@ -122,10 +135,9 @@
     @elsemobile
         <div class="container-fluid col-12">
             <div class="navbar-brand col order-1">
-                {{-- <img class="img-fluid" src="{{ asset('images/logo' . Request::session()->get('inmobiliaria') . '.png') }}"
-                    alt="Logo"> --}}
-                    <h1 class="text-white;">Mercury CRM</h1>
-
+                <img class="img-fluid" src="{{ asset('images/logo.png') }}"
+                    alt="Logo" width="120px" height="100px">
+                {{-- <h1 class="text-white;">Mercury CRM</h1> --}}
             </div>
             <ul class="navbar-nav me-auto mb-0 mb-lg-0 col order-2">
                 <li class=" ms-auto nav-item mx-2">
@@ -168,7 +180,19 @@
                         </a>
                     @endif
                 </li>
-                
+                <li class="nav-item">
+                    @if (Request::is('admin/clientes'))
+                        <a class="btn btn-light text-dark " href="/admin/usuarios">
+                            <i class="fa-solid fa-user-gear"></i>
+                            <strong>Usuarios</strong>
+                        </a>
+                    @else
+                        <a class="btn btn-outline-light" href="/admin/usuarios">
+                            <i class="fa-solid fa-user-gear"></i>
+                            <strong>Usuarios</strong>
+                        </a>
+                    @endif
+                </li>
                 {{-- <li class="nav-item">
                     @if (Request::is('admin/facturacion'))
                         <a class="btn btn-light text-dark " href="/admin/facturacion">

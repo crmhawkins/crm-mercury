@@ -41,6 +41,19 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="estado" class="col-sm-3 col-form-label"> <strong>Estado</strong></label>
+                            <div class="col-sm-12">
+                                <select wire:model="estado" class="form-control" name="estado" id="estado">
+                                    <option value="Disponible" selected>Disponible</option>
+                                    <option value="Alquilado">Alquilado</option>
+                                    <option value="Vendido">Vendido</option>
+                                </select>
+                                @error('estado')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -353,6 +366,7 @@
         <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 
         <script>
+            
             $('#lfm').on('click', function() {
                 var route_prefix = '/laravel-filemanager' || '';
                 var type = $(this).data('type') || 'images';

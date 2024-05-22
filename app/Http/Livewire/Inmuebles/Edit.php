@@ -55,6 +55,7 @@ class Edit extends Component
     public $precio_venta;
     public $alquiler_semana;
     public $alquiler_mes;
+    public $estado="Disponible";
 
     public $galeriaArray = [];
     public $galeria;
@@ -94,6 +95,10 @@ class Edit extends Component
         $this->precio_venta = $this->inmuebles->precio_venta;
         $this->alquiler_semana = $this->inmuebles->alquiler_semana;
         $this->alquiler_mes = $this->inmuebles->alquiler_mes;
+        $this->estado = $this->inmuebles->estado;
+        if($this->estado==null){
+            $this->estado="Disponible";
+        }
 
        
         if ($this->inmuebles->galeria != null) {
@@ -152,6 +157,7 @@ class Edit extends Component
                 'precio_venta' => 'required',
                 'alquiler_semana' => 'required',
                 'alquiler_mes' => 'required',
+                'estado' => 'nullable',
 
 
             ],
@@ -181,7 +187,6 @@ class Edit extends Component
         // Guardar datos validados
         // Encuentra el alumno identificado
         $inmuebles = Inmuebles::find($this->identificador);
-
         // Guardar datos validados
         $inmueblesSave = $inmuebles->update([
             'm2' => $this->m2,
@@ -202,6 +207,7 @@ class Edit extends Component
             'precio_venta' => $this->precio_venta,
             'alquiler_semana' => $this->alquiler_semana,
             'alquiler_mes' => $this->alquiler_mes,
+            'estado' => $this->estado,
 
         ]);
 

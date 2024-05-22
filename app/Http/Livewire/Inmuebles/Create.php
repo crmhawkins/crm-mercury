@@ -35,7 +35,7 @@ class Create extends Component
     //public $cert_energetico;
     //public $cert_energetico_elegido;
     //public $inmobiliaria = null;
-    //public $estado;
+    public $estado = "Disponible";
     public $disponibilidad;
     //public $otras_caracteristicasArray = [];
 
@@ -106,6 +106,7 @@ class Create extends Component
                 'direccion' => 'required',
                 'localidad' => 'required',
                 'propietario_id' => 'nullable',
+                'estado' => 'nullable',
                 'dormitorios' => 'required',
                 'piscina' => 'required',
                 'garaje' => 'required',
@@ -125,7 +126,6 @@ class Create extends Component
                 'habitaciones.required' => 'El campo habitaciones es obligatorio',
                 'banos.required' => 'El campo baños es obligatorio',
                 'cod_postal.required' => 'El campo código postal es obligatorio',
-                'estado.required' => 'El campo estado es obligatorio',
                 'direccion.required' => 'El campo dirección es obligatorio',
                 'localidad.required' => 'El campo localidad es obligatorio',
                 'dormitorios.required' => 'El campo dormitorios es obligatorio',

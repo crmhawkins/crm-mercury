@@ -20,6 +20,7 @@
 
 @section('content')
 @section('encabezado', 'Clientes')
+@section('title', 'CRM MERCURY - Clientes')
 @section('subtitulo', 'Consulta y creación de clientes')
 
 @livewire('clientes.tabs-component')

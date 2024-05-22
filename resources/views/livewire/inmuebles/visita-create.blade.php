@@ -56,7 +56,7 @@
 <script>
     $(document).ready(function() {
 
-        const canvas = document.querySelector("canvas");
+        const canvas = document.getElementById("signature-pad");
         const signaturePad = new SignaturePad(canvas);
 
         document.querySelector('#btnFirma').addEventListener('click', function() {

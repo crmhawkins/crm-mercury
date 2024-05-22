@@ -56,7 +56,7 @@ Route::group(['middleware' => 'is.admin', 'prefix' => 'admin'], function () {
     Route::get('clientes', [ClientesController::class, 'index'])->name('clientes.index');
     Route::get('facturacion', [FacturaController::class, 'index'])->name('facturacion.index');
     Route::get('agenda', [AgendaController::class, 'index'])->name('agenda.index');
-    Route::get('vendedores', [VendedoresController::class, 'index'])->name('vendedores.index');
+    Route::get('usuarios', [VendedoresController::class, 'index'])->name('vendedores.index');
     Route::get('propietarios', [PropietariosController::class, 'index'])->name('propietarios.index');
 
     Route::get('caracteristicas', [CaracteristicasController::class, 'index'])->name('caracteristicas.index');

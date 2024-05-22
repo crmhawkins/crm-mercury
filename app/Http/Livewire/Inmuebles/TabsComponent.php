@@ -18,19 +18,14 @@ class TabsComponent extends Component
     
     public function mount()
     {
-        //$this->idinmueble = $idinmueble;
-        //dd($this->idinmueble);
         if(isset($this->idinmueble) && $this->idinmueble != null){
             $inmueble = Inmuebles::find($this->idinmueble);
-            //dd($inmueble);
             if(isset($inmueble) && $inmueble != null){
                 $this->inmueble = $inmueble->id;
-                //dd($this->inmueble);
-                //$this->identificador = $inmueble->id;
-                //dd($this->inmueble);
-                $this->selectProducto2($inmueble);  
+                
+                $this->selectProducto2($inmueble->id );  
+                $this->dispatchBrowserEvent('remove-url-parameter');
             }
-            
         }
         
     }

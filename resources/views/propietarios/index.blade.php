@@ -20,6 +20,7 @@
 
 @section('content')
 @section('encabezado', 'Propietarios')
+@section('title', 'CRM MERCURY - Propietarios')
 @section('subtitulo', 'Consulta y creación de Propietarios')
 
 @livewire('propietarios.tabs-component')

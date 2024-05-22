@@ -127,6 +127,7 @@
                         </div>
                     </div>
                     <script>
+                       
                         $('#lfm').on('click', function() {
                             var route_prefix = '/laravel-filemanager' || '';
                             var type = $(this).data('type') || 'images';
@@ -148,6 +149,7 @@
                             };
                             return false;
                         });
+                    
                     </script>
                 </div>
             </div>

@@ -20,12 +20,9 @@ class Create extends Component
     public $dni;
     public $role = 'admin';
     public $password;
-    public $ubicacion;
     public $telefono;
     public $email;
-    public $signature;
-    public $firma;
-    public $inmobiliaria;
+    public $inactive = 1;
 
 
     public function mount()
@@ -47,18 +44,16 @@ class Create extends Component
     {
         $this->password = Hash::make($this->password);
 
-       $this->inmobiliaria = Auth::user()->inmobiliaria;
 
         $validatedData = $this->validate(
             [
                 'nombre_completo' => 'required',
                 'dni' => 'required',
                 'role' => 'required',
-                'ubicacion' => 'required',
                 'password' => 'required',
                 'telefono' => 'required',
                 'email' => 'required',
-                'inmobiliaria' => 'required',
+                'inactive' => 'required',
             ],
             // Mensajes de error
             [
@@ -66,10 +61,9 @@ class Create extends Component
                 'dni.required' => 'El nombre es obligatorio.',
                 'role.required' => 'El nombre es obligatorio.',
                 'password.required' => 'El nombre es obligatorio.',
-                'ubicacion.required' => 'El nombre es obligatorio.',
                 'telefono.required' => 'El nombre es obligatorio.',
                 'email.required' => 'El nombre es obligatorio.',
-                'inmobiliaria.required' => 'El nombre es obligatorio.',
+                'inactive.required' => 'El nombre es obligatorio.',
 
             ]
         );

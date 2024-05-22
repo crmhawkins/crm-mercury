@@ -30,7 +30,7 @@ class Edit extends Component
         $this->telefono = $this->propietarios->telefono;
         $this->correo = $this->propietarios->correo;
         $this->inmuebles = Inmuebles::where('propietario_id', $this->identificador)->get();
-
+        //dd($this->inmuebles);
 
     }
 

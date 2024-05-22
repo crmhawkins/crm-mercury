@@ -40,6 +40,19 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="estado" class="col-sm-3 col-form-label"> <strong>Estado</strong></label>
+                            <div class="col-sm-12">
+                                <select wire:model="estado" class="form-control" name="estado" id="estado">
+                                    <option value="Disponible">Disponible</option>
+                                    <option value="Alquilado">Alquilado</option>
+                                    <option value="Vendido">Vendido</option>
+                                </select>
+                                @error('estado')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -302,7 +315,7 @@
 
                         <div class="input-group">
                             <span class="input-group-btn">
-                                <a id="lfm" data-input="thumbnail" data-preview="holder"
+                                <a id="imagenes" data-input="thumbnail" data-preview="holder"
                                     class="btn btn-primary">
                                     <i class="fa fa-picture-o"></i> Seleccionar imagen
                                 </a>
@@ -319,15 +332,15 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card mb-3" style="max-width: 20rem">
+                <div class="card mb-3" style="">
                     <h5 class="card-header">
                         Galería
                     </h5>
                     <div class="card-body">
                         <div class="row">
                             @foreach ($galeriaArray as $imagenIndex => $imagen)
-                                <div class="col-6 mb-5"><img src="{{ $imagen }}" width="100%"
-                                        height="100%"> <button class="btn btn-sm btn-danger"
+                                <div class="col-6 mb-5"><img class="rounded" style="object-fit:cover;" src="{{ $imagen }}" width="250px"
+                                        height="200px"> <button class="btn btn-sm btn-danger"
                                         wire:click.prevent="eliminarImagen('{{ $imagenIndex }}')">X</button>
                                 </div>
                             @endforeach
@@ -339,7 +352,7 @@
         <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 
         <script>
-            $('#lfm').on('click', function() {
+            $('#imagenes').on('click', function() {
                 var route_prefix = '/laravel-filemanager' || '';
                 var type = $(this).data('type') || 'images';
                 var target_input = document.getElementById('thumbnail');

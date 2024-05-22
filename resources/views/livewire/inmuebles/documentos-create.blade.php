@@ -44,7 +44,7 @@
 
         <div class="input-group">
             <span class="input-group-btn">
-                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-secondary">
+                <a id="documento" data-input="thumbnail" data-preview="holder" class="btn btn-secondary">
                     <i class="fa fa-picture-o"></i> Seleccionar documento
                 </a>
             </span>
@@ -57,7 +57,7 @@
         <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 
         <script>
-            $('#lfm').on('click', function() {
+            $('#documento').on('click', function() {
                 var route_prefix = '/laravel-filemanager' || '';
                 var type = $(this).data('type') || 'documentos';
                 var target_input = document.getElementById('thumbnail');

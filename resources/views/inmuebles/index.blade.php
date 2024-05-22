@@ -21,6 +21,7 @@
 @endsection
 @section('content')
 @section('encabezado', 'Inmuebles')
+@section('title', 'CRM MERCURY - Inmuebles')
 @section('subtitulo', 'Consulta y creación de inmuebles')
 
 @livewire('inmuebles.tabs-component', ['idinmueble'=>$idinmueble])

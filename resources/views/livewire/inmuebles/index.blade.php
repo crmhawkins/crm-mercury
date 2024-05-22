@@ -12,16 +12,97 @@
         .accordion-button {
             color: #333333;
         }
+        @media(max-width: 1356px){
+            #filtros{
+                width: 100%;
+            }
+            #filtros > div{
+                width: 100%;
+            }
+            #filtros > div > div{
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 30px;
+                max-width: 100%;
+                
+            }
+            #filtros > div > div > h5{
+                display: none;
+            }
+            #filtros > div > div > div{
+                border: #333333 1px solid;
+                padding: 10px;
+                border-radius: 5px;
+                display: flex;
+                flex-wrap: wrap; 
+                margin-bottom: 0px !important;   
+            }
+            .invisible{
+                display: none;
+            }
+
+        }
+        @media(max-width:830px){
+            .inmueble-caracteristicas{
+                width: 100%;
+                display: grid !important;
+                grid-template-columns: 1fr;
+                gap: 10px !important;
+            }
+        }
+        @media(max-width:780px){
+            .inmuebles{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .inmueble > div > div > img{
+                width: 100% !important;
+                height: 200px;
+            }
+            .inmueble > div > div:nth-child(2) >div{
+                top: -85% !important;
+            }
+            .inmueble-caracteristicas{
+                margin-bottom: 50px;
+            }
+        }
+
+        @media(max-width:700px){
+            .inmuebles{
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .inmueble > div > div:nth-child(2) >div{
+                top: -90% !important;
+            }
+
+            .inmueble-caracteristicas{
+                width: 100%;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px !important;
+                margin-bottom:50px; 
+            }
+
+        }
     </style>
 
     <div class="row justify-content-center">
-        <div class="col-2">
+        <div class="col-2" id="filtros">
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="fw-bold">Filtros de búsqueda</h5>
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6 class="fw-bold"> Ubicación </h6>
-                        <input type="text" wire:model="ubicacion">
+                        <h6 class="fw-bold"> Localidad </h6>
+                        <input type="text" wire:model="localidad">
+                    </div>
+                    <div class="mb-3 row d-flex align-items-center">
+                        <h6 class="fw-bold"> Cod Postal </h6>
+                        <input type="text" wire:model="cod_postal">
                     </div>
                     @if (is_array($opcionesPrecio) && !empty($opcionesPrecio))
                         <div class="mb-3 row d-flex align-items-center">
@@ -38,6 +119,48 @@
                             <div class="col-6">
                                 <select wire:model="valor_venta_max" class="w-100">
                                     @foreach ($opcionesPrecio as $opcion)
+                                        <option value="{{ $opcion }}">{{ $opcion }} €</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    @endif
+                    @if (is_array($opcionesPrecioAlquilerMensual) && !empty($opcionesPrecioAlquilerMensual))
+                        <div class="mb-3 row d-flex align-items-center">
+                            <h6 class="fw-bold"> Alquiler/mes </h6>
+
+                            <div class="col-6">
+                                <select wire:model="alquiler_mensual_min" class="w-100">
+                                    <option value="1">Mínimo</option>
+                                    @foreach ($opcionesPrecioAlquilerMensual as $opcion)
+                                        <option value="{{ $opcion }}">{{ $opcion }} €</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <select wire:model="alquiler_mensual_max" class="w-100">
+                                    @foreach ($opcionesPrecioAlquilerMensual as $opcion)
+                                        <option value="{{ $opcion }}">{{ $opcion }} €</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    @endif
+                    @if (is_array($opcionesPrecioAlquilerSemana) && !empty($opcionesPrecioAlquilerSemana))
+                        <div class="mb-3 row d-flex align-items-center">
+                            <h6 class="fw-bold"> Alquiler/semana </h6>
+
+                            <div class="col-6">
+                                <select wire:model="alquiler_semana_min" class="w-100">
+                                    <option value="1">Mínimo</option>
+                                    @foreach ($opcionesPrecioAlquilerSemana as $opcion)
+                                        <option value="{{ $opcion }}">{{ $opcion }} €</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <select wire:model="alquiler_semana_max" class="w-100">
+                                    @foreach ($opcionesPrecioAlquilerSemana as $opcion)
                                         <option value="{{ $opcion }}">{{ $opcion }} €</option>
                                     @endforeach
                                 </select>
@@ -102,6 +225,37 @@
                             3 baños o más
                         </label>
                     </div>
+                    <div class="mb-3 row d-flex align-items-center">
+                        <h6 class="fw-bold"> Dormitorios </h6>
+                        <label>
+                            <input type="checkbox" wire:model="dormitoriosSeleccionados" value=1>
+                            1
+                        </label>
+                        <label>
+                            <input type="checkbox" wire:model="dormitoriosSeleccionados" value=2>
+                            2
+                        </label>
+                        <label>
+                            <input type="checkbox" wire:model="dormitoriosSeleccionados" value=3>
+                            3 baños o más
+                        </label>
+                    </div>
+                    <div class="mb-3 row d-flex align-items-center">
+                        <h6 class="fw-bold"> Estados </h6>
+                        <label>
+                            <input type="checkbox" wire:model="estadoSeleccionados" value="Disponible">
+                            Disponible
+                        </label>
+                        <label>
+                            <input type="checkbox" wire:model="estadoSeleccionados" value="Vendido">
+                            Vendido
+                        </label>
+                        <label>
+                            <input type="checkbox" wire:model="estadoSeleccionados" value="Alquilado">
+                            Alquilado
+                        </label>
+                    </div>
+                    
                     {{-- <div class="mb-3 row d-flex align-items-center">
                         <h6> Estado </h6>
                         <label>
@@ -133,11 +287,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-1"> &nbsp; </div>
-        <div class="col">
+        <div class="col-1 invisible"> &nbsp; </div>
+        <div class="col inmuebles">
             @if ($inmuebles->count() > 0)
                 @foreach ($inmuebles as $inmueble)
-                    <div class="card mb-3" style="width: 60rem;">
+                    <div class="card mb-3 inmueble"  style="max-width: 60rem;">
                         <div class="row g-0">
                             <div class="col-md-3">
                                 <img src="{{ json_decode($inmueble->galeria, true)[1] }}" width="200px" height="270px"
@@ -155,7 +309,7 @@
                                                                                     @endif
                                     </h4>
                                     <br>
-                                <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center" style="width: 90%">
+                                <div  class="d-flex flex-wrap gap-2 justify-content-between align-items-center inmueble-caracteristicas" style="width: 90%">
                                     <div>
                                         <h6 class="card-title" style="font-size: 1.2rem;">
                                             @if($inmueble->disponibilidad == "Alquiler")

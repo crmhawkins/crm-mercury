@@ -20,10 +20,7 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-outline-primary btn-block"
-                                wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+
                     </div>
                     <br>
                 </div>
@@ -49,10 +46,7 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-outline-primary btn-block"
-                                wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+
                     </div>
                     <br>
                 </div>
@@ -78,10 +72,7 @@
                             <button type="button" class="btn btn-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-outline-primary btn-block"
-                                wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+
                     </div>
                     <br>
                 </div>
@@ -107,10 +98,7 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-primary btn-block"
-                                wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+
                     </div>
                     <br>
                 </div>
@@ -136,10 +124,7 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-outline-primary btn-block"
-                                wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+
                     </div>
                     <br>
                 </div>
@@ -165,10 +150,7 @@
                             <button type="button" class="btn btn-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-outline-primary btn-block"
-                                wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+
                     </div>
                     <br>
                 </div>
@@ -194,10 +176,7 @@
                             <button type="button" class="btn btn-outline-primary btn-block"
                                 wire:click="cambioTab('tab3')">Buscar</button>
                         </div>
-                        <div class="ms-auto col-6 d-grid gap-2">
-                            <button type="button" class="btn btn-primary btn-block"
-                                wire:click="cambioTab('tab4')">Opciones</button>
-                        </div>
+
                     </div>
                     <br>
                 </div>
@@ -228,11 +207,7 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
-                            <h5>Opciones</h5>
-                        </button>
-                    </li>
+
                 </ul>
 
                 @livewire('propietarios.create')
@@ -254,11 +229,7 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
-                            <h5>Opciones</h5>
-                        </button>
-                    </li>
+
                 </ul>
                 <br>
 
@@ -283,11 +254,7 @@
                             <h3>Buscar</h3>
                         </button>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
-                            <h5>Opciones</h5>
-                        </button>
-                    </li>
+
                 </ul>
                 <br>
 
@@ -310,11 +277,7 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link active" wire:click.prevent="cambioTab('tab4')">
-                            <h3>Opciones</h3>
-                        </button>
-                    </li>
+
                 </ul>
                 <br>
 
@@ -339,11 +302,7 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
-                            <h5>Opciones</h5>
-                        </button>
-                    </li>
+
                 </ul>
                 <br>
 
@@ -366,11 +325,7 @@
                             <h3>Buscar</h3>
                         </button>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link" wire:click.prevent="cambioTab('tab4')">
-                            <h5>Opciones</h5>
-                        </button>
-                    </li>
+
                 </ul>
                 <br>
                 @livewire('propietarios.index')
@@ -392,11 +347,7 @@
                             <h5>Buscar</h5>
                         </button>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link active" wire:click.prevent="cambioTab('tab4')">
-                            <h3>Opciones</h3>
-                        </button>
-                    </li>
+
                 </ul>
                 <br>
                 <div class="ms-auto col d-grid gap-2">

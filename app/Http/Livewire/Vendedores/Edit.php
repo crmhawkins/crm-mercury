@@ -19,23 +19,20 @@ class Edit extends Component
     public $dni;
     public $role;
     public $password;
-    public $ubicacion;
+    public $newPassword;
     public $telefono;
     public $email;
-    public $inmobiliaria;
     public function mount()
     {
         $this->vendedores = User::find($this->identificador);
         $this->nombre_completo = $this->vendedores->nombre_completo;
         $this->dni = $this->vendedores->dni;
         $this->role = $this->vendedores->role;
-        $this->ubicacion = $this->vendedores->ubicacion;
         $this->telefono = $this->vendedores->telefono;
+        $this->password = $this->vendedores->password;
         $this->email = $this->vendedores->email;
 
-        if($this->inmobiliaria != null){
-            $this->inmobiliaria = $this->vendedores->inmobiliaria;
-        }
+      
     }
 
     public function render()
@@ -47,30 +44,28 @@ class Edit extends Component
     public function update()
     {
 
-        if($this->password != null){
-            $this->password = Hash::make($this->password);
+        if($this->newPassword!=null && $this->password != $this->newPassword ){
+            $this->password = Hash::make($this->newPassword);
         }
+
+
 
         $validatedData = $this->validate(
             [
                 'nombre_completo' => 'required',
                 'dni' => 'required',
                 'role' => 'required',
-                'ubicacion' => 'required',
                 'password' => 'nullable',
                 'telefono' => 'required',
                 'email' => 'required',
-                'inmobiliaria' => 'nullable',
             ],
             // Mensajes de error
             [
                 'nombre_completo.required' => 'El nombre es obligatorio.',
                 'dni.required' => 'El nombre es obligatorio.',
                 'role.required' => 'El nombre es obligatorio.',
-                'ubicacion.required' => 'El nombre es obligatorio.',
                 'telefono.required' => 'El nombre es obligatorio.',
                 'email.required' => 'El nombre es obligatorio.',
-                'inmobiliaria.required' => 'El nombre es obligatorio.',
 
             ]
         );
@@ -83,11 +78,9 @@ class Edit extends Component
             'nombre_completo' => $this->nombre_completo,
             'dni' => $this->dni,
             'role' => $this->role,
-            'ubicacion' => $this->ubicacion,
             'password' => $this->password,
             'telefono' => $this->telefono,
             'email' => $this->email,
-            'inmobiliaria' => $this->inmobiliaria,
         ]);
 
         // Alertas de guardado exitoso
@@ -151,6 +144,6 @@ class Edit extends Component
     }
 
     public function generarPassword(){
-        $this->password = Str::random(10);
+        $this->newPassword = Str::random(10);
     }
 }

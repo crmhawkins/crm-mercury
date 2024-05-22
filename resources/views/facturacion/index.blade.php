@@ -20,6 +20,7 @@
 
 @section('content')
 @section('encabezado', 'Factura')
+@section('title', 'CRM MERCURY - Factura')
 @section('subtitulo', 'Consulta y creación de factura')
 
 @livewire('factura.tabs-component')

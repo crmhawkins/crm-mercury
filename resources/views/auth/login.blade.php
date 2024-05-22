@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mercury</title>
+    <title>CRM Mercury - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.css"
         integrity="sha512-CaTMQoJ49k4vw9XO0VpTBpmMz8XpCWP5JhGmBvuBqCOaOHWENWO1CrVl09u4yp8yBVSID6smD4+gpzDJVQOPwQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -29,7 +29,9 @@
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-sm-6 text-center">
-               <h1 class="text-light fw-bold" style="font-size: 3rem">CRM Mercury</h1>
+               {{-- <h1 class="text-light fw-bold" style="font-size: 3rem">CRM Mercury</h1> --}}
+               <img class="img-fluid p-2 rounded" src="{{ asset('images/logo.png') }}"
+                    alt="Logo" width="180px" height="100px" style="background:white;">
             </div>
 
         </div>
