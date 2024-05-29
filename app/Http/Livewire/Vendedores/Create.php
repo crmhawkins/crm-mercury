@@ -56,15 +56,15 @@ class Create extends Component
                 'inactive' => 'required',
             ],
             // Mensajes de error
+            //ingles
             [
-                'nombre_completo.required' => 'El nombre es obligatorio.',
-                'dni.required' => 'El nombre es obligatorio.',
-                'role.required' => 'El nombre es obligatorio.',
-                'password.required' => 'El nombre es obligatorio.',
-                'telefono.required' => 'El nombre es obligatorio.',
-                'email.required' => 'El nombre es obligatorio.',
-                'inactive.required' => 'El nombre es obligatorio.',
-
+                'nombre_completo.required' => 'The name is required',
+                'dni.required' => 'The dni is required',
+                'role.required' => 'The role is required',
+                'password.required' => 'The password is required',
+                'telefono.required' => 'The phone is required',
+                'email.required' => 'The email is required',
+                'inactive.required' => 'The status is required',
             ]
         );
 

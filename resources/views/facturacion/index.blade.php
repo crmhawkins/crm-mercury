@@ -19,9 +19,9 @@
 @endsection
 
 @section('content')
-@section('encabezado', 'Factura')
-@section('title', 'CRM MERCURY - Factura')
-@section('subtitulo', 'Consulta y creación de factura')
+@section('encabezado', 'Invoice')
+@section('title', 'CRM MERCURY - Invoice')
+@section('subtitulo', 'Invoice consultation and creation')
 
 @livewire('factura.tabs-component')
 @endsection

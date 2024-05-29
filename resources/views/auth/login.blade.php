@@ -37,7 +37,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-12 text-center text-white">
-                <h1 style="font-size: 2rem !important;">Iniciar sesión</h1>
+                <h1 style="font-size: 2rem !important;">Log in</h1>
             </div>
         </div>
         <div class="row justify-content-center"
@@ -59,7 +59,7 @@
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
                                             value="{{ old('email') }}" required autocomplete="email"
-                                            placeholder="Correo electrónico" autofocus>
+                                            placeholder="Email" autofocus>
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
                                     <div class="col-md-10">
                                         <input id="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror"
-                                            placeholder="Contraseña" name="password" required
+                                            placeholder="Password" name="password" required
                                             autocomplete="current-password">
 
                                         @error('password')

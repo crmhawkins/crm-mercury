@@ -54,12 +54,12 @@
                         @if (Request::is('admin/propietarios'))
                             <a class="btn btn-md btn-dark text-light d-block w-100 p-2" href="/admin/propietarios">
                                 <i class="fa-solid fa-user-tie"></i>
-                                <strong>Propietarios</strong>
+                                <strong>Owners</strong>
                             </a>
                         @else
                             <a class="btn btn-md btn-outline-dark d-block w-100 p-2" href="/admin/propietarios">
                                 <i class="fa-solid fa-user-tie"></i>
-                                <strong>Propietarios</strong>
+                                <strong>Owners</strong>
                             </a>
                         @endif
                     </li>
@@ -67,12 +67,12 @@
                         @if (Request::is('admin/inmuebles'))
                             <a class="btn btn-md btn-dark text-light d-block w-100 p-2" href="/admin/inmuebles">
                                 <i class="fas fa-house"></i>
-                                <strong>Inmuebles</strong>
+                                <strong>Properties</strong>
                             </a>
                         @else
                             <a class="btn btn-md btn-outline-dark d-block w-100 p-2" href="/admin/inmuebles">
                                 <i class="fas fa-house"></i>
-                                <strong>Inmuebles</strong>
+                                <strong>Properties</strong>
                             </a>
                         @endif
                     </li>
@@ -80,25 +80,25 @@
                         @if (Request::is('admin/clientes'))
                             <a class="btn btn-md btn-dark text-light d-block w-100 p-2" href="/admin/clientes">
                                 <i class="fas fa-user"></i>
-                                <strong>Clientes</strong>
+                                <strong>Customers</strong>
                             </a>
                         @else
                             <a class="btn btn-md btn-outline-dark d-block w-100 p-2" href="/admin/clientes">
                                 <i class="fas fa-user"></i>
-                                <strong>Clientes</strong>
+                                <strong>Customers</strong>
                             </a>
                         @endif
                     </li>
                     <li class="nav-item mx-2">
-                        @if (Request::is('admin/clientes'))
+                        @if (Request::is('admin/usuarios'))
                             <a class="btn btn-md btn-dark text-light d-block w-100 p-2" href="/admin/usuarios">
                                 <i class="fa-solid fa-user-gear"></i>
-                                <strong>Usuarios</strong>
+                                <strong>Users</strong>
                             </a>
                         @else
                             <a class="btn btn-md btn-outline-dark d-block w-100 p-2" href="/admin/usuarios">
                                 <i class="fa-solid fa-user-gear"></i>
-                                <strong>Usuarios</strong>
+                                <strong>Users</strong>
                             </a>
                         @endif
                     </li>
@@ -147,12 +147,12 @@
                     @if (Request::is('admin/propietarios'))
                         <a class="btn btn-dark text-light" href="/admin/propietarios">
                             <i class="fa-solid fa-user-tie"></i>
-                            <strong>Propietarios</strong>
+                            <strong>Owners</strong>
                         </a>
                     @else
                         <a class="btn btn-outline-dark" href="/admin/propietarios">
                             <i class="fa-solid fa-user-tie"></i>
-                            <strong>Propietarios</strong>
+                            <strong>Owners</strong>
                         </a>
                     @endif
                 </li>
@@ -161,12 +161,12 @@
                     @if (Request::is('admin/inmuebles'))
                         <a class="btn btn-dark text-light" href="/admin/inmuebles">
                             <i class="fas fa-house"></i>
-                            <strong>Inmuebles</strong>
+                            <strong>Properties</strong>
                         </a>
                     @else
                         <a class="btn btn-outline-dark" href="/admin/inmuebles">
                             <i class="fas fa-house"></i>
-                            <strong>Inmuebles</strong>
+                            <strong>Properties</strong>
                         </a>
                     @endif
 
@@ -175,25 +175,25 @@
                     @if (Request::is('admin/clientes'))
                         <a class="btn btn-dark text-light" href="/admin/clientes">
                             <i class="fas fa-user"></i>
-                            <strong>Clientes</strong>
+                            <strong>Customers</strong>
                         </a>
                     @else
                         <a class="btn btn-outline-dark" href="/admin/clientes">
                             <i class="fas fa-user"></i>
-                            <strong>Clientes</strong>
+                            <strong>Customers</strong>
                         </a>
                     @endif
                 </li>
                 <li class="nav-item">
-                    @if (Request::is('admin/clientes'))
+                    @if (Request::is('admin/usuarios'))
                         <a class="btn btn-dark text-light" href="/admin/usuarios">
                             <i class="fa-solid fa-user-gear"></i>
-                            <strong>Usuarios</strong>
+                            <strong>Users</strong>
                         </a>
                     @else
                         <a class="btn btn-outline-dark" href="/admin/usuarios">
                             <i class="fa-solid fa-user-gear"></i>
-                            <strong>Usuarios</strong>
+                            <strong>Users</strong>
                         </a>
                     @endif
                 </li>

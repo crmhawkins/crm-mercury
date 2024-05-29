@@ -5,7 +5,7 @@
     @php
         use App\Models\Caracteristicas;
     @endphp
-    <title>Hoja de Visita</title>
+    <title>Visiting Sheet</title>
     
     <style type="text/css">
         body {
@@ -106,14 +106,14 @@
 </head>
 
 <body>
-    <h1>Hoja de Visita</h1>
+    <h1>Visiting Sheet</h1>
 
-    <p>Fecha: {{ $datos['fecha'] }}</p>
+    <p>Date: {{ $datos['fecha'] }}</p>
 
-    <h2>Información del Cliente</h2>
+    <h2>Customer information</h2>
     <table>
         <tr>
-            <th>Nombre Completo</th>
+            <th>Full name</th>
             {{ var_dump($datos) }} 
             <td>{{ $datos['cliente']['nombre'] }} {{ $datos['cliente']['apellidos'] }}</td>
         </tr>
@@ -126,12 +126,12 @@
             <td>{{ $datos['cliente']['email'] }}</td>
         </tr>
         <tr>
-            <th>Teléfono</th>
+            <th>Telephone</th>
             <td>{{ $datos['cliente']['telefono'] }}</td>
         </tr>
     </table>
 
-    <h2>Información del Inmueble</h2>
+    <h2>Property information</h2>
     <table>
         <tr>
             <th>Dirección</th>
@@ -153,7 +153,7 @@
     </table>
 
     <h2>Firma</h2>
-    <img src="{{ public_path($datos['firma']) }}" alt="Firma del Cliente">
+    <img src="{{ public_path($datos['firma']) }}" alt="Client's signature">
 </body>
 
 </html>

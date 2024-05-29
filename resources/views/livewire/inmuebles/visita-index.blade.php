@@ -5,7 +5,7 @@
     <br>
     <div class="row justify-content-center">
         <div class="col">
-    <h6>Hojas de visita del inmueble</h6>
+    <h6>Property visit sheets</h6>
     <hr/>
     <ul class="d-flex flex-row flex-wrap gap-2 ">
         @foreach($hojas_visita as $hoja)

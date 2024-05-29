@@ -47,17 +47,17 @@ class Create extends Component
                 'busqueda' => 'required | max:255 | min:3',
             ],
             // Mensajes de error
+           //required en ingles
             [
-                'nombre.required' => 'El nombre del cliente es obligatorio.',
-                'apellido.required' => 'Los apellidos del cliente son obligatorios.',
-                'dni.required' => 'El DNI del cliente es obligatorio.',
-                'email.required' => 'El correo del cliente es obligatorio.',
-                'telefono.required' => 'El teléfono del cliente es obligatorio.',
-                'direccion.required' => 'La dirección del cliente es obligatoria.',
-                'busqueda.required' => 'La búsqueda del cliente es obligatoria.',
-
-                'busqueda.max' => 'La búsqueda no puede tener más de 255 caracteres.',
-                'busqueda.min' => 'La búsqueda no puede tener menos de 3 caracteres.',  
+                'nombre.required' => 'The name field is required.',
+                'apellido.required' => 'The surname field is required.',
+                'dni.required' => 'The dni field is required.',
+                'telefono.required' => 'The telephone field is required.',
+                'email.required' => 'The email field is required.',
+                'direccion.required' => 'The address field is required.',
+                'busqueda.required' => 'The Search field is required.',
+                'busqueda.max' => 'The search field must be less than 255 characters.',
+                'busqueda.min' => 'The search field must be at least 3 characters.',
             ]
         );
 

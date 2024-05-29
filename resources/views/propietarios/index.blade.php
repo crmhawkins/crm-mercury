@@ -19,9 +19,9 @@
 @endsection
 
 @section('content')
-@section('encabezado', 'Propietarios')
-@section('title', 'CRM MERCURY - Propietarios')
-@section('subtitulo', 'Consulta y creación de Propietarios')
+@section('encabezado', 'Owners')
+@section('title', 'CRM MERCURY - Owners')
+@section('subtitulo', 'Consultation and creation of Owners')
 
 @livewire('propietarios.tabs-component')
 @endsection

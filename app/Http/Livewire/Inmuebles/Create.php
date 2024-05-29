@@ -118,28 +118,30 @@ class Create extends Component
                 'disponibilidad' => 'required', 
 
             ],
-            // Mensajes de error
+            //mensajes de error en ingles
             [
-
-                'm2.required' => 'El campo m2 es obligatorio',
-                'm2_construidos.required' => 'El campo m2 construidos es obligatorio',
-                'habitaciones.required' => 'El campo habitaciones es obligatorio',
-                'banos.required' => 'El campo baños es obligatorio',
-                'cod_postal.required' => 'El campo código postal es obligatorio',
-                'direccion.required' => 'El campo dirección es obligatorio',
-                'localidad.required' => 'El campo localidad es obligatorio',
-                'dormitorios.required' => 'El campo dormitorios es obligatorio',
-                'piscina.required' => 'El campo piscina es obligatorio',
-                'garaje.required' => 'El campo garaje es obligatorio',
-                'ibi.required' => 'El campo ibi es obligatorio',
-                'coste_basura.required' => 'El campo coste basura es obligatorio',
-                'precio_venta.required' => 'El campo precio venta es obligatorio',
-                'alquiler_semana.required' => 'El campo alquiler semana es obligatorio',
-                'alquiler_mes.required' => 'El campo alquiler mes es obligatorio',
-                'disponibilidad.required' => 'El campo disponibilidad es obligatorio',
-
-
+                'm2.required' => 'The m2 field is required.',
+                'm2_construidos.required' => 'The built m2 field is required.',
+                'habitaciones.required' => 'The rooms field is required.',
+                'banos.required' => 'The bathrooms field is required.',
+                'cod_postal.required' => 'The postal code field is required.',
+                'galeria.required' => 'The gallery field is required.',
+                'direccion.required' => 'The address field is required.',
+                'localidad.required' => 'The location field is required.',
+                'propietario_id.required' => 'The owner field is required.',
+                'estado.required' => 'The state field is required.',
+                'dormitorios.required' => 'The bedrooms field is required.',
+                'piscina.required' => 'The pool field is required.',
+                'garaje.required' => 'The garage field is required.',
+                'ibi.required' => 'The ibi field is required.',
+                'coste_basura.required' => 'The garbage cost field is required.',
+                'precio_venta.required' => 'The sale price field is required.',
+                'alquiler_semana.required' => 'The weekly rental field is required.',
+                'alquiler_mes.required' => 'The monthly rental field is required.',
+                'disponibilidad.required' => 'The availability field is required.',
+                
             ]
+            
         );
 
         // Guardar datos validados

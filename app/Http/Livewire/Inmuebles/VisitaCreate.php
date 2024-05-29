@@ -155,11 +155,12 @@ class VisitaCreate extends Component
                 'ruta' => 'required',
             ],
             // Mensajes de error
+            //en ingles
             [
-                'cliente_id.required' => 'El cliente es obligatorio.',
-                'inmueble_id.required' => 'Este error no debería aparecer, pero falta el inmueble.',
-                'fecha.required' => 'Indica la fecha de la visita.',
-                'ruta.required' => 'Este error no debería aparecer, pero falta la ruta del documento.',
+                'cliente_id.required' => 'The client field is required.',
+                'inmueble_id.required' => 'The property field is required.',
+                'fecha.required' => 'The date field is required.',
+                'ruta.required' => 'The route field is required.',
             ]
         );
 

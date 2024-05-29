@@ -95,22 +95,22 @@
         <div class="col-2" id="filtros">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="fw-bold">Filtros de búsqueda</h5>
+                    <h5 class="fw-bold">Search filters</h5>
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6 class="fw-bold"> Localidad </h6>
+                        <h6 class="fw-bold"> Location </h6>
                         <input type="text" wire:model="localidad">
                     </div>
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6 class="fw-bold"> Cod Postal </h6>
+                        <h6 class="fw-bold"> Postal code </h6>
                         <input type="text" wire:model="cod_postal">
                     </div>
                     @if (is_array($opcionesPrecio) && !empty($opcionesPrecio))
                         <div class="mb-3 row d-flex align-items-center">
-                            <h6 class="fw-bold"> Precio/venta </h6>
+                            <h6 class="fw-bold"> Sale price </h6>
 
                             <div class="col-6">
                                 <select wire:model="valor_venta_min" class="w-100">
-                                    <option value="1">Mínimo</option>
+                                    <option value="1">Minimum</option>
                                     @foreach ($opcionesPrecio as $opcion)
                                         <option value="{{ $opcion }}">{{ $opcion }} €</option>
                                     @endforeach
@@ -127,11 +127,11 @@
                     @endif
                     @if (is_array($opcionesPrecioAlquilerMensual) && !empty($opcionesPrecioAlquilerMensual))
                         <div class="mb-3 row d-flex align-items-center">
-                            <h6 class="fw-bold"> Alquiler/mes </h6>
+                            <h6 class="fw-bold"> Rent/month </h6>
 
                             <div class="col-6">
                                 <select wire:model="alquiler_mensual_min" class="w-100">
-                                    <option value="1">Mínimo</option>
+                                    <option value="1">Minimum</option>
                                     @foreach ($opcionesPrecioAlquilerMensual as $opcion)
                                         <option value="{{ $opcion }}">{{ $opcion }} €</option>
                                     @endforeach
@@ -148,11 +148,11 @@
                     @endif
                     @if (is_array($opcionesPrecioAlquilerSemana) && !empty($opcionesPrecioAlquilerSemana))
                         <div class="mb-3 row d-flex align-items-center">
-                            <h6 class="fw-bold"> Alquiler/semana </h6>
+                            <h6 class="fw-bold"> Rental/week</h6>
 
                             <div class="col-6">
                                 <select wire:model="alquiler_semana_min" class="w-100">
-                                    <option value="1">Mínimo</option>
+                                    <option value="1">Minimum</option>
                                     @foreach ($opcionesPrecioAlquilerSemana as $opcion)
                                         <option value="{{ $opcion }}">{{ $opcion }} €</option>
                                     @endforeach
@@ -169,10 +169,10 @@
                     @endif
                     @if (is_array($opcionesTamano) && !empty($opcionesTamano))
                         <div class="mb-3 row d-flex align-items-center">
-                            <h6 class="fw-bold"> Metros cuadrados</h6>
+                            <h6 class="fw-bold"> Square meter </h6>
                             <div class="col-6">
                                 <select wire:model="m2_min" class="w-100">
-                                    <option value="1">Mínimo</option>
+                                    <option value="1">Minimum</option>
                                     @foreach ($opcionesTamano as $opcion)
                                         <option value="{{ $opcion }}">{{ $opcion }} m<sup>2</sup></option>
                                     @endforeach
@@ -188,10 +188,10 @@
                         </div>
                     @endif
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6 class="fw-bold"> Habitaciones </h6>
+                        <h6 class="fw-bold"> Rooms </h6>
                         <label>
                             <input type="checkbox" wire:model="habitacionesSeleccionadas" value=0>
-                            0 habitaciones (estudios)
+                            0 rooms
                         </label>
                         <label>
                             <input type="checkbox" wire:model="habitacionesSeleccionadas" value=1>
@@ -207,11 +207,11 @@
                         </label>
                         <label>
                             <input type="checkbox" wire:model="habitacionesSeleccionadas" value=4>
-                            4 habitaciones o más
+                            4 rooms or more
                         </label>
                     </div>
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6 class="fw-bold"> Baños </h6>
+                        <h6 class="fw-bold"> Bathrooms </h6>
                         <label>
                             <input type="checkbox" wire:model="banosSeleccionados" value=1>
                             1
@@ -222,11 +222,11 @@
                         </label>
                         <label>
                             <input type="checkbox" wire:model="banosSeleccionados" value=3>
-                            3 baños o más
+                            3 bathrooms or more
                         </label>
                     </div>
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6 class="fw-bold"> Dormitorios </h6>
+                        <h6 class="fw-bold"> Bedrooms </h6>
                         <label>
                             <input type="checkbox" wire:model="dormitoriosSeleccionados" value=1>
                             1
@@ -237,22 +237,22 @@
                         </label>
                         <label>
                             <input type="checkbox" wire:model="dormitoriosSeleccionados" value=3>
-                            3 baños o más
+                            3 bedrooms or more
                         </label>
                     </div>
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6 class="fw-bold"> Estados </h6>
+                        <h6 class="fw-bold"> Status </h6>
                         <label>
                             <input type="checkbox" wire:model="estadoSeleccionados" value="Disponible">
-                            Disponible
+                            Available
                         </label>
                         <label>
                             <input type="checkbox" wire:model="estadoSeleccionados" value="Vendido">
-                            Vendido
+                            Sold
                         </label>
                         <label>
                             <input type="checkbox" wire:model="estadoSeleccionados" value="Alquilado">
-                            Alquilado
+                            Rented
                         </label>
                     </div>
                     
@@ -272,14 +272,14 @@
                         </label>
                     </div> --}}
                     <div class="mb-3 row d-flex align-items-center">
-                        <h6 class="fw-bold"> Disponibilidad </h6>
+                        <h6 class="fw-bold"> Availability </h6>
                         <label>
                             <input type="checkbox" wire:model="disponibilidad_seleccionados" value="Alquiler">
-                            En alquiler
+                            For rent
                         </label>
                         <label>
                             <input type="checkbox" wire:model="disponibilidad_seleccionados" value="Venta">
-                            A la venta
+                            For sale
                         </label>
                     </div>
                     
@@ -303,9 +303,9 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title d-flex gap-1 align-items-center"><span class="fw-bold">{{ $inmueble->direccion }}</span> @if($inmueble->disponibilidad == "Alquiler")
-                                                                                        <span class="badge badge-danger text-white bg-success" style="font-size: 0.9rem">Alquiler</span> 
+                                                                                        <span class="badge badge-danger text-white bg-success" style="font-size: 0.9rem">Rent</span> 
                                                                                     @elseif($inmueble->disponibilidad == "Venta") 
-                                                                                        <span class="badge badge-danger text-white bg-warning" style="font-size: 0.9rem">Venta</span> 
+                                                                                        <span class="badge badge-danger text-white bg-warning" style="font-size: 0.9rem">Sale</span> 
                                                                                     @endif
                                     </h4>
                                     <br>
@@ -313,8 +313,8 @@
                                     <div>
                                         <h6 class="card-title" style="font-size: 1.2rem;">
                                             @if($inmueble->disponibilidad == "Alquiler")
-                                                <span>{{ $inmueble->alquiler_mes }} €/mes</span> <br>
-                                                <span>{{ $inmueble->alquiler_semana }} €/semana </span>
+                                                <span>{{ $inmueble->alquiler_mes }} €/month</span> <br>
+                                                <span>{{ $inmueble->alquiler_semana }} €/week </span>
                                             @elseif($inmueble->disponibilidad == "Venta")
                                                 {{ $inmueble->precio_venta }} €
                                             @endif
@@ -323,20 +323,20 @@
                                     </div>
                                     <div class="bg-light p-2 rounded" style="width: fit-content">
                                         <h5 class="card-title" style="font-size: 1rem; margin-bottom: 15px;">
-                                            <i class="fa-solid fa-house"></i> {{ $inmueble->habitaciones }} hab. &nbsp; 
-                                            <i class="fa-solid fa-bath"></i> {{ $inmueble->banos }} baños &nbsp; 
-                                            <i class="fa-solid fa-bed"></i> {{ $inmueble->dormitorios }} dorm. &nbsp;
+                                            <i class="fa-solid fa-house"></i> {{ $inmueble->habitaciones }} rooms &nbsp; 
+                                            <i class="fa-solid fa-bath"></i> {{ $inmueble->banos }} bathrooms &nbsp; 
+                                            <i class="fa-solid fa-bed"></i> {{ $inmueble->dormitorios }} bedrooms &nbsp;
                                             <br>
                                             <br>
                                             @if(isset($inmueble->piscina) && $inmueble->piscina == 1)
-                                            <i class="fa-solid fa-swimming-pool"></i> Piscina <i class="fa-solid fa-square-check text-success"></i>
+                                            <i class="fa-solid fa-swimming-pool"></i> Pool <i class="fa-solid fa-square-check text-success"></i>
                                             @endif
                                             @if(isset($inmueble->garaje) && $inmueble->garaje == 1)
-                                            &nbsp; <i class="fa-solid fa-warehouse"></i> Garaje <i class="fa-solid fa-square-check text-success"></i>
+                                            &nbsp; <i class="fa-solid fa-warehouse"></i> Garage <i class="fa-solid fa-square-check text-success"></i>
                                             @endif
                                         </h5>
                                         <h6 class="card-title"><i class="fa-solid fa-ruler"></i>
-                                                {{ $inmueble->m2 }}m<sup>2</sup> &nbsp; <i class="fa-solid fa-ruler"></i> {{ $inmueble->m2_construidos }} m<sup>2</sup> construidos  </h6>
+                                                {{ $inmueble->m2 }}m<sup>2</sup> &nbsp; <i class="fa-solid fa-ruler"></i> {{ $inmueble->m2_construidos }} m<sup>2</sup> built  </h6>
                                     </div>
                                 </div>
                                 
@@ -349,14 +349,14 @@
                                                 data-bs-toggle="collapse" data-bs-target="#collapse{{ $inmueble->id }}"
                                                 aria-expanded="false" aria-controls="collapse{{ $inmueble->id }}"
                                                 onclick="Livewire.emit('seleccionarProducto2', {{ $inmueble->id }});">
-                                                <h4 class="fw-bold">Ver detalles</h4>
+                                                <h4 class="fw-bold">Show details</h4>
                                             </button>
                                         </div>
                                         <div class="col-6">
                                             <button type="button"
                                                  class="accordion-button collapsed text-end"
                                                             onclick="Livewire.emit('seleccionarProducto', {{ $inmueble->id }});">
-                                                <h4 class="fw-bold">Editar</h4>
+                                                <h4 class="fw-bold">Edit</h4>
                                             </button>
                                         </div>
                                     </div>
@@ -367,7 +367,7 @@
                 @endforeach
                 <br>
             @else
-                No hay inmuebles que cumplan este criterio.
+                There are no properties that meet this criterion.
             @endif
         </div>
     </div>

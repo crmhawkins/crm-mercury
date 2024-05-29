@@ -162,25 +162,25 @@ class Edit extends Component
 
             ],
             // Mensajes de error
+            //en ingles
             [
-                'm2.required' => 'El campo es obligatorio.',
-                'm2_construidos.required' => 'El campo es obligatorio.',
-                'habitaciones.required' => 'El campo es obligatorio.',
-                'banos.required' => 'El campo es obligatorio.',
-                'dormitorios.required' => 'El campo es obligatorio.',
-                'piscina.required' => 'El campo es obligatorio.',
-                'garaje.required' => 'El campo es obligatorio.',
-                'propietario_id.required' => 'El campo es obligatorio.',
-                'cod_postal.required' => 'El campo es obligatorio.',
-                'direccion.required' => 'El campo es obligatorio.',
-                'localidad.required' => 'El campo es obligatorio.',
-                'galeria.required' => 'El campo es obligatorio.',
-                'disponibilidad.required' => 'El campo es obligatorio.',
-                'ibi.required' => 'El campo es obligatorio.',
-                'coste_basura.required' => 'El campo es obligatorio.',
-                'precio_venta.required' => 'El campo es obligatorio.',
-                'alquiler_semana.required' => 'El campo es obligatorio.',
-                'alquiler_mes.required' => 'El campo es obligatorio.',
+                'm2.required' => 'The m2 field is required.',
+                'm2_construidos.required' => 'The m2_construidos field is required.',
+                'habitaciones.required' => 'The habitaciones field is required.',
+                'banos.required' => 'The banos field is required.',
+                'dormitorios.required' => 'The dormitorios field is required.',
+                'piscina.required' => 'The piscina field is required.',
+                'garaje.required' => 'The garaje field is required.',
+                'propietario_id.required' => 'The propietario field is required.',
+                'cod_postal.required' => 'The cod_postal field is required.',
+                'direccion.required' => 'The direccion field is required.',
+                'localidad.required' => 'The localidad field is required.',
+                'disponibilidad.required' => 'The disponibilidad field is required.',
+                'ibi.required' => 'The ibi field is required.',
+                'coste_basura.required' => 'The coste_basura field is required.',
+                'precio_venta.required' => 'The precio_venta field is required.',
+                'alquiler_semana.required' => 'The alquiler_semana field is required.',
+                'alquiler_mes.required' => 'The alquiler_mes field is required.',
             ]
         );
 

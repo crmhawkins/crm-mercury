@@ -1,7 +1,7 @@
 <div class="container mx-auto">
     <div class="card mb-3">
         <h5 class="card-header">
-            Lista de usuarios 
+            User List
         </h5>
         <div class="card-body" x-data="{}" x-init="$nextTick(() => {
             $('#tableVendedor').DataTable({
@@ -15,8 +15,8 @@
                 <table class="table" id="tableVendedor">
                     <thead>
                         <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Editar</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,7 +25,7 @@
                                 <td>{{ $vendedor->nombre_completo }}</td>
                                 <td> <button type="button"
                                          class="btn btn-primary boton-producto"
-                                        onclick="Livewire.emit('seleccionarProducto', {{ $vendedor->id }});">Ver/Editar</button>
+                                        onclick="Livewire.emit('seleccionarProducto', {{ $vendedor->id }});">View/Edit</button>
                                 </td>
                             </tr>
                         @endforeach

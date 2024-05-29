@@ -102,14 +102,14 @@
 
 <body>
     <div class="head-title">
-        <h1 class="text-center m-0 p-0">Factura</h1>
+        <h1 class="text-center m-0 p-0">Bill</h1>
     </div>
     <div class="add-detail mt-10">
         <div class="w-50 float-left mt-10">
-            <p class="m-0 pt-5 text-bold w-100">Número de factura - <span
+            <p class="m-0 pt-5 text-bold w-100">Invoice number - <span
                     class="gray-color">{{ $factura['numero_factura'] }}</span></p>
-            <p class="m-0 pt-5 text-bold w-100">Fecha de emisión - <span class="gray-color">22-01-2023</span></p>
-            <p class="m-0 pt-5 text-bold w-100">Fecha de vencimiento - <span class="gray-color">22-01-2023</span></p>
+            <p class="m-0 pt-5 text-bold w-100">Date of issue  - <span class="gray-color">22-01-2023</span></p>
+            <p class="m-0 pt-5 text-bold w-100">Due date - <span class="gray-color">22-01-2023</span></p>
         </div>
         <div class="w-50 float-left logo mt-10">
             <img class="img-fluid" src="{{ public_path('images/logosayco.png') }}" alt="Logo">
@@ -119,16 +119,16 @@
     <div class="table-section bill-tbl w-100 mt-10">
         <table class="table w-100 mt-10">
             <tr>
-                <th class="w-50">De</th>
-                <th class="w-50">Para</th>
+                <th class="w-50">From</th>
+                <th class="w-50">To</th>
             </tr>
             <tr>
                 <td>
                     <div class="box-text">
-                        <p>Inmobiliaria x</p>
+                        <p>Real state x</p>
                         <p>NIF</p>
-                        <p>Dirección</p>
-                        <p>Teléfono</p>
+                        <p>Address</p>
+                        <p>Telephone</p>
                     </div>
                 </td>
                 <td>
@@ -145,7 +145,8 @@
     <div class="table-section bill-tbl w-100 mt-10">
         <table class="table w-100 mt-10">
             <tr>
-                <th class="w-100">Condiciones y métodos de pago</th>
+                <th class="w-100">Terms and payment methods
+                </th>
             </tr>
             <tr>
                 <td>{{ $factura['condiciones'] }}</td>
@@ -156,8 +157,9 @@
         <table class="table w-100 mt-10">
             <tr>
                 <th class="w-50">#</th>
-                <th class="w-50">Artículo</th>
-                <th class="w-50">Precio</th>
+                <th class="w-50">Article
+                </th>
+                <th class="w-50">Price</th>
                 <th class="w-50">IVA</th>
                 <th class="w-50">Total</th>
             </tr>
@@ -175,7 +177,7 @@
                     <div class="total-part">
                         <div class="total-left w-85 float-left" align="right">
                             <p>Subtotal</p>
-                            <p>Impuestos</p>
+                            <p>Taxes</p>
                             <p>Total</p>
                         </div>
                         <div class="total-right w-15 float-left text-bold" align="right">

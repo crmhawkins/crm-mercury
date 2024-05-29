@@ -12,7 +12,7 @@
                     {{$response}}
 
                     <button 
-                    wire:click="title('Titulo render')">Cambiar nuevo</button>
+                    wire:click="title('Titulo render')">Change New</button>
                 </div>
             </div>
         </div>

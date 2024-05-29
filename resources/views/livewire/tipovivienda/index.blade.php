@@ -1,7 +1,7 @@
 <div class="container mx-auto">
     <div class="card mb-3">
         <h5 class="card-header">
-            Lista de tipos de vivienda
+            List of housing types
         </h5>
         <div class="card-body" x-data="{}" x-init="$nextTick(() => {
             $('#tableTipo').DataTable({
@@ -15,8 +15,8 @@
                 <table class="table" id="tableTipo">
                     <thead>
                         <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Editar</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,7 +30,7 @@
                                                 (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === 0) ||
                                                 (Request::session()->get('inmobiliaria') == 'sancer' && Auth::user()->inmobiliaria === null)) class="btn btn-primary boton-producto"
                                         onclick="Livewire.emit('seleccionarProducto', {{ $tipo->id }});"
-                                        @else                                         class="btn btn-secondary boton-producto" disabled @endif>Ver/Editar</button>
+                                        @else                                         class="btn btn-secondary boton-producto" disabled @endif>View/Edit</button>
                                 </td>
                             </tr>
                         @endforeach

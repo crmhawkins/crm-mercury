@@ -19,8 +19,8 @@
 @endsection
 
 @section('content')
-@section('encabezado', 'Características de inmueble')
-@section('subtitulo', 'Consulta y creación de características de inmueble')
+@section('encabezado', 'Property characteristics')
+@section('subtitulo', 'Consultation and creation of property characteristics')
 
 @livewire('caracteristicas.tabs-component')
 @endsection

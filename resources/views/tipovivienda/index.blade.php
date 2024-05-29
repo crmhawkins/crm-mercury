@@ -19,8 +19,8 @@
 @endsection
 
 @section('content')
-@section('encabezado', 'Tipos de vivienda')
-@section('subtitulo', 'Consulta y creación de tipos de vivienda')
+@section('encabezado', 'Types of housing')
+@section('subtitulo', 'Consultation and creation of housing types')
 
 @livewire('tipovivienda.tabs-component')
 @endsection

@@ -60,13 +60,14 @@ class Edit extends Component
                 'email' => 'required',
             ],
             // Mensajes de error
+           //en ingles
             [
-                'nombre_completo.required' => 'El nombre es obligatorio.',
-                'dni.required' => 'El nombre es obligatorio.',
-                'role.required' => 'El nombre es obligatorio.',
-                'telefono.required' => 'El nombre es obligatorio.',
-                'email.required' => 'El nombre es obligatorio.',
-
+                'nombre_completo.required' => 'The name field is required',
+                'dni.required' => 'The DNI field is required',
+                'role.required' => 'The role field is required',
+                'password.required' => 'The password field is required',
+                'telefono.required' => 'The phone field is required',
+                'email.required' => 'The email field is required',
             ]
         );
         // Guardar datos validados

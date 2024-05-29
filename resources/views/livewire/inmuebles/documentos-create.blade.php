@@ -2,14 +2,14 @@
 	    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <h5 class="card-header">
-        Documentos adjuntos al inmueble
+        Documents attached to the property
     </h5>
     <div class="card-body">
         @if($docs != null)
             @foreach (json_decode($docs->rutas, true) as $documentoIndex => $document)
             
-            <li class="mb-1"><a href="{{$document}}" class="btn btn-primary" target="blank_"> Ver documento "{{basename(urldecode($document))}}"</a> 
-            <button class="btn btn-danger" wire:click="deleteDocumento('{{ $document }}')">Eliminar</button>
+            <li class="mb-1"><a href="{{$document}}" class="btn btn-primary" target="blank_"> View document "{{basename(urldecode($document))}}"</a> 
+            <button class="btn btn-danger" wire:click="deleteDocumento('{{ $document }}')">Delete</button>
             </li>
 			{{-- <li class="mb-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$documentoIndex}}">
                 Enviar documento "{{basename(urldecode($document))}}"</button></li> --}}
@@ -40,20 +40,21 @@
         @endif
     </div>
     <h5 class="card-header">
-        Añadir documento
+        Add document
     </h5>
     <div class="card-body">
 
         <div class="input-group">
             <span class="input-group-btn">
                 <a id="documento" data-input="thumbnail" data-preview="holder" class="btn btn-secondary">
-                    <i class="fa fa-picture-o"></i> Seleccionar documento
+                    <i class="fa fa-picture-o"></i> Select document
                 </a>
             </span>
             <input id="thumbnail" name="documento" wire:model="documento" class="form-control" type="text">
         </div>
         @if (!empty($documento))
-            <button class="btn btn-primary mt-3" wire:click.prevent="addDocumento">Adjuntar documento</button>
+            <button class="btn btn-primary mt-3" wire:click.prevent="addDocumento">Attach document
+            </button>
         @endif
 
         <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>

@@ -7,18 +7,18 @@
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-primary btn-block"
-                                    wire:click="cambioTab('tab1')">Añadir</button>
+                                    wire:click="cambioTab('tab1')">Add</button>
                             </div>
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
-                                    wire:click="cambioTab('tab2')">Editar</button>
+                                    wire:click="cambioTab('tab2')">Edit</button>
                             </div>
                         </div>
                         <br>
                     <div class="row">
                         <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
-                                wire:click="cambioTab('tab3')">Buscar</button>
+                                wire:click="cambioTab('tab3')">Search</button>
                         </div>
 
                     </div>
@@ -33,18 +33,18 @@
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
-                                    wire:click="cambioTab('tab1')">Añadir</button>
+                                    wire:click="cambioTab('tab1')">Add</button>
                             </div>
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-primary btn-block"
-                                    wire:click="cambioTab('tab2')">Editar</button>
+                                    wire:click="cambioTab('tab2')">Edit</button>
                             </div>
                         </div>
                         <br>
                     <div class="row">
                         <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
-                                wire:click="cambioTab('tab3')">Buscar</button>
+                                wire:click="cambioTab('tab3')">Search</button>
                         </div>
 
                     </div>
@@ -59,18 +59,18 @@
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
-                                    wire:click="cambioTab('tab1')">Añadir</button>
+                                    wire:click="cambioTab('tab1')">Add</button>
                             </div>
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
-                                    wire:click="cambioTab('tab2')">Editar</button>
+                                    wire:click="cambioTab('tab2')">Edit</button>
                             </div>
                         </div>
                         <br>
                     <div class="row">
                         <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-primary btn-block"
-                                wire:click="cambioTab('tab3')">Buscar</button>
+                                wire:click="cambioTab('tab3')">Search</button>
                         </div>
 
                     </div>
@@ -85,18 +85,18 @@
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
-                                    wire:click="cambioTab('tab1')">Añadir</button>
+                                    wire:click="cambioTab('tab1')">Add</button>
                             </div>
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
-                                    wire:click="cambioTab('tab2')">Editar</button>
+                                    wire:click="cambioTab('tab2')">Edit</button>
                             </div>
                         </div>
                         <br>
                     <div class="row">
                         <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
-                                wire:click="cambioTab('tab3')">Buscar</button>
+                                wire:click="cambioTab('tab3')">Search</button>
                         </div>
 
                     </div>
@@ -111,18 +111,18 @@
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-primary btn-block"
-                                    wire:click="cambioTab('tab1')">Añadir</button>
+                                    wire:click="cambioTab('tab1')">Add</button>
                             </div>
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-secondary btn-block"
-                                    wire:click="cambioTab('tab2')">Editar</button>
+                                    wire:click="cambioTab('tab2')">Edit</button>
                             </div>
                         </div>
                         <br>
                     <div class="row">
                         <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
-                                wire:click="cambioTab('tab3')">Buscar</button>
+                                wire:click="cambioTab('tab3')">Search</button>
                         </div>
 
                     </div>
@@ -137,18 +137,18 @@
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
-                                    wire:click="cambioTab('tab1')">Añadir</button>
+                                    wire:click="cambioTab('tab1')">Add</button>
                             </div>
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-secondary btn-block"
-                                    wire:click="cambioTab('tab2')">Editar</button>
+                                    wire:click="cambioTab('tab2')">Edit</button>
                             </div>
                         </div>
                         <br>
                     <div class="row">
                         <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-primary btn-block"
-                                wire:click="cambioTab('tab3')">Buscar</button>
+                                wire:click="cambioTab('tab3')">Search</button>
                         </div>
 
                     </div>
@@ -163,18 +163,18 @@
                         <div class="row">
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-primary btn-block"
-                                    wire:click="cambioTab('tab1')">Añadir</button>
+                                    wire:click="cambioTab('tab1')">Add</button>
                             </div>
                             <div class="ms-auto col-6 d-grid gap-2">
                                 <button type="button" class="btn btn-outline-secondary btn-block"
-                                    wire:click="cambioTab('tab2')">Editar</button>
+                                    wire:click="cambioTab('tab2')">Edit</button>
                             </div>
                         </div>
                         <br>
                     <div class="row">
                         <div class="ms-auto col-6 d-grid gap-2">
                             <button type="button" class="btn btn-outline-primary btn-block"
-                                wire:click="cambioTab('tab3')">Buscar</button>
+                                wire:click="cambioTab('tab3')">Search</button>
                         </div>
 
                     </div>
@@ -182,8 +182,7 @@
                 </div>
                 <br>
                 <div class="ms-auto col d-grid gap-2">
-                    <a class="btn btn-primary btn-lg" href="{{ route('inmuebles.index') }}"> Volver a la sección de
-                        inmuebles </a>
+                    <a class="btn btn-primary btn-lg" href="{{ route('inmuebles.index') }}"> Return to properties section </a>
                 </div>
             @endif
         @endif
@@ -194,17 +193,17 @@
                     
                     <li class="nav-item">
                         <button class="nav-link active" wire:click.prevent="cambioTab('tab1')">
-                            <h3>Añadir</h3>
+                            <h3>Add</h3>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab2')">
-                            <h5>Editar</h5>
+                            <h5>Edit</h5>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab3')">
-                            <h5>Buscar</h5>
+                            <h5>Search</h5>
                         </button>
                     </li>
 
@@ -216,17 +215,17 @@
                     
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
-                            <h5>Añadir</h5>
+                            <h5>Add</h5>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link active" wire:click.prevent="cambioTab('tab2')">
-                            <h3>Editar</h3>
+                            <h3>Edit</h3>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab3')">
-                            <h5>Buscar</h5>
+                            <h5>Search</h5>
                         </button>
                     </li>
 
@@ -241,17 +240,17 @@
                     
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
-                            <h5>Añadir</h5>
+                            <h5>Add</h5>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab2')">
-                            <h5>Editar</h5>
+                            <h5>Edit</h5>
                         </button>
                     </li>
                     <li class="nav-item active">
                         <button class="nav-link active" wire:click.prevent="cambioTab('tab3')">
-                            <h3>Buscar</h3>
+                            <h3>Search</h3>
                         </button>
                     </li>
 
@@ -264,17 +263,17 @@
                     
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
-                            <h5>Añadir</h5>
+                            <h5>Add</h5>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab2')">
-                            <h5>Editar</h5>
+                            <h5>Edit</h5>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab3')">
-                            <h5>Buscar</h5>
+                            <h5>Search</h5>
                         </button>
                     </li>
 
@@ -289,17 +288,17 @@
                     
                     <li class="nav-item">
                         <button class="nav-link active" wire:click.prevent="cambioTab('tab1')">
-                            <h3>Añadir</h3>
+                            <h3>Add</h3>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab2')" disabled>
-                            <h5>Editar</h5>
+                            <h5>Edit</h5>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab3')">
-                            <h5>Buscar</h5>
+                            <h5>Search</h5>
                         </button>
                     </li>
 
@@ -312,17 +311,17 @@
                     
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
-                            <h5>Añadir</h5>
+                            <h5>Add</h5>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab2')" disabled>
-                            <h5>Editar</h5>
+                            <h5>Edit</h5>
                         </button>
                     </li>
                     <li class="nav-item active">
                         <button class="nav-link active" wire:click.prevent="cambioTab('tab3')">
-                            <h3>Buscar</h3>
+                            <h3>Search</h3>
                         </button>
                     </li>
 
@@ -334,25 +333,24 @@
                     
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab1')">
-                            <h5>Añadir</h5>
+                            <h5>Add</h5>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab2')" disabled>
-                            <h5>Editar</h5>
+                            <h5>Edit</h5>
                         </button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" wire:click.prevent="cambioTab('tab3')">
-                            <h5>Buscar</h5>
+                            <h5>Search</h5>
                         </button>
                     </li>
 
                 </ul>
                 <br>
                 <div class="ms-auto col d-grid gap-2">
-                    <a class="btn btn-primary btn-lg" href="{{ route('inmuebles.index') }}"> Volver a la sección de
-                        inmuebles </a>
+                    <a class="btn btn-primary btn-lg" href="{{ route('inmuebles.index') }}"> Return to properties section</a>
                 </div>
             @endif
         @endif

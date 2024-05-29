@@ -34,7 +34,8 @@
                 <div class="card">
                     <h5 class="card-header">{{ __('Inicia sesión') }}</h5>
                     <div class="card-body">
-                        <h6> Error: Habla con el administrador. </h6>
+                        <h6> 
+                            Error: Talk to the administrator. </h6>
                     </div>
                 </div>
             </div>

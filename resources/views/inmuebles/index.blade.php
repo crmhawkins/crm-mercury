@@ -20,9 +20,9 @@
     </style>
 @endsection
 @section('content')
-@section('encabezado', 'Inmuebles')
-@section('title', 'CRM MERCURY - Inmuebles')
-@section('subtitulo', 'Consulta y creación de inmuebles')
+@section('encabezado', 'Property')
+@section('title', 'CRM MERCURY - Property')
+@section('subtitulo', 'Query and creation of properties')
 
 @livewire('inmuebles.tabs-component', ['idinmueble'=>$idinmueble])
 @endsection

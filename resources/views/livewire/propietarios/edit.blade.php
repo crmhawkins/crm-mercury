@@ -3,24 +3,24 @@
         <input type="hidden" name="csrf-token" value="{{ csrf_token() }}">
         <div class="card mb-3">
             <h5 class="card-header">
-                Editar Propietario
+                Edit Owner
             </h5>
             <div class="card-body">
                 <div class="mb-3 row d-flex align-items-center">
-                    <label for="nombre" class="col-sm-2 col-form-label"> <strong>Nombre</strong> </label>
+                    <label for="nombre" class="col-sm-2 col-form-label"> <strong>Name</strong> </label>
                     <div class="col-sm-10">
                         <input type="text" wire:model="nombre" class="form-control" name="nombre"
-                            id="nombre" placeholder="Nombre del propietario">
+                            id="nombre" placeholder="Name">
                         @error('nombre')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-3 row d-flex align-items-center">
-                    <label for="apellidos" class="col-sm-2 col-form-label"> <strong>Apellidos</strong> </label>
+                    <label for="apellidos" class="col-sm-2 col-form-label"> <strong>Surnames</strong> </label>
                     <div class="col-sm-10">
                         <input type="text" wire:model="apellidos" class="form-control" name="apellidos"
-                            id="apellidos" placeholder="Apellidos del propietario">
+                            id="apellidos" placeholder="Surnames">
                         @error('apellidos')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -30,17 +30,17 @@
                     <label for="dni" class="col-sm-2 col-form-label"> <strong>DNI</strong> </label>
                     <div class="col-sm-10">
                         <input type="text" wire:model="dni" class="form-control" name="dni" id="dni"
-                            placeholder="Añade la identificación del propietario.">
+                            placeholder="DNI.">
                         @error('dni')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="mb-3 row d-flex align-items-center">
-                    <label for="dni" class="col-sm-2 col-form-label"> <strong>Teléfono</strong> </label>
+                    <label for="dni" class="col-sm-2 col-form-label"> <strong>Telephone</strong> </label>
                     <div class="col-sm-10">
                         <input type="text" wire:model="telefono" class="form-control" name="telefono" id="telefono"
-                            placeholder="Añade el teléfono del propietario.">
+                            placeholder="Telephone.">
                         @error('dni')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -50,7 +50,7 @@
                     <label for="correo" class="col-sm-2 col-form-label"> <strong>Email</strong> </label>
                     <div class="col-sm-10">
                         <input type="text" wire:model="correo" class="form-control" name="correo" id="correo"
-                            placeholder="Añade el Correo del propietario.">
+                            placeholder="Email.">
                         @error('dni')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -64,7 +64,7 @@
             <div class="col">
                 <div class="card mb-3">
                     <h5 class="card-header">
-                        Propiedades del propietario
+                        Owner properties
                     </h5>
                     <div class="card-body">
                         <div class="row justify-content-center">
@@ -85,13 +85,16 @@
                                             @if($inmueble->disponibilidad == 'Venta')
                                                 <small class="badge text-dark">{{ $inmueble->precio_venta }} €</small>
                                             @else
-                                                <small class="badge text-dark">{{ $inmueble->alquiler_mes }} €/mes</small>
-                                                <small class="badge text-dark">{{ $inmueble->alquiler_semana }} €/semana</small>
+                                                <small class="badge text-dark">{{ $inmueble->alquiler_mes }} €/month</small>
+                                                <small class="badge text-dark">{{ $inmueble->alquiler_semana }} €/week
+                                                </small>
                                             @endif
-                                            <a href="/admin/inmuebles?idinmueble={{ $inmueble->id }}" class="btn btn-primary" style="align-self: end">Ver</a>
+                                            <a href="/admin/inmuebles?idinmueble={{ $inmueble->id }}" class="btn btn-primary" style="align-self: end">View</a>
                                         </div>
                                         <div class="@if($inmueble->disponibilidad == "Venta") bg-warning @else bg-success @endif p-1 rounded text-light"  style="position:absolute; top:10px; right:10px;  ">
-                                            <small class="fw-bold">{{ $inmueble->disponibilidad }}</small>
+                                            <small class="fw-bold">@if($inmueble->disponibilidad == "Venta") For sale
+                                                @else For rent
+                                                @endif</small>
                                         </div>
                                         <div class="bg-dark p-1 rounded text-light"  style="position:absolute; top:10px; left:10px;">
                                             <small class="fw-bold">{{ $inmueble->localidad }}</small>
@@ -107,9 +110,9 @@
             </div>
         </div>
         <div class="mb-3 row d-flex align-items-center gap-2">
-            <button type="submit" wire:click="update()" class="btn btn-primary">Guardar</button>
+            <button type="submit" wire:click="update()" class="btn btn-primary">Save</button>
             
-            <button wire:click="destroy()" class="btn btn-danger">Eliminar</button>
+            <button wire:click="destroy()" class="btn btn-danger">Delete</button>
         </div>
     </form>
 </div>

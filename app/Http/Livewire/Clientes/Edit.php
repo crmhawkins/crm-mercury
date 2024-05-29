@@ -65,14 +65,16 @@ class Edit extends Component
        $date = new DateTime($fecha);
         
        // Array con los nombres de los meses en español
-       $meses = [
-           'January' => 'Enero', 'February' => 'Febrero', 'March' => 'Marzo', 'April' => 'Abril',
-           'May' => 'Mayo', 'June' => 'Junio', 'July' => 'Julio', 'August' => 'Agosto',
-           'September' => 'Septiembre', 'October' => 'Octubre', 'November' => 'Noviembre', 'December' => 'Diciembre'
-       ];
+    //    $meses = [
+    //        'January' => 'Enero', 'February' => 'Febrero', 'March' => 'Marzo', 'April' => 'Abril',
+    //        'May' => 'Mayo', 'June' => 'Junio', 'July' => 'Julio', 'August' => 'Agosto',
+    //        'September' => 'Septiembre', 'October' => 'Octubre', 'November' => 'Noviembre', 'December' => 'Diciembre'
+    //    ];
 
-       // Formatear la fecha en el formato deseado
-       $fecha_formateada = $date->format('d') . ' de ' . $meses[$date->format('F')] . ' de ' . $date->format('Y');
+    //    // Formatear la fecha en el formato deseado
+    //    $fecha_formateada = $date->format('d') . ' de ' . $meses[$date->format('F')] . ' de ' . $date->format('Y');
+    //fecha en ingles
+    $fecha_formateada = $date->format('F') .' ' . $date->format('d') . ', ' . $date->format('Y');
 
        return $fecha_formateada;
     }
@@ -96,16 +98,17 @@ class Edit extends Component
 ,
             ],
             // Mensajes de error
+            //en ingles
             [
-                'nombre.required' => 'El nombre es obligatorio.',
-                'apellido.required' => 'El apellido es obligatorio.',
-                'dni.required' => 'El DNI del cliente es obligatorio.',
-                'email.required' => 'El correo del cliente es obligatorio.',
-                'telefono.required' => 'El teléfono del cliente es obligatorio.',
-                'direccion.required' => 'La dirección del cliente es obligatoria.',
-                'busqueda.required' => 'La búsqueda del cliente es obligatoria.',
-                'busqueda.max' => 'La búsqueda no puede tener más de 255 caracteres.',
-                'busqueda.min' => 'La búsqueda no puede tener menos de 3 caracteres.',
+                'nombre.required' => 'The name field is required.',
+                'apellido.required' => 'The surname field is required.',
+                'dni.required' => 'The dni field is required.',
+                'telefono.required' => 'The telephone field is required.',
+                'email.required' => 'The email field is required.',
+                'direccion.required' => 'The address field is required.',
+                'busqueda.required' => 'The Search field is required.',
+                'busqueda.max' => 'The search field must be less than 255 characters.',
+                'busqueda.min' => 'The search field must be at least 3 characters.',
             ]
         );
         // Guardar datos validados

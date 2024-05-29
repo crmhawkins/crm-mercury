@@ -6,24 +6,24 @@
             <div class="col">
                 <div class="card mb-3" style="max-width: 40rem">
                     <h5 class="card-header">
-                        Datos del inmueble
+                        Property details
                     </h5>
                     <div class="card-body">
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="direccion" class="col-sm-3 col-form-label"> <strong>Dirección</strong></label>
+                            <label for="direccion" class="col-sm-3 col-form-label"> <strong>Address</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" wire:model="direccion" class="form-control" name="direccion"
-                                    id="direccion" placeholder="direccion">
+                                    id="direccion" placeholder="Address">
                                 @error('direccion')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="localidad" class="col-sm-3 col-form-label"> <strong>Localidad</strong></label>
+                            <label for="localidad" class="col-sm-3 col-form-label"> <strong>Location</strong></label>
                             <div class="col-sm-12">
                                 <textarea wire:model="localidad" rows=3 class="form-control" name="localidad" id="localidad"
-                                    placeholder="Localidad"></textarea>
+                                    placeholder="Location"></textarea>
                                 @error('localidad')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -31,23 +31,23 @@
                         </div>
                         
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="cod_postal" class="col-sm-3 col-form-label"> <strong>Código
-                                    postal</strong></label>
+                            <label for="cod_postal" class="col-sm-3 col-form-label"> <strong>Postal Code
+                            </strong></label>
                             <div class="col-sm-12">
                                 <input type="number" wire:model="cod_postal" class="form-control" name="cod_postal"
-                                    id="cod_postal" placeholder="Código postal del inmueble">
+                                    id="cod_postal" placeholder="Postal Code">
                                 @error('ubicacion')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="estado" class="col-sm-3 col-form-label"> <strong>Estado</strong></label>
+                            <label for="estado" class="col-sm-3 col-form-label"> <strong>Status</strong></label>
                             <div class="col-sm-12">
                                 <select wire:model="estado" class="form-control" name="estado" id="estado">
-                                    <option value="Disponible" selected>Disponible</option>
-                                    <option value="Alquilado">Alquilado</option>
-                                    <option value="Vendido">Vendido</option>
+                                    <option value="Disponible" selected>Available</option>
+                                    <option value="Alquilado">Rented</option>
+                                    <option value="Vendido">Sold</option>
                                 </select>
                                 @error('estado')
                                     <span class="text-danger">{{ $message }}</span>
@@ -60,7 +60,7 @@
             <div class="col">
                 <div class="card mb-3" style="max-width: 40rem">
                     <h5 class="card-header">
-                        Datos monetarios
+                        Monetary data
                     </h5>
                     <div class="card-body">
                         
@@ -76,10 +76,10 @@
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="coste_basura" class="col-sm-3 col-form-label"> <strong>Coste Basura</strong></label>
+                            <label for="coste_basura" class="col-sm-3 col-form-label"> <strong>Garbage Cost</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" wire:model="coste_basura" class="form-control" name="coste_basura"
-                                    id="coste_basura" placeholder="IBI del inmueble">
+                                    id="coste_basura" placeholder="Garbage Cost">
                                 @error('coste_basura')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -87,20 +87,20 @@
                         </div>
 
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="precio" class="col-sm-3 col-form-label"> <strong>Precio</strong></label>
+                            <label for="precio" class="col-sm-3 col-form-label"> <strong>Price</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" wire:model="precio_venta" class="form-control" name="precio"
-                                    id="precio" placeholder="Precio del inmueble">
+                                    id="precio" placeholder="Price">
                                 @error('precio_venta')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="precio" class="col-sm-4 col-form-label"> <strong>Precio alquiler semana</strong></label>
+                            <label for="precio" class="col-sm-4 col-form-label"> <strong>Weekly rental price</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" wire:model="alquiler_semana" class="form-control" name="precio"
-                                    id="alquiler_semana" placeholder="Alquiler a la semana">
+                                    id="alquiler_semana" placeholder="Weekly rental price">
                                 @error('alquiler_semana')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -108,10 +108,10 @@
                         </div>
 
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="precio" class="col-sm-4 col-form-label"> <strong>Precio alquiler mes</strong></label>
+                            <label for="precio" class="col-sm-4 col-form-label"> <strong>Monthly rental price</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" wire:model="alquiler_mes" class="form-control" name="precio"
-                                    id="alquiler_mes" placeholder="Alquiler al mes">
+                                    id="alquiler_mes" placeholder="Monthly rental price">
                                 @error('alquiler_mes')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -128,7 +128,7 @@
             <div class="col">
                 <div class="card mb-3" style="max-width: 40rem">
                     <h5 class="card-header">
-                        Características del inmueble
+                        Property characteristics
                     </h5>
                     <div class="card-body">
                         <div class="mb-3 row d-flex align-items-center">
@@ -136,18 +136,18 @@
                                 <strong>M<sup>2</sup></strong></label>
                             <div class="col">
                                 <input type="text" wire:model="m2" class="form-control" name="m2" id="m2"
-                                    placeholder="m2 del inmueble">
+                                    placeholder="m2">
                                 @error('m2')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <label for="m2_construidos" class="col-sm-3 col-form-label"
-                                style="margin-right: -30px;"><strong>M<sup>2</sup> construidos
+                                style="margin-right: -30px;"><strong>M<sup>2</sup> built
                                 </strong></label>
                             <div class="col">
                                 <input type="text" wire:model="m2_construidos" class="form-control"
                                     name="m2_construidos" id="m2_construidos"
-                                    placeholder="m2 construidos">
+                                    placeholder="m2 built">
                                 @error('m2_construidos')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -155,41 +155,41 @@
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
                             <label for="habitaciones" class="col-sm-3 col-form-label">
-                                <strong>Habitaciones</strong></label>
+                                <strong>Rooms</strong></label>
                             <div class="col-sm-12">
                                 <input type="number" wire:model="habitaciones" class="form-control"
-                                    name="habitaciones" id="habitaciones" placeholder="Habitaciones del inmueble">
+                                    name="habitaciones" id="habitaciones" placeholder="Rooms">
                                 @error('habitaciones')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="dormitorios" class="col-sm-3 col-form-label"> <strong>Dormitorios</strong></label>
+                            <label for="dormitorios" class="col-sm-3 col-form-label"> <strong>Bedrooms</strong></label>
                             <div class="col-sm-12">
                                 <input type="number" wire:model="dormitorios" class="form-control" name="dormitorios"
-                                    id="dormitorios" placeholder="Dormitorios del inmueble">
+                                    id="dormitorios" placeholder="Bedrooms">
                                 @error('dormitorios')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="banos" class="col-sm-3 col-form-label"> <strong>Baños</strong></label>
+                            <label for="banos" class="col-sm-3 col-form-label"> <strong>Bathrooms</strong></label>
                             <div class="col-sm-12">
                                 <input type="number" wire:model="banos" class="form-control" name="banos"
-                                    id="banos" placeholder="Baños del inmueble">
+                                    id="banos" placeholder="Bathrooms">
                                 @error('banos')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="garaje" class="col-sm-3 col-form-label"> <strong>Garaje</strong></label>
+                            <label for="garaje" class="col-sm-3 col-form-label"> <strong>Garage</strong></label>
                             <div class="col-sm-12">
                                 <select wire:model="garaje" class="form-control" name="garaje" id="garaje">
                                     <option value="0">No</option>
-                                    <option value="1">Sí</option>
+                                    <option value="1">Yes</option>
                                 </select>
                                 @error('garaje')
                                     <span class="text-danger">{{ $message }}</span>
@@ -197,11 +197,11 @@
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="piscina" class="col-sm-3 col-form-label"> <strong>Piscina</strong></label>
+                            <label for="piscina" class="col-sm-3 col-form-label"> <strong>Pool</strong></label>
                             <div class="col-sm-12">
                                 <select wire:model="piscina" class="form-control" name="piscina" id="piscina">
                                     <option value="0">No</option>
-                                    <option value="1">Sí</option>
+                                    <option value="1">Yes</option>
                                 </select>
                                 @error('piscina')
                                     <span class="text-danger">{{ $message }}</span>
@@ -212,7 +212,7 @@
                         
                         <div class="mb-3 row d-flex align-items-center">
                             <label for="disponibilidad" class="col-sm-3 col-form-label">
-                                <strong>Disponibilidad</strong></label>
+                                <strong>Availability</strong></label>
                             <div x-data="" x-init="$('#select2-disponibilidad-create').select2();
                             $('#select2-disponibilidad-create').on('change', function(e) {
                                 var data = $('#select2-disponibilidad-create').select2('val');
@@ -221,9 +221,9 @@
                             });">
                                 <div class="col" wire:ignore>
                                     <select class="form-control" id="select2-disponibilidad-create">
-                                        <option value="">-- Disponibilidad del inmueble --</option>
-                                        <option value="Alquiler">Inmueble en alquiler</option>
-                                        <option value="Venta">Inmueble en venta</option>
+                                        <option value="">-- Property availability --</option>
+                                        <option value="Alquiler">Property for rent</option>
+                                        <option value="Venta">Property for sale</option>
                                     </select>
                                 </div>
                             </div>
@@ -234,12 +234,12 @@
             <div class="col">
                 <div class="card mb-3" style="max-width: 40rem;">
                     <h5 class="card-header">
-                        Propietario
+                        Owner
                     </h5>
                     <div class="card-body">
                         <div class="mb-3 row d-flex align-items-center">
                             <label for="propietario" class="col-sm-3 col-form-label">
-                                <strong>Propietario:</strong></label>
+                                <strong>Owner:</strong></label>
                             <div x-data="" x-init="$('#select2-vendedor-create').select2();
                             $('#select2-vendedor-create').on('change', function(e) {
                                 var data = $('#select2-vendedor-create').select2('val');
@@ -248,7 +248,7 @@
                             });">
                                 <div class="col" wire:ignore>
                                     <select class="form-control" id="select2-vendedor-create">
-                                        <option value="">-- Elige un propietario --</option>
+                                        <option value="">-- Choose an owner --</option>
                                         @foreach ($propietarios as $propietario)
                                             <option value={{ $propietario->id }}>
                                                 {{ $propietario->nombre }} - {{ $propietario->dni }}
@@ -259,20 +259,20 @@
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="nombre" class="col-sm-3 col-form-label"> <strong>Nombre</strong></label>
+                            <label for="nombre" class="col-sm-3 col-form-label"> <strong>Name</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" disabled wire:model="propietario_nombre" class="form-control"
-                                    name="propietario_nombre" id="propietario_nombre" placeholder="Nombre">
+                                    name="propietario_nombre" id="propietario_nombre" placeholder="Name">
                                 @error('propietario_nombre')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="propietario_apellidos" class="col-sm-3 col-form-label"> <strong>Apellidos</strong></label>
+                            <label for="propietario_apellidos" class="col-sm-3 col-form-label"> <strong>Surnames</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" disabled wire:model="propietario_apellidos" class="form-control"
-                                    name="propietario_apellidos" id="propietario_apellidos" placeholder="Apellidos">
+                                    name="propietario_apellidos" id="propietario_apellidos" placeholder="Surnames">
                                 @error('propietario_apellidos')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -290,10 +290,10 @@
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
                             <label for="propietario_telefono" class="col-sm-3 col-form-label">
-                                <strong>Teléfono</strong></label>
+                                <strong>Telephone</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" disabled wire:model="propietario_telefono" class="form-control"
-                                    name="propietario_telefono" id="propietario_telefono" placeholder="Teléfono">
+                                    name="propietario_telefono" id="propietario_telefono" placeholder="Telephone">
                                 @error('propietario_telefono')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -301,10 +301,10 @@
                         </div>
                         
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="propietario_correo" class="col-sm-3 col-form-label"> <strong>Correo</strong></label>
+                            <label for="propietario_correo" class="col-sm-3 col-form-label"> <strong>Email</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" disabled wire:model="propietario_correo" class="form-control"
-                                    name="propietario_correo" id="propietario_correo" placeholder="Correo">
+                                    name="propietario_correo" id="propietario_correo" placeholder="Email">
                                 @error('propietario_correo')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -320,7 +320,7 @@
             <div class="col">
                 <div class="card mb-3" style="max-width: 40rem">
                     <h5 class="card-header">
-                        Añadir imagen a galería
+                        Add image to gallery
                     </h5>
                     <div class="card-body text-center">
                         @if (!empty($ruta_imagenes))
@@ -331,7 +331,7 @@
                             <span class="input-group-btn">
                                 <a id="lfm" data-input="thumbnail" data-preview="holder"
                                     class="btn btn-primary">
-                                    <i class="fa fa-picture-o"></i> Seleccionar imagen
+                                    <i class="fa fa-picture-o"></i> Select image
                                 </a>
                             </span>
                             <input id="thumbnail" name="ruta_imagenes" wire:model="ruta_imagenes"
@@ -339,8 +339,7 @@
                         </div>
                         <img id="holder" style="margin-top:15px;max-height:100px;margin-bottom:5px;">
                         @if (!empty($ruta_imagenes))
-                            <button class="btn btn-primary w-100 mt-3" wire:click.prevent="addGaleria">Añadir a
-                                galería</button>
+                            <button class="btn btn-primary w-100 mt-3" wire:click.prevent="addGaleria">Add to gallery</button>
                         @endif
                     </div>
                 </div>
@@ -348,7 +347,7 @@
             <div class="col">
                 <div class="card mb-3" style="max-width: 20rem">
                     <h5 class="card-header">
-                        Galería
+                        Gallery
                     </h5>
                     <div class="card-body">
                         <div class="row">
@@ -390,7 +389,7 @@
             });
         </script>
         <div class="mb-5 row d-flex align-items-center">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
 </div>

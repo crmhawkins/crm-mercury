@@ -19,9 +19,9 @@
 @endsection
 
 @section('content')
-@section('encabezado', 'Usuarios')
-@section('title', 'CRM MERCURY - Usuarios')
-@section('subtitulo', 'Consulta y creación de usuarios')
+@section('encabezado', 'Users')
+@section('title', 'CRM MERCURY - Users')
+@section('subtitulo', 'Query and creation of users')
 
 @livewire('vendedores.tabs-component')
 @endsection

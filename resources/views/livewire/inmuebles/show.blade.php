@@ -30,54 +30,54 @@
             <div class="col-6">
                 <div class="card mb-3">
                     <h5 class="card-header">
-                        Datos del inmueble
+                        Property details
                     </h5>
                     <div class="card-body">
                         <div id="datos-inmueble" class="row ">
                             <div class="col-5 border rounded p-2">
-                                <h6 class="fw-bold">Datos inmueble</h6>
+                                <h6 class="fw-bold">Property details</h6>
                                 <ul>
-                                    <li><b>Dirección:</b> {{ $direccion }}</li>
-                                    <li><b>Localidad:</b> {{ $localidad }}</li>
-                                    <li><b>Cod Postal:</b> {{ $cod_postal }}</li>
-                                    <li><b>Disponibilidad:</b> {{ $disponibilidad }}</li>
+                                    <li><b>Address:</b> {{ $direccion }}</li>
+                                    <li><b>Location:</b> {{ $localidad }}</li>
+                                    <li><b>Postal code:</b> {{ $cod_postal }}</li>
+                                    <li><b>Availability:</b> {{ $disponibilidad }}</li>
 
 
                                 </ul>
                             </div>
                             <div class="col-5 border rounded p-2">
-                                <h6 class="fw-bold">Datos monetarios</h6>
+                                <h6 class="fw-bold">Monetary data</h6>
                                 <ul>
                                     <li><b>Ibi:</b> {{ $ibi }} €</li>
-                                    <li><b>Coste Basura:</b> {{ $coste_basura }} €</li>
-                                    <li><b>Precio:</b> {{ $precio_venta }} €</li>
-                                    <li><b>Alquiler Mensual:</b> {{ $alquiler_mes }} €</li>
-                                    <li><b>Alquiler Semanal:</b> {{ $alquiler_semana }} €</li>
+                                    <li><b>Garbage Cost:</b> {{ $coste_basura }} €</li>
+                                    <li><b>Price:</b> {{ $precio_venta }} €</li>
+                                    <li><b>Monthly rent:</b> {{ $alquiler_mes }} €</li>
+                                    <li><b>Weekly Rental:</b> {{ $alquiler_semana }} €</li>
                                 </ul>
                                
                             </div>
                             <div class="col-5 border rounded p-2">
-                                <h6 class="fw-bold">Características de inmueble</h6>
+                                <h6 class="fw-bold">Property characteristics</h6>
                                 <ul>
-                                    <li><b>Superficie:</b> {{ $m2 }} m<sup>2</sup></li>
-                                    <li><b>Superficie construida:</b> {{ $m2_construidos }} m<sup>2</sup></li>
-                                    <li><b>Habitaciones:</b> {{ $habitaciones }}</li>
-                                    <li><b>Dormitorios:</b> {{ $dormitorios }}</li>
-                                    <li><b>Baños:</b> {{ $banos }}</li>
+                                    <li><b>Area:</b> {{ $m2 }} m<sup>2</sup></li>
+                                    <li><b>Builded area:</b> {{ $m2_construidos }} m<sup>2</sup></li>
+                                    <li><b>Rooms:</b> {{ $habitaciones }}</li>
+                                    <li><b>Bedrooms:</b> {{ $dormitorios }}</li>
+                                    <li><b>Bathrooms:</b> {{ $banos }}</li>
                                     
-                                    <li><b>Garaje:</b>@if($garaje === 0) No @else Sí @endif</li>
-                                    <li><b>Piscina:</b>@if($piscina === 0) No @else Sí @endif</li>
+                                    <li><b>Garage:</b>@if($garaje === 0) No @else Sí @endif</li>
+                                    <li><b>Pool:</b>@if($piscina === 0) No @else Sí @endif</li>
                                 </ul>
                             </div>
                             <div class="col-5 border rounded p-2">
-                                <h6 class="fw-bold underline">Propietario</h6>
+                                <h6 class="fw-bold underline">Owner</h6>
                                 <ul>
                                     @if($propietario_id === null)
-                                        <p>No hay propietario asignado</p>
+                                        <p>No owner assigned</p>
                                     @else
-                                        <li><b>Nombre:</b> {{ $propietario_nombre }} {{ $propietario_apellidos }}</li>
+                                        <li><b>Name:</b> {{ $propietario_nombre }} {{ $propietario_apellidos }}</li>
                                         <li><b>DNI:</b> {{ $propietario_dni }}</li>
-                                        <li><b>Teléfono:</b> {{ $propietario_telefono }}</li>
+                                        <li><b>Telephone:</b> {{ $propietario_telefono }}</li>
                                         <li><b>Email:</b> {{ $propietario_correo }}</li>
                                     @endif
                                 </ul>
@@ -99,20 +99,19 @@
             <div class="col-6">
                 <div class="card mb-3">
                     <h5 class="card-header">
-                        Hojas de visita
+                        Visiting sheets
+
                     </h5>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
                                     data-bs-target="#home" type="button" role="tab" aria-controls="home"
-                                    aria-selected="true">Crear
-                                    nueva hoja de visita</button>
+                                    aria-selected="true">Add new visit sheet</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                                    type="button" role="tab" aria-controls="profile" aria-selected="true">Ver
-                                    hojas ya creadas</button>
+                                    type="button" role="tab" aria-controls="profile" aria-selected="true">View already created sheets</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent" style="width: 100%;">
@@ -159,7 +158,7 @@
             <div class="col-6">
                 <div class="card mb-3">
                     <h5 class="card-header">
-                        Galería
+                        Gallery
                     </h5>
                     <div class="card-body">
                         <div class="row">
@@ -217,7 +216,7 @@
             <div class="col-6">
                 <div class="card mb-3">
                     <h5 class="card-header">
-                        Documentos
+                        Documents
                     </h5>
                     <div class="card-body">
                         @livewire('inmuebles.documentos-create', ['inmueble_id' => $identificador], key(time() . $identificador))

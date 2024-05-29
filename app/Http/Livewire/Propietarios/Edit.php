@@ -53,12 +53,13 @@ class Edit extends Component
 
             ],
             // Mensajes de error
+           //en ingles
             [
-                'nombre.required' => 'El nombre es obligatorio.',
-                'apellidos.required' => 'El nombre es obligatorio.',
-                'dni.required' => 'El nombre es obligatorio.',
-
-
+                'nombre.required' => 'The name field is required',
+                'apellidos.required' => 'The last name field is required',
+                'dni.required' => 'The DNI field is required',
+                'telefono.required' => 'The phone field is required',
+                'correo.required' => 'The email field is required',
             ]
         );
         // Guardar datos validados

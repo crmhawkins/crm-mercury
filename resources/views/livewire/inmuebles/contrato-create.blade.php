@@ -1,6 +1,6 @@
 <div>
     <h5 class="card-header">
-        Administrar contrato ya subido
+        Manage contract already uploaded
     </h5>
 
     <div class="card-body">
