@@ -58,6 +58,8 @@ Route::group(['middleware' => 'is.admin', 'prefix' => 'admin'], function () {
     Route::get('agenda', [AgendaController::class, 'index'])->name('agenda.index');
     Route::get('usuarios', [VendedoresController::class, 'index'])->name('vendedores.index');
     Route::get('propietarios', [PropietariosController::class, 'index'])->name('propietarios.index');
+    Route::get('inmuebles/windowcard/{id}', [InmueblesController::class, 'pdf'])->name('inmuebles.generar');
+    Route::get('inmuebles/windowcard/{id}/{withLogo}', [InmueblesController::class, 'pdf'])->name('inmuebles.generar2');
 
     Route::get('caracteristicas', [CaracteristicasController::class, 'index'])->name('caracteristicas.index');
     

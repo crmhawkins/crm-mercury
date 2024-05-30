@@ -10,6 +10,8 @@ use App\Models\Inmuebles;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Models\Clientes;
 use App\Models\Propietarios;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 class Show extends Component
 {
     use LivewireAlert;
@@ -210,6 +212,11 @@ class Show extends Component
                 'toast' => false,
             ]);
         }
+    }
+
+    public function createWindowCard(){
+
+
     }
 
     public function destroy()

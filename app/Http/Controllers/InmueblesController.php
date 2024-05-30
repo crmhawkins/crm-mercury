@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Inmuebles;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class InmueblesController extends Controller
 {
@@ -21,6 +22,43 @@ class InmueblesController extends Controller
 
         return view('inmuebles.index' , ['idinmueble' => $idinmueble] );
     }
+
+    public function pdf(Request $request)
+{
+    // Obtener el ID del inmueble del request
+    $idinmueble = $request->id;
+    $withLogo = $request->withLogo;
+    //dd($idinmueble, $withLogo);
+
+    // Obtener los datos del inmueble
+    $inmueble = Inmuebles::where('id', $idinmueble)->first();
+    if(!$inmueble){
+        // Retornar 404 si no se encuentra el inmueble
+        return response()->json(['message' => 'No se encontró el inmueble'], 404);
+    }
+
+    // Decodificar la galería JSON a un array
+    $galeria = json_decode($inmueble->galeria, true);
+
+    // Modificar las rutas de las imágenes para quitarles la URL base
+    foreach($galeria as $key => $foto){
+        $galeria[$key] = str_replace('http://localhost:8000/', '', $foto);
+    }
+    $logo = public_path('img/logo.png');
+    $datos = [
+        'inmueble' => $inmueble,
+        'galeria' => $galeria,
+        'logo' => $withLogo != null ? $logo : null
+    ];
+
+    // Generar el PDF con los datos del inmueble
+    $pdf = app('dompdf.wrapper');
+    $pdf->getDomPDF()->set_option("enable_php", true);
+
+    $pdf = Pdf::loadView('inmuebles.generar', $datos)->setPaper('a4', 'vertical');
+    $pdf->render();
+    return $pdf->stream('inmueble.pdf');
+}
 
 
     public function apiInmueble(Request $request)

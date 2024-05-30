@@ -30,6 +30,8 @@ class TabsComponent extends Component
         
     }
 
+    
+
     public function render()
     {
         return view('livewire.inmuebles.tabs-component');

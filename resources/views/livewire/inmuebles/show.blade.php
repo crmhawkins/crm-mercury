@@ -222,6 +222,15 @@
                         @livewire('inmuebles.documentos-create', ['inmueble_id' => $identificador], key(time() . $identificador))
                     </div>
                 </div>
+                <div class="card mb-3">
+                    <h5 class="card-header">
+                        Create Window Card
+                    </h5>
+                    <div class="card-body">
+                        <a target="blank_" href="{{ route('inmuebles.generar', ['id' => $identificador]) }}" class="btn btn-primary">Generate</a>
+                        <a target="blank_" href="{{ route('inmuebles.generar2', ['id' => $identificador, 'withLogo' => 1]) }}" class="btn btn-primary">Generate with logo</a>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
