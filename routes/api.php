@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Rutas para tus datos
+Route::middleware('api')->group(function () {
+    Route::get('/datos', [DataController::class, 'index']);
+    Route::get('/datos/{id}', [DataController::class, 'show']);
+});

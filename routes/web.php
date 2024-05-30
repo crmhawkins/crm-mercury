@@ -60,7 +60,14 @@ Route::group(['middleware' => 'is.admin', 'prefix' => 'admin'], function () {
     Route::get('propietarios', [PropietariosController::class, 'index'])->name('propietarios.index');
 
     Route::get('caracteristicas', [CaracteristicasController::class, 'index'])->name('caracteristicas.index');
+    
 });
+
+//apiInmueles para que devuelva un json con todos los inmuebles pero que venga con un parametro y dependiendo del parametro, se hace una query diferente
+
+Route::get('api/inmuebles', [InmueblesController::class, 'apiInmueble'])->name('api.inmuebles');
+
+
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

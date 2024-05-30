@@ -72,14 +72,14 @@ class ContratoCreate extends Component
     
     $texto = 'Buenas, ' . $cliente->nombre_completo .'. Te enviamos el contrato de arras perteneciente al inmueble  ' . $inmueble->titulo;
 
-Mail::raw($texto, function ($message) use ($cliente, $nombre_inmobiliaria, $inmueble, $documento) {
-	$archivo = json_decode($documento, true);
-    $message->from('admin@grupocerban.com', $nombre_inmobiliaria);
-    $message->to($cliente->email, $cliente->nombre_completo);
-	$message->to(env('MAIL_USERNAME'));
-    $message->subject($nombre_inmobiliaria . " - Contrato de arrás del inmueble " . $inmueble->titulo);
-	$message->attach($archivo['ruta']);
+// Mail::raw($texto, function ($message) use ($cliente, $nombre_inmobiliaria, $inmueble, $documento) {
+// 	$archivo = json_decode($documento, true);
+//     $message->from('admin@grupocerban.com', $nombre_inmobiliaria);
+//     $message->to($cliente->email, $cliente->nombre_completo);
+// 	$message->to(env('MAIL_USERNAME'));
+//     $message->subject($nombre_inmobiliaria . " - Contrato de arrás del inmueble " . $inmueble->titulo);
+// 	$message->attach($archivo['ruta']);
 
-});
+// });
 }
 }
