@@ -12,7 +12,7 @@ use App\Models\Caracteristicas;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 
 // use App\Http\Middleware\IsAdmin;
 
@@ -28,6 +28,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//apiInmueles para que devuelva un json con todos los inmuebles pero que venga con un parametro y dependiendo del parametro, se hace una query diferente
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('api/inmuebles', [InmueblesController::class, 'apiInmueble'])->name('api.inmuebles');
+});
+Route::post('/login-api', [InmueblesController::class, 'loginUser']);
+
 Route::get('/', function () {
    if(Auth::user()){
         if (Auth::user()->role == 'admin') {
@@ -40,6 +46,7 @@ Route::get('/', function () {
    }
    
 })->name('/');
+
 
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('seleccion');
 
@@ -65,9 +72,8 @@ Route::group(['middleware' => 'is.admin', 'prefix' => 'admin'], function () {
     
 });
 
-//apiInmueles para que devuelva un json con todos los inmuebles pero que venga con un parametro y dependiendo del parametro, se hace una query diferente
 
-Route::get('api/inmuebles', [InmueblesController::class, 'apiInmueble'])->name('api.inmuebles');
+
 
 
 

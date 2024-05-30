@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Inmuebles;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class InmueblesController extends Controller
 {
@@ -65,6 +68,10 @@ class InmueblesController extends Controller
 
     public function apiInmueble(Request $request)
     {
+        // Verificar si el usuario está autenticado
+    if (!auth()->check()) {
+        return response()->json(['message' => 'No autenticado'], 401);
+    }
         // Crear la query de Inmueble con Eloquent para hacer filtros de búsqueda
         $query = Inmuebles::query();
     
@@ -104,8 +111,35 @@ class InmueblesController extends Controller
         // Si se encuentran inmuebles, devolver un json con los inmuebles
         return response()->json($inmuebles, 200);
     }
+    private $loginValidationRules = [
+        'email' => 'required|email',
+        'password' => 'required'
+    ];
     
+    public function loginUser(Request $request)
+    {
+      
+        $validateUser = Validator::make($request->all(), $this->loginValidationRules);
+        if($validateUser->fails()){
+            return response()->json([
+                'message' => 'Error de validación',
+                'errors' => $validateUser->errors()
+            ], 401);
+        }
+        if(!Auth::attempt($request->only(['email', 'password']))){
+            return response()->json([
+                'message' => 'El email y el password no corresponden con alguno de los usuarios',
+            ], 401);
+        }
+        $user = User::where('email', $request->email)->first();
 
+        return response()->json([
+            'message' => 'Login correcto',
+            'token' => $user->createToken("API ACCESS TOKEN")->plainTextToken
+        ], 200);
+        // Si la autenticación es exitosa, devolver un json con el token de autenticación
+        return response()->json(['token' => auth()->user()->createToken('authToken')->plainTextToken], 200);
+    }
  
 
 
