@@ -41,8 +41,10 @@ class InmueblesController extends Controller
     $galeria = json_decode($inmueble->galeria, true);
 
     // Modificar las rutas de las imágenes para quitarles la URL base
+    //la url base es la url que vienedel .env
+    $urlBase = env('APP_URL');
     foreach($galeria as $key => $foto){
-        $galeria[$key] = str_replace('http://localhost:8000/', '', $foto);
+        $galeria[$key] = str_replace($urlBase, '', $foto);
     }
     $logo = public_path('img/logo.png');
     $datos = [
