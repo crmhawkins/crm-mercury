@@ -115,7 +115,7 @@
         <tr>
             <th>Full name</th>
             {{ var_dump($datos) }} 
-            <td>{{ $datos['cliente']['nombre'] }} {{ $datos['cliente']['apellido'] }}</td>
+            <td>{{ $datos['cliente']['nombre'] }} {{ $datos['cliente']['apellidos'] }}</td>
         </tr>
         <tr>
             <th>DNI</th>
