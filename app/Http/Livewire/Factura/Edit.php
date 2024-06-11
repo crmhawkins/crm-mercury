@@ -69,7 +69,7 @@ class Edit extends Component
 
         // Alertas de guardado exitoso
         if ($facturaSave) {
-            $this->alert('success', '¡Factura actualizada correctamente!', [
+            $this->alert('success', 'Invoice updated correctly!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -79,7 +79,8 @@ class Edit extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', '¡No se ha podido guardar la información del factura!', [
+            $this->alert('error', '
+The invoice information could not be saved!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -91,7 +92,7 @@ class Edit extends Component
         // $product = Productos::find($this->identificador);
         // $product->delete();
 
-        $this->alert('warning', '¿Seguro que desea borrar el factura? No hay vuelta atrás', [
+        $this->alert('warning', 'Are you sure you want to delete the invoice? There is no way back', [
             'position' => 'center',
             'timer' => 3000,
             'toast' => false,

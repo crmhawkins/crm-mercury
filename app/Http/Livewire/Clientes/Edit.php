@@ -144,7 +144,7 @@ class Edit extends Component
 
         // Alertas de guardado exitoso
         if ($clientesSave) {
-            $this->alert('success', '¡Cliente actualizado correctamente!', [
+            $this->alert('success', 'Successfully updated client!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -154,7 +154,7 @@ class Edit extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', '¡No se ha podido guardar la información del cliente!', [
+            $this->alert('error', 'Could not save customer information!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -167,13 +167,13 @@ class Edit extends Component
         // $product = Productos::find($this->identificador);
         // $product->delete();
 
-        $this->alert('warning', '¿Seguro que desea borrar el cliente? No hay vuelta atrás', [
+        $this->alert('warning', 'Are you sure you want to delete the client? There is no way back', [
             'position' => 'center',
             'timer' => 3000,
             'toast' => false,
             'showConfirmButton' => true,
             'onConfirmed' => 'confirmDelete',
-            'confirmButtonText' => 'Sí',
+            'confirmButtonText' => 'Yes',
             'showDenyButton' => true,
             'denyButtonText' => 'No',
             'timerProgressBar' => true,

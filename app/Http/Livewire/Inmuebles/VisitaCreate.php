@@ -44,7 +44,7 @@ class VisitaCreate extends Component
 
     public function saveSignature()
     {
-        $this->alert('success', "Firmado con exito");
+        $this->alert('success', "Successfully signed");
 
         $encoded_image = explode(",", $this->signature)[1];
         $decoded_image = base64_decode($encoded_image);
@@ -65,7 +65,7 @@ class VisitaCreate extends Component
     public function submit()
     {
         if($this->cliente_id == null || $this->cliente_id == 0 || $this->cliente_id == ""){
-            $this->alert('error', '¡Selecciona un cliente!', [
+            $this->alert('error', 'Select a client!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -95,7 +95,7 @@ class VisitaCreate extends Component
                 'm2_construidos' => $inmueblePDF->m2_construidos,
                 'habitaciones' => $inmueblePDF->habitaciones,
                 'banos' => $inmueblePDF->banos,
-                'propietario_id' => $propietario ? $propietario->nombre : 'No asignado',
+                'propietario_id' => $propietario ? $propietario->nombre : 'Not assigned',
                 'direccion' => $inmueblePDF->direccion,
                 'localidad' => $inmueblePDF->localidad,
                 'cod_postal' => $inmueblePDF->cod_postal,
@@ -125,8 +125,8 @@ class VisitaCreate extends Component
 		$rutaMail = $this->ruta;
 
         $eventoSave = Evento::create([
-            'titulo' => 'Cita con ' .  $clientePDF->nombre . ' ' . $clientePDF->apellidos,
-            'descripcion' => 'Cliente citado :' . $clientePDF->nombre . ' ' . $clientePDF->apellidos . "<br>" . 'Inmueble en relación a la cita: ' . $inmueblePDF->direccion,
+            'titulo' => 'Date with ' .  $clientePDF->nombre . ' ' . $clientePDF->apellidos,
+            'descripcion' => 'Cited client :' . $clientePDF->nombre . ' ' . $clientePDF->apellido . "<br>" . 'Property in relation to the appointment: ' . $inmueblePDF->direccion,
             'fecha_inicio' => $this->fecha,
             'fecha_fin' => $this->fecha,
             'tipo_tarea' => 'opcion_1',
@@ -136,7 +136,7 @@ class VisitaCreate extends Component
         ]);
 		
 		
-		$texto = 'Buenas, ' . $clientePDF->nombre . ' ' . $clientePDF->apellidos . ". Se le adjunta la hoja de visita del inmueble que ha firmado."; 
+		$texto = 'Hi, ' . $clientePDF->nombre . ' ' . $clientePDF->apellidos . ". Attached is the property visit sheet that you have signed."; 
 		
 	// Mail::raw($texto, function ($message) use ($clientePDF, $inmueblePDF, $rutaMail) {
     // $message->from('admin@admin.com', 'Mercury');
@@ -171,7 +171,7 @@ class VisitaCreate extends Component
 
         // Alertas de guardado exitoso
         if ($visitaSave) {
-            $this->alert('success', '¡Hoja de visita registrada correctamente!', [
+            $this->alert('success', '¡Correctly registered visit sheet!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -181,7 +181,7 @@ class VisitaCreate extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', '¡No se ha podido guardar la información de la hoja de visita!', [
+            $this->alert('error', '¡Visit sheet information could not be saved!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,

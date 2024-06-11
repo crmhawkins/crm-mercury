@@ -75,7 +75,7 @@ class Create extends Component
 
         // Alertas de guardado exitoso
         if ($tipoviviendaSave) {
-            $this->alert('success', '¡Vendedor registrado correctamente!', [
+            $this->alert('success', 'Successfully registered seller!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -85,7 +85,7 @@ class Create extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', '¡No se ha podido guardar la información del vendedor!', [
+            $this->alert('error', 'Seller information could not be saved!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,

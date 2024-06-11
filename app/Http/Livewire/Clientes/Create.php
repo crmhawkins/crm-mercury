@@ -68,7 +68,7 @@ class Create extends Component
 
         // Alertas de guardado exitoso
         if ($clientesSave) {
-            $this->alert('success', '¡Cliente registrado correctamente!', [
+            $this->alert('success', 'Successfully registered customer!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -78,7 +78,7 @@ class Create extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', '¡No se ha podido guardar la información del cliente!', [
+            $this->alert('error', 'Could not save customer information!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,

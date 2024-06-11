@@ -202,7 +202,7 @@ class Show extends Component
 
         // Alertas de guardado exitoso
         if ($inmueblesSave) {
-            $this->alert('success', '¡Inmuebles actualizada correctamente!', [
+            $this->alert('success', 'Properties updated correctly!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -212,7 +212,7 @@ class Show extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', '¡No se ha podido guardar la información del inmuebles!', [
+            $this->alert('error', 'Property information could not be saved!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -230,13 +230,13 @@ class Show extends Component
         // $product = Productos::find($this->identificador);
         // $product->delete();
 
-        $this->alert('warning', '¿Seguro que desea borrar el inmuebles? No hay vuelta atrás', [
+        $this->alert('warning', 'Are you sure you want to delete the property? There is no way back', [
             'position' => 'center',
             'timer' => 3000,
             'toast' => false,
             'showConfirmButton' => true,
             'onConfirmed' => 'confirmDelete',
-            'confirmButtonText' => 'Sí',
+            'confirmButtonText' => 'Yes',
             'showDenyButton' => true,
             'denyButtonText' => 'No',
             'timerProgressBar' => true,

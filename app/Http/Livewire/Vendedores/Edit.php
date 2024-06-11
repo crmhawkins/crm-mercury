@@ -86,7 +86,7 @@ class Edit extends Component
 
         // Alertas de guardado exitoso
         if ($vendedoresSave) {
-            $this->alert('success', '¡Vendedor actualizado correctamente!', [
+            $this->alert('success', 'Seller successfully updated!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -96,7 +96,7 @@ class Edit extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', '¡No se ha podido guardar la información del vendedor!', [
+            $this->alert('error', 'Seller information could not be saved!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -109,7 +109,7 @@ class Edit extends Component
         // $product = Productos::find($this->identificador);
         // $product->delete();
 
-        $this->alert('warning', '¿Seguro que desea borrar el tipo de vivienda? No hay vuelta atrás', [
+        $this->alert('warning', 'Are you sure you want to delete the housing type? There is no way back', [
             'position' => 'center',
             'timer' => 3000,
             'toast' => false,

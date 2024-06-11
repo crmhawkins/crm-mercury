@@ -149,7 +149,7 @@ class Create extends Component
 
         // Alertas de guardado exitoso
         if ($inmueblesSave) {
-            $this->alert('success', '¡Inmueble registrado correctamente!', [
+            $this->alert('success', 'Property registered correctly!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -159,7 +159,7 @@ class Create extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', '¡No se ha podido guardar la información del inmueble!', [
+            $this->alert('error', 'Property information could not be saved!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,

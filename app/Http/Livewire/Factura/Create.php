@@ -184,7 +184,7 @@ class Create extends Component
         // Alertas de guardado exitoso
         if ($facturasSave) {
 
-            $this->alert('success', '¡Factura generada correctamente!', [
+            $this->alert('success', 'Invoice generated correctly!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
@@ -194,7 +194,7 @@ class Create extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', '¡No se ha podido guardar la factura!', [
+            $this->alert('error', 'The invoice could not be saved!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
