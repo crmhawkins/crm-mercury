@@ -30,7 +30,7 @@
                                 <td>
                                     <ul>
                                         <li><a href="{{ '../' . $factura->ruta_pdf }}"
-                                                class="btn btn-primary boton-producto">Ver documento</a></li>
+                                                class="btn btn-primary boton-producto">View document</a></li>
                                     </ul>
                                 </td>
                             </tr>
