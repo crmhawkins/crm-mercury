@@ -184,7 +184,7 @@
                         </div>
                         <hr />
 
-                        <h5>Seleccionar cliente</h5>
+                        <h5>Select Customer</h5>
                         <div class="mb-3 row d-flex align-items-center">
                             <div x-data="" x-init="$('#select2-cliente-{{ $identificador }}').select2();
                             $('#select2-cliente-{{ $identificador }}').on('change', function(e) {
@@ -198,7 +198,7 @@
                                 console.log(data);
                             });" wire:ignore>
                                 <select class="form-control" id="select2-cliente-{{ $identificador }}">
-                                    <option value="">Seleccionar cliente</option>
+                                    <option value="">Select Customer</option>
                                     @foreach ($clientes as $cliente)
                                         
                                         <option value="{{ $cliente->id }}" data-email="{{ $cliente->email }}">
