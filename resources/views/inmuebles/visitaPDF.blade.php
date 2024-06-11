@@ -134,17 +134,17 @@
     <h2>Property information</h2>
     <table>
         <tr>
-            <th>Dirección</th>
+            <th>Address</th>
             <td>{{ $datos['inmueble']['direccion'] }}</td>
 
-            <th>localidad</th>
+            <th>location</th>
             <td>{{ $datos['inmueble']['localidad'] }}</td>
         </tr>
         <tr>
-            <th>Cod. Postal</th>
+            <th>Postal code</th>
             <td>{{ $datos['inmueble']['cod_postal'] }}</td>
 
-            <th>Disponibilidad</th>
+            <th>Availability</th>
             <td>{{ $datos['inmueble']['disponibilidad'] }}</td>
         </tr>
         
@@ -152,7 +152,7 @@
         <!-- Añade más filas de tabla según sea necesario para mostrar la información del inmueble -->
     </table>
 
-    <h2>Firma</h2>
+    <h2>Signature</h2>
     <img src="{{ public_path($datos['firma']) }}" alt="Client's signature">
 </body>
 
