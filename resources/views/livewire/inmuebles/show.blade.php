@@ -184,18 +184,25 @@
                         </div>
                         <hr />
 
-                        {{-- <h5>Seleccionar cliente</h5>
+                        <h5>Seleccionar cliente</h5>
                         <div class="mb-3 row d-flex align-items-center">
                             <div x-data="" x-init="$('#select2-cliente-{{ $identificador }}').select2();
                             $('#select2-cliente-{{ $identificador }}').on('change', function(e) {
                                 var data = $('#select2-cliente-{{ $identificador }}').select2('val');
-                                @this.set('cliente_correo', data);
+                                var email = $('#select2-cliente-{{ $identificador }}').select2('data')[0].element.dataset.email;
+                                @this.set('cliente_correo', email);
+
+                                @this.set('cliente_id', data);
+
+
                                 console.log(data);
                             });" wire:ignore>
                                 <select class="form-control" id="select2-cliente-{{ $identificador }}">
+                                    <option value="">Seleccionar cliente</option>
                                     @foreach ($clientes as $cliente)
-                                        <option value="{{ $cliente->id }}">
-                                            {{ $cliente->nombre_completo }}
+                                        
+                                        <option value="{{ $cliente->id }}" data-email="{{ $cliente->email }}">
+                                            {{ $cliente->nombre . ' ' . $cliente->apellido}} - {{ $cliente->email }} @if($inmueblesRecibidos->where('cliente_id', $cliente->id)->where('inmueble_id', $identificador)->count() > 0) *already received* @endif
                                         </option>
                                     @endforeach
                                 </select>
@@ -206,8 +213,9 @@
                         <button type="button" class="btn btn-primary"
                             wire:click.prevent="enviarCorreoImagenes({{ $identificador }})"
                             id="enviarCorreoImagenes-{{ $identificador }}"
-                            wire:key="btn-correo-imgs-{{ $identificador }}">Enviar
-                            imágenes</button> --}}
+                            wire:key="btn-correo-imgs-{{ $identificador }}">Send
+                            Email</button>
+                        <button type="button" class="btn btn-secondary" wire:click.prevent="registerMailed({{ $identificador }})">Just register</button>
 
                     </div>
                 </div>

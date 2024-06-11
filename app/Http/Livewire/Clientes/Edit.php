@@ -12,6 +12,7 @@ use Livewire\WithPagination;
 use App\Models\HojaVisita;
 use DateTime;
 use IntlDateFormatter;
+use App\Models\InmueblesRecibidos;
 class Edit extends Component
 {
     use LivewireAlert;
@@ -31,8 +32,10 @@ class Edit extends Component
     public $clientes;
 
     public $visitas;
+    public $inmueblesRecibidos;
     //conjunto visita e inmueble
     public $visita_inmueble = [];
+    public $mailed_inmueble = [];
 
     public function mount()
     {
@@ -55,6 +58,19 @@ class Edit extends Component
                 ]);
             }
         }
+
+        $this->inmueblesRecibidos = InmueblesRecibidos::where('cliente_id', $this->identificador)->get();
+        if($this->inmueblesRecibidos->count() > 0){
+            $this->mailed_inmueble = collect();
+            foreach ($this->inmueblesRecibidos as $inmuebleRecibido) {
+                $inmueble = Inmuebles::find($inmuebleRecibido->inmueble_id);
+                $this->mailed_inmueble->push([
+                    'visita' => $inmuebleRecibido,
+                    'inmueble' => $inmueble
+                ]);
+            }
+        }
+
         //dd($this->visita_inmueble);
 
     }

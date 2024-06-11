@@ -90,6 +90,11 @@
                 </div>
             </div>
         </div>
+        
+        <div class="mb-3 row d-flex align-items-center gap-2">
+            <button type="submit" class="btn btn-primary" wire:click="update()">Save</button>
+            <button type="button" class="btn btn-danger" wire:click="destroy()">Delete</button>
+        </div>
         <div class="row justify-content-center">
             <div class="col">
                 <div class="card mb-3">
@@ -125,9 +130,39 @@
                 </div>
             </div>
         </div>
-        <div class="mb-3 row d-flex align-items-center gap-2">
-            <button type="submit" class="btn btn-primary" wire:click="update()">Save</button>
-            <button type="button" class="btn btn-danger" wire:click="destroy()">Delete</button>
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="card mb-3">
+                    <h5 class="card-header">
+                        Properties mailed
+                    </h5>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                           @if(count($visita_inmueble) > 0)
+                                @foreach ($mailed_inmueble as $item )
+                                    
+                                <div class="col-md-4 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> {{ $this->formatearFecha($item['visita']['fecha']) }}</h5>
+                                            <p class="card-text">
+                                                <strong>Address:</strong> {{ $item['inmueble']['direccion'] }} - {{ $item['inmueble']['localidad']; }} , {{ $item['inmueble']['cod_postal']; }}<br>
+                                                <strong>Square meter:</strong> <?php echo $item['inmueble']['m2']; ?> m²<br>
+                                                <strong>Bedrooms:</strong> {{ $item['inmueble']['habitaciones'] }}<br>
+                                                <strong>Availability:</strong> {{$item['inmueble']['disponibilidad'] }} <br>
+                                            </p>
+                                            <a href="inmuebles?idinmueble={{ $item['inmueble']['id'] }}" class="btn btn-secondary" >See property</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                           @endif
+                        </div>
+                       
+
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 </div>

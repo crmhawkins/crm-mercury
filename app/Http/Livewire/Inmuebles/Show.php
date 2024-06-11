@@ -11,6 +11,8 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Models\Clientes;
 use App\Models\Propietarios;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
+use App\Models\InmueblesRecibidos;
 
 class Show extends Component
 {
@@ -61,7 +63,10 @@ class Show extends Component
     public $galeriaArray = [];
     public $galeria;
     public $clientes;
+    public $cliente_correo;
+    public $cliente_id;
     protected $listeners = ['fileSelected'];
+    public $inmueblesRecibidos;
 
     public function mount()
     {
@@ -92,6 +97,7 @@ class Show extends Component
         $this->precio_venta = $this->inmuebles->precio_venta;
         $this->alquiler_semana = $this->inmuebles->alquiler_semana;
         $this->alquiler_mes = $this->inmuebles->alquiler_mes;
+        $this->inmueblesRecibidos = InmueblesRecibidos::where('inmueble_id', $this->identificador)->get();
 
    
         $this->disponibilidad = $this->inmuebles->disponibilidad;
@@ -306,34 +312,126 @@ class Show extends Component
         }
     }
 
-    public function enviarCorreoImagenes($inmueble_id)
-    {
+
+    public function registerMailed($inmueble_id ){
+        if($this->cliente_id == null){
+            $this->alert('error', 'No customer selected!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+            ]);
+            return;
+        }
 
         $inmueble = Inmuebles::where('id', $inmueble_id)->first();
         $cliente = Clientes::where('id', $this->cliente_id)->first();
 
+        //si el cliente no esta en inmuebles recibidos lo añade
+        if(!InmueblesRecibidos::where('cliente_id', $cliente->id)->where('inmueble_id', $inmueble->id)->exists()){
+            InmueblesRecibidos::create([
+                'cliente_id' => $cliente->id,
+                'inmueble_id' => $inmueble->id,
+            ]);
+        }
+
+        $this->InmueblesRecibidos = InmueblesRecibidos::where('inmueble_id', $inmueble_id)->get();
+
+        $this->alert('success', 'Property registered as sent to client!', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => false,
+        ]);
+
+        //refrescar campos de la vista
+    }
+
+    public function enviarCorreoImagenes($inmueble_id)
+    {
+        if($this->cliente_id == null){
+            $this->alert('error', 'No customer selected!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+            ]);
+            return;
+        }
+
+
+
+        $inmueble = Inmuebles::where('id', $inmueble_id)->first();
+        $cliente = Clientes::where('id', $this->cliente_id)->first();
        
 
         $imagenes_adjuntadas = [];
 
         foreach (json_decode($inmueble->galeria, true) as $key => $imagen) {
-            if (in_array($key, $this->imagenes_correo)) {
+           
+           
                 $imagenes_adjuntadas[] = $imagen;
-            }
+
+                //solo enviar 4 imagenes
+                
+                
+            
+        }
+        //dd( $imagenes_adjuntadas);
+
+        $texto = 'Dear ' . $cliente->nombre . ',<br><br>
+
+        We are pleased to send you a selection of images of the property located at ' . $inmueble->direccion . ', ' . $inmueble->localidad . ' ' . $inmueble->cod_postal . ' along with its main features.<br><br>
+
+        The property includes ' . $inmueble->habitaciones . ' rooms, ' . $inmueble->banos . ' bathrooms, with a total area of ' . $inmueble->m2 . ' m² and ' . $inmueble->m2_construidos . ' m² built. It also features ' . $inmueble->dormitorios . ' bedrooms' . ($inmueble->piscina ? ', a pool' : '') . ($inmueble->garaje ? ', and a garage' : '') . '.<br><br>
+
+        You can view the images below:<br>';
+
+        // Añadir imágenes al cuerpo del correo
+        foreach ($imagenes_adjuntadas as $ruta_imagen) {
+            //dd($ruta_imagen);
+            $url = $ruta_imagen; // Suponiendo que $ruta_imagen ya es una URL pública
+            $texto .= '<img src="' . $url . '" alt="Property Image" style="max-width: 600px; margin-bottom: 10px;"><br>';
         }
 
-        $texto = 'Buenas, ' . $cliente->nombre . '. Te enviamos una selección de imágenes del inmueble ' . $inmueble->titulo;
+        $texto .= '<br>For more information, do not hesitate to contact us.<br><br> Best regards,<br> Mercury Properties';
+        // Enviar el correo con HTML
 
-        // Mail::raw($texto, function ($message) use ($cliente, $nombre_inmobiliaria, $inmueble, $imagenes_adjuntadas) {
-        //     $message->from('admin@grupocerban.com', $nombre_inmobiliaria);
-        //     $message->to($cliente->email, $cliente->nombre_completo);
-        //     $message->to(env('MAIL_USERNAME'));
-        //     $message->subject($nombre_inmobiliaria . " - Imágenes del inmueble" . $inmueble->titulo);
+        //try catch para enviar el correo
 
-        //     foreach ($imagenes_adjuntadas as $ruta_imagen) {
-        //         $message->attach($ruta_imagen);
-        //     }
-        // });
+        try{
+            Mail::send([], [], function ($message) use ($cliente, $inmueble, $texto) {
+                $message->from('dani.mefle@hawkins.es', 'Mercury Properties');
+                $message->to($cliente->email, $cliente->nombre . ' ' . $cliente->apellidos);
+                $message->cc(env('MAIL_USERNAME'));
+                $message->subject("Mercury Properties - Images of the property at " . $inmueble->direccion . ', ' . $inmueble->localidad . ' ' . $inmueble->cod_postal);
+                $message->html($texto); // Usar 'html' en lugar de 'setBody'
+            });
+
+            //si el cliente no esta en inmuebles recibidos lo añade
+            if(!InmueblesRecibidos::where('cliente_id', $cliente->id)->where('inmueble_id', $inmueble->id)->exists()){
+                InmueblesRecibidos::create([
+                    'cliente_id' => $cliente->id,
+                    'inmueble_id' => $inmueble->id,
+                ]);
+            }
+
+            $this->alert('success', 'Email sent successfully!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+            ]);
+
+
+
+        }catch(\Exception $e){
+            $this->alert('error', 'Error sending email!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+            ]);
+            return;
+        }
+
+
+        
     }
 
     public function addImagen($key)
