@@ -115,7 +115,7 @@
         <tr>
             <th>Full name</th>
             {{ var_dump($datos) }} 
-            <td>{{ $datos['cliente']['nombre'] }} {{ $datos['cliente']['apellidos'] }}</td>
+            <td>{{ $datos['cliente']['nombre'] }} {{ $datos['cliente']['apellido'] }}</td>
         </tr>
         <tr>
             <th>DNI</th>
@@ -145,7 +145,7 @@
             <td>{{ $datos['inmueble']['cod_postal'] }}</td>
 
             <th>Availability</th>
-            <td>{{ $datos['inmueble']['disponibilidad'] }}</td>
+            <td>{{ $datos['inmueble']['disponibilidad'] == 'Alquiler' ? 'Rent' : 'Sale'   }}</td>
         </tr>
         
         
