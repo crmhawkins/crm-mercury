@@ -120,7 +120,7 @@ class Show extends Component
             $propietario = Propietarios::where('id', $this->propietario_id)->first();
             //dd($propietario);
             $this->propietario_nombre = $propietario->nombre;
-            $this->propietario_apellidos  = $propietario->apellidos;
+            $this->propietario_apellidos  = $propietario->apellido;
             $this->propietario_dni = $propietario->dni;
             $this->propietario_telefono = $propietario->telefono;
             $this->propietario_correo = $propietario->correo;
@@ -296,7 +296,7 @@ class Show extends Component
         } else {
             $propietario = Propietarios::where('id', $this->propietario_id)->first();
             $this->propietario_nombre = $propietario->nombre;
-            $this->propietario_apellidos  = $propietario->apellidos;
+            $this->propietario_apellidos  = $propietario->apellido;
             $this->propietario_dni = $propietario->dni;
             $this->propietario_telefono = $propietario->telefono;
             $this->propietario_correo = $propietario->correo;
@@ -399,7 +399,7 @@ class Show extends Component
         try{
             Mail::send([], [], function ($message) use ($cliente, $inmueble, $texto) {
                 $message->from('dani.mefle@hawkins.es', 'Mercury Properties');
-                $message->to($cliente->email, $cliente->nombre . ' ' . $cliente->apellidos);
+                $message->to($cliente->email, $cliente->nombre . ' ' . $cliente->apellido);
                 $message->cc(env('MAIL_USERNAME'));
                 $message->subject("Mercury Properties - Images of the property at " . $inmueble->direccion . ', ' . $inmueble->localidad . ' ' . $inmueble->cod_postal);
                 $message->html($texto); // Usar 'html' en lugar de 'setBody'

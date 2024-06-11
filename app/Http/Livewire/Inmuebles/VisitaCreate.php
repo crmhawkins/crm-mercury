@@ -85,7 +85,7 @@ class VisitaCreate extends Component
             'firma' => $this->firma,
             'cliente' => [
                 'nombre' => $clientePDF->nombre,
-                'apellidos' => $clientePDF->apellidos,
+                'apellidos' => $clientePDF->apellido,
                 'dni' => $clientePDF->dni,
                 'email' => $clientePDF->email,
                 'telefono' => $clientePDF->telefono,
@@ -125,7 +125,7 @@ class VisitaCreate extends Component
 		$rutaMail = $this->ruta;
 
         $eventoSave = Evento::create([
-            'titulo' => 'Date with ' .  $clientePDF->nombre . ' ' . $clientePDF->apellidos,
+            'titulo' => 'Date with ' .  $clientePDF->nombre . ' ' . $clientePDF->apellido,
             'descripcion' => 'Cited client :' . $clientePDF->nombre . ' ' . $clientePDF->apellido . "<br>" . 'Property in relation to the appointment: ' . $inmueblePDF->direccion,
             'fecha_inicio' => $this->fecha,
             'fecha_fin' => $this->fecha,
@@ -136,7 +136,7 @@ class VisitaCreate extends Component
         ]);
 		
 		
-		$texto = 'Hi, ' . $clientePDF->nombre . ' ' . $clientePDF->apellidos . ". Attached is the property visit sheet that you have signed."; 
+		$texto = 'Hi, ' . $clientePDF->nombre . ' ' . $clientePDF->apellido . ". Attached is the property visit sheet that you have signed."; 
 		
 	// Mail::raw($texto, function ($message) use ($clientePDF, $inmueblePDF, $rutaMail) {
     // $message->from('admin@admin.com', 'Mercury');
