@@ -382,16 +382,16 @@ class Show extends Component
 
         The property includes ' . $inmueble->habitaciones . ' rooms, ' . $inmueble->banos . ' bathrooms, with a total area of ' . $inmueble->m2 . ' m² and ' . $inmueble->m2_construidos . ' m² built. It also features ' . $inmueble->dormitorios . ' bedrooms' . ($inmueble->piscina ? ', a pool' : '') . ($inmueble->garaje ? ', and a garage' : '') . '.<br><br>
 
-        You can view the images below:<br>';
+        You can view the images below:<br><div style="display:flex; flex-wrap:wrap; justify-content:center; gap: 20px;">';
 
         // Añadir imágenes al cuerpo del correo
         foreach ($imagenes_adjuntadas as $ruta_imagen) {
             //dd($ruta_imagen);
             $url = $ruta_imagen; // Suponiendo que $ruta_imagen ya es una URL pública
-            $texto .= '<img src="' . $url . '" alt="Property Image" style="max-width: 600px; margin-bottom: 10px;"><br>';
+            $texto .= '<img src="' . $url . '" alt="Property Image" style="max-width: 600px; margin: 10px;">';
         }
 
-        $texto .= '<br>For more information, do not hesitate to contact us.<br><br> Best regards,<br> Mercury Properties';
+        $texto .= '</div><br>For more information, do not hesitate to contact us.<br><br> Best regards,<br> Mercury Properties';
         // Enviar el correo con HTML
 
         //try catch para enviar el correo
