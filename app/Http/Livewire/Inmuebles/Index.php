@@ -176,7 +176,6 @@ class Index extends Component
         $this->cliente_id = 1;
         $this->imagenes_correo = [];
     }
-
     public function updated($propertyName)
     {
         if (
