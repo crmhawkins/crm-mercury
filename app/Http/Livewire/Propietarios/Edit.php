@@ -47,7 +47,7 @@ class Edit extends Component
             [
                 'nombre' => 'required',
                 'apellidos' => 'required',
-                'dni' => 'required',
+                'dni' => 'nullable',
                 'telefono' => 'nullable',
                 'correo' => 'nullable',
 

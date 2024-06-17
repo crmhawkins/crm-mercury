@@ -397,28 +397,36 @@ class Show extends Component
         //try catch para enviar el correo
 
         try{
-            Mail::send([], [], function ($message) use ($cliente, $inmueble, $texto) {
-                $message->from('dani.mefle@hawkins.es', 'Mercury Properties');
-                $message->to($cliente->email, $cliente->nombre . ' ' . $cliente->apellido);
-                $message->cc(env('MAIL_USERNAME'));
-                $message->subject("Mercury Properties - Images of the property at " . $inmueble->direccion . ', ' . $inmueble->localidad . ' ' . $inmueble->cod_postal);
-                $message->html($texto); // Usar 'html' en lugar de 'setBody'
-            });
+            if(isset($cliente->email) && $cliente->email != null && $cliente->email != ''){
+                
+                Mail::send([], [], function ($message) use ($cliente, $inmueble, $texto) {
+                    $message->from('dani.mefle@hawkins.es', 'Mercury Properties');
+                    $message->to($cliente->email, $cliente->nombre . ' ' . $cliente->apellido);
+                    $message->cc(env('MAIL_USERNAME'));
+                    $message->subject("Mercury Properties - Images of the property at " . $inmueble->direccion . ', ' . $inmueble->localidad . ' ' . $inmueble->cod_postal);
+                    $message->html($texto); // Usar 'html' en lugar de 'setBody'
+                });
 
-            //si el cliente no esta en inmuebles recibidos lo añade
-            if(!InmueblesRecibidos::where('cliente_id', $cliente->id)->where('inmueble_id', $inmueble->id)->exists()){
-                InmueblesRecibidos::create([
-                    'cliente_id' => $cliente->id,
-                    'inmueble_id' => $inmueble->id,
+                //si el cliente no esta en inmuebles recibidos lo añade
+                if(!InmueblesRecibidos::where('cliente_id', $cliente->id)->where('inmueble_id', $inmueble->id)->exists()){
+                    InmueblesRecibidos::create([
+                        'cliente_id' => $cliente->id,
+                        'inmueble_id' => $inmueble->id,
+                    ]);
+                }
+
+                $this->alert('success', 'Email sent successfully!', [
+                    'position' => 'center',
+                    'timer' => 3000,
+                    'toast' => false,
+                ]);
+            }else{
+                $this->alert('error', 'The customer does not have an email address!', [
+                    'position' => 'center',
+                    'timer' => 3000,
+                    'toast' => false,
                 ]);
             }
-
-            $this->alert('success', 'Email sent successfully!', [
-                'position' => 'center',
-                'timer' => 3000,
-                'toast' => false,
-            ]);
-
 
 
         }catch(\Exception $e){

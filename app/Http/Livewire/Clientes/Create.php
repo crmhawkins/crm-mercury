@@ -40,11 +40,11 @@ class Create extends Component
             [
                 'nombre' => 'required',
                 'apellido' => 'required',
-                'dni' => 'required',
-                'telefono' => 'required',
-                'email' => 'required',
-                'direccion' => 'required',
-                'busqueda' => 'required | max:255 | min:3',
+                'dni' => 'nullable',
+                'telefono' => 'nullable',
+                'email' => 'nullable',
+                'direccion' => 'nullable',
+                'busqueda' => 'nullable | max:255 | min:3',
             ],
             // Mensajes de error
            //required en ingles

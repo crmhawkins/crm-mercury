@@ -290,12 +290,18 @@
         <div class="col-1 invisible"> &nbsp; </div>
         <div class="col inmuebles">
             @if ($inmuebles->count() > 0)
-                @foreach ($inmuebles as $inmueble)
+                @foreach ($inmuebles as $index => $inmueble)
+                   
                     <div class="card mb-3 inmueble"  style="max-width: 60rem;">
                         <div class="row g-0">
                             <div class="col-md-3">
-                                <img src="{{ json_decode($inmueble->galeria, true)[1] }}" width="200px" height="270px"
-                                    class="rounded-start" alt="..." style="object-fit: cover; width: 200px; height: 270px;">
+                                @if($inmueble->galeria != null && json_decode($inmueble->galeria, true) != null && count(json_decode($inmueble->galeria, true)) > 0)
+                                    <img src="{{ json_decode($inmueble->galeria, true)[1] }}" width="200px" height="270px"
+                                        class="rounded-start" alt="..." style="object-fit: cover; width: 200px; height: 270px;">
+                                @else
+                                    <img src="https://via.placeholder.com/200x270" class="rounded-start" alt="..."
+                                        style="object-fit: cover; width: 200px; height: 270px;">
+                                @endif
                             </div>
                             <div class="col-md-9" style="position:relative; min-height: 270px;">
                                 <div style="position: absolute; top:10px; right:10px;">
@@ -309,23 +315,25 @@
                                                                                     @endif
                                     </h4>
                                     <br>
+
                                 <div  class="d-flex flex-wrap gap-2 justify-content-between align-items-center inmueble-caracteristicas" style="width: 90%">
                                     <div>
                                         <h6 class="card-title" style="font-size: 1.2rem;">
-                                            @if($inmueble->disponibilidad == "Alquiler")
+                                            @if($inmueble->disponibilidad == "Alquiler" && $inmueble->alquiler_mes != null && $inmueble->alquiler_semana != null)
                                                 <span>{{ $inmueble->alquiler_mes }} €/month</span> <br>
                                                 <span>{{ $inmueble->alquiler_semana }} €/week </span>
-                                            @elseif($inmueble->disponibilidad == "Venta")
+                                            @elseif($inmueble->disponibilidad == "Venta" && $inmueble->precio_venta != null)
                                                 {{ $inmueble->precio_venta }} €
                                             @endif
     
                                         </h6>
                                     </div>
+
                                     <div class="bg-light p-2 rounded" style="width: fit-content">
                                         <h5 class="card-title" style="font-size: 1rem; margin-bottom: 15px;">
-                                            <i class="fa-solid fa-house"></i> {{ $inmueble->habitaciones }} rooms &nbsp; 
-                                            <i class="fa-solid fa-bath"></i> {{ $inmueble->banos }} bathrooms &nbsp; 
-                                            <i class="fa-solid fa-bed"></i> {{ $inmueble->dormitorios }} bedrooms &nbsp;
+                                            @if(isset($inmueble->habitaciones)) <i class="fa-solid fa-house"></i> {{ $inmueble->habitaciones }} rooms &nbsp; @endif
+                                            @if(isset($inmueble->banos)) <i class="fa-solid fa-bath"></i> {{ $inmueble->banos }} bathrooms &nbsp; @endif
+                                            @if(isset($inmueble->dormitorios) ) <i class="fa-solid fa-bed"></i> {{ $inmueble->dormitorios }} bedrooms &nbsp; @endif
                                             <br>
                                             <br>
                                             @if(isset($inmueble->piscina) && $inmueble->piscina == 1)
@@ -339,7 +347,7 @@
                                                 {{ $inmueble->m2 }}m<sup>2</sup> &nbsp; <i class="fa-solid fa-ruler"></i> {{ $inmueble->m2_construidos }} m<sup>2</sup> built  </h6>
                                     </div>
                                 </div>
-                                
+
                                     
                                         
                                     <p class="card-text">{{ $inmueble->descripcion }}</p>
@@ -364,11 +372,14 @@
                             </div>
                         </div>
                     </div>
+
                 @endforeach
                 <br>
+
             @else
                 There are no properties that meet this criterion.
             @endif
+
         </div>
     </div>
 </div>
