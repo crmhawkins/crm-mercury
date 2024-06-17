@@ -308,11 +308,24 @@
                     <div class="card-body">
 
                         @if (!empty($ruta_imagenes))
-                            <img src="{{ $ruta_imagenes }}" style="max-width: 50%; max-height: 50%"
-                                class="self-center">
+                            @if(strpos($this->ruta_imagenes, ',') !== false)
+                                @php
+                                    $ruta_imagenes = explode(',', $this->ruta_imagenes);
+                                @endphp
+                                <div class="d-flex gap-1">
+                                    @foreach ($ruta_imagenes as $imagen)
+                                        <img src="{{ $imagen }}" style="max-width: 100px; max-height: 100px; object-fit: cover;"
+                                            class="self-center">
+                                    @endforeach
+                                </div>
+                            @else
+
+                                <img src="{{ $ruta_imagenes }}" style="max-width: 50%; max-height: 50%"
+                                    class="self-center">
+                            @endif
                         @endif
 
-                        <div class="input-group">
+                        <div class="input-group my-2">
                             <span class="input-group-btn">
                                 <a id="imagenes" data-input="thumbnail" data-preview="holder"
                                     class="btn btn-primary">

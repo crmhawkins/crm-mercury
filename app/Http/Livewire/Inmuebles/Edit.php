@@ -278,10 +278,23 @@ class Edit extends Component
 
     public function addGaleria()
     {
-        if (!in_array($this->ruta_imagenes, $this->galeriaArray)) {
+        //dd($this->ruta_imagenes);
+        //si ruta_imagenes esta separados por comas, es que hay mas de una imagen
+        if (strpos($this->ruta_imagenes, ',') !== false) {
+            $imagenes = explode(",", $this->ruta_imagenes);
+            foreach ($imagenes as $imagen) {
+                if (!in_array($imagen, $this->galeriaArray)) {
+                    $this->galeriaArray[count($this->galeriaArray) + 1] = $imagen;
+                    $this->emit('refreshGalleryComponent', $this->galeriaArray);
+                }
+            }
+        }else if (!in_array($this->ruta_imagenes, $this->galeriaArray)) {
             $this->galeriaArray[count($this->galeriaArray) + 1] = $this->ruta_imagenes;
             $this->emit('refreshGalleryComponent', $this->galeriaArray);
         }
+
+
+        
     }
 
     public function eliminarImagen($id)
