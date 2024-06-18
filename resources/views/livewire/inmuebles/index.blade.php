@@ -297,10 +297,8 @@
                             <div class="col-md-3">
                                 @if($inmueble->galeria != null && json_decode($inmueble->galeria, true) != null && count(json_decode($inmueble->galeria, true)) > 0)
                                     @foreach ( json_decode($inmueble->galeria, true) as $index => $galeria )
-                                        @if($index == 0)
                                             <img src="{{ $galeria }}" width="200px" height="270px"
                                                 class="rounded-start" alt="..." style="object-fit: cover; width: 200px; height: 270px;">
-                                        @endif
                                         @break
                                     @endforeach
                                     <img src="{{ json_decode($inmueble->galeria, true)[1] }}" width="200px" height="270px"
