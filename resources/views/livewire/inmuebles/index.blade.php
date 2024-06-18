@@ -301,8 +301,7 @@
                                                 class="rounded-start" alt="..." style="object-fit: cover; width: 200px; height: 270px;">
                                         @break
                                     @endforeach
-                                    <img src="{{ json_decode($inmueble->galeria, true)[1] }}" width="200px" height="270px"
-                                        class="rounded-start" alt="..." style="object-fit: cover; width: 200px; height: 270px;">
+                                    
                                 @else
                                     <img src="https://via.placeholder.com/200x270" class="rounded-start" alt="..."
                                         style="object-fit: cover; width: 200px; height: 270px;">
