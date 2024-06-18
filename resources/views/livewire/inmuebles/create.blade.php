@@ -324,7 +324,21 @@
                     </h5>
                     <div class="card-body text-center">
                         @if (!empty($ruta_imagenes))
-                            <img class="mb-2" src="{{ $ruta_imagenes }}" style="max-width: 50%; max-height: 50%">
+                            @if(strpos($this->ruta_imagenes, ',') !== false)
+                                @php
+                                    $ruta_imagenes = explode(',', $this->ruta_imagenes);
+                                @endphp
+                                <div class="d-flex gap-1">
+                                    @foreach ($ruta_imagenes as $imagen)
+                                        <img src="{{ $imagen }}" style="max-width: 100px; max-height: 100px; object-fit: cover;"
+                                            class="self-center">
+                                    @endforeach
+                                </div>
+                            @else
+
+                                <img src="{{ $ruta_imagenes }}" style="max-width: 50%; max-height: 50%"
+                                    class="self-center">
+                            @endif
                         @endif
 
                         <div class="input-group">
