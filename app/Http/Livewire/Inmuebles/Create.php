@@ -189,10 +189,20 @@ class Create extends Component
 
     public function addGaleria()
     {
-        if (!in_array($this->ruta_imagenes, $this->galeriaArray)) {
+
+        if (strpos($this->ruta_imagenes, ',') !== false) {
+            $imagenes = explode(",", $this->ruta_imagenes);
+            foreach ($imagenes as $imagen) {
+                if (!in_array($imagen, $this->galeriaArray)) {
+                    $this->galeriaArray[count($this->galeriaArray) + 1] = $imagen;
+                    $this->emit('refreshGalleryComponent', $this->galeriaArray);
+                }
+            }
+        }else if (!in_array($this->ruta_imagenes, $this->galeriaArray)) {
             $this->galeriaArray[count($this->galeriaArray) + 1] = $this->ruta_imagenes;
             $this->emit('refreshGalleryComponent', $this->galeriaArray);
         }
+
     }
 
     public function eliminarImagen($id)
