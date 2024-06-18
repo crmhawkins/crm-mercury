@@ -105,22 +105,23 @@
                         <div class="row justify-content-center">
                            @if(count($visita_inmueble) > 0)
                                 @foreach ($visita_inmueble as $item )
-                                    
-                                <div class="col-md-4 mb-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title"> {{ $this->formatearFecha($item['visita']['fecha']) }}</h5>
-                                            <p class="card-text">
-                                                <strong>Address:</strong> {{ $item['inmueble']['direccion'] }} - {{ $item['inmueble']['localidad']; }} , {{ $item['inmueble']['cod_postal']; }}<br>
-                                                <strong>Square meter:</strong> <?php echo $item['inmueble']['m2']; ?> m²<br>
-                                                <strong>Bedrooms:</strong> {{ $item['inmueble']['habitaciones'] }}<br>
-                                                <strong>Availability:</strong> {{$item['inmueble']['disponibilidad'] }} <br>
-                                            </p>
-                                            <a href="/{{ $item['visita']['ruta'] }}" class="btn btn-primary" target="_blank">See visit document</a>
-                                            <a href="inmuebles?idinmueble={{ $item['inmueble']['id'] }}" class="btn btn-secondary" >See property</a>
+                                    @if(count($item['visita']) > 0   && count($item['inmueble']) > 0)
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"> {{ $this->formatearFecha($item['visita']['fecha']) }}</h5>
+                                                    <p class="card-text">
+                                                        <strong>Address:</strong> {{ $item['inmueble']['direccion'] }} - {{ $item['inmueble']['localidad']; }} , {{ $item['inmueble']['cod_postal']; }}<br>
+                                                        <strong>Square meter:</strong> <?php echo $item['inmueble']['m2']; ?> m²<br>
+                                                        <strong>Bedrooms:</strong> {{ $item['inmueble']['habitaciones'] }}<br>
+                                                        <strong>Availability:</strong> {{$item['inmueble']['disponibilidad'] }} <br>
+                                                    </p>
+                                                    <a href="/{{ $item['visita']['ruta'] }}" class="btn btn-primary" target="_blank">See visit document</a>
+                                                    <a href="inmuebles?idinmueble={{ $item['inmueble']['id'] }}" class="btn btn-secondary" >See property</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    @endif
                                 @endforeach
                            @endif
                         </div>
