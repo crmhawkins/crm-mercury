@@ -105,7 +105,7 @@
                         <div class="row justify-content-center">
                            @if(count($visita_inmueble) > 0)
                                 @foreach ($visita_inmueble as $item )
-                                    @if(isset($item['visita']) && isset($item['inmueble']) && count($item['visita']) > 0 && count($item['inmueble']) > 0)
+                                    @if(isset($item['visita']) && isset($item['inmueble']) && $item['visita'] != null && $item['inmueble'] != null   && count($item['visita']) > 0 && count($item['inmueble']) > 0)
                                         <div class="col-md-4 mb-4">
                                             <div class="card">
                                                 <div class="card-body">
