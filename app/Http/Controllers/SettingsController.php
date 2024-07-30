@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Settings;
-use App\Http\Requests\StoreSettingsRequest;
-use App\Http\Requests\UpdateSettingsRequest;
 use Illuminate\Http\Request;
+use App\Models\TipoInmueble;
 
 class SettingsController extends Controller
 {
@@ -16,84 +15,38 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        //
-        return view('settings.index');
-
+        $tipos = TipoInmueble::all();
+        return view('settings.index', compact('tipos'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created type of property in storage.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        return view('settings.create');
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreSettingsRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        return '¡ok';
+        $request->validate([
+            'nuevoTipoNombre' => 'required|string|max:255',
+        ]);
 
-        //
-        // $data = $request->all();
-        // return response($data);
-        // $crearEmpresa = Settings::create($data);
-        // return view('settings.index');
+        TipoInmueble::create(['nombre' => $request->nuevoTipoNombre]);
+
+        return redirect()->route('settings.index')->with('success', 'New type added successfully');
     }
 
     /**
-     * Display the specified resource.
+     * Remove the specified type of property from storage.
      *
-     * @param  \App\Models\Settings  $settings
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Settings $settings)
+    public function destroy($id)
     {
-        //
-    }
+        $tipo = TipoInmueble::findOrFail($id);
+        $tipo->delete();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Settings  $settings
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Settings $settings)
-    {
-        //
-        return view('settings.edit');
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateSettingsRequest  $request
-     * @param  \App\Models\Settings  $settings
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateSettingsRequest $request, Settings $settings)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Settings  $settings
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Settings $settings)
-    {
-        //
+        return redirect()->route('settings.index')->with('success', 'Type deleted successfully');
     }
 }

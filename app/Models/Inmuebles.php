@@ -45,6 +45,7 @@ class Inmuebles extends Model
         'propietario_id',
         'direccion',
         'localidad',
+        'tipo_inmueble'
 
 
 

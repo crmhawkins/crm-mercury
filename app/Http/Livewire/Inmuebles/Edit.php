@@ -7,6 +7,7 @@ use App\Models\TipoVivienda;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\Inmuebles;
+use App\Models\TipoInmueble;
 use App\Models\Propietarios;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
@@ -45,11 +46,14 @@ class Edit extends Component
     public $propietario_telefono;
     public $propietario_correo;
     public $propietarios = [];
+    public $descripcion;
 
     public $dormitorios;
     public $piscina = 0;
     public $garaje = 0;
     public $ibi;
+    public $tipo_inmueble;
+    public $tipos;
 
     public $coste_basura;
     public $precio_venta;
@@ -76,6 +80,7 @@ class Edit extends Component
 
         //dd($this->inmuebles);
         $this->propietarios = Propietarios::all();
+        $this->tipos = TipoInmueble::all();
         //dd($this->inmuebles);
         $this->m2 = $this->inmuebles->m2;
         $this->m2_construidos = $this->inmuebles->m2_construidos;
@@ -96,6 +101,8 @@ class Edit extends Component
         $this->alquiler_semana = $this->inmuebles->alquiler_semana;
         $this->alquiler_mes = $this->inmuebles->alquiler_mes;
         $this->estado = $this->inmuebles->estado;
+        $this->descripcion = $this->inmuebles->descripcion;
+        $this->tipo_inmueble = $this->inmuebles->tipo_inmueble;
         if($this->estado==null){
             $this->estado="Disponible";
         }
@@ -139,6 +146,7 @@ class Edit extends Component
 
         $validatedData = $this->validate(
             [
+                'descripcion' => 'nullable',
                 'm2' => 'nullable',
                 'm2_construidos' => 'nullable',
                 'habitaciones' => 'nullable',
@@ -147,7 +155,7 @@ class Edit extends Component
                 'piscina' => 'nullable',
                 'garaje' => 'nullable',
                 'propietario_id' => 'nullable',
-                'cod_postal' => 'required',
+                'cod_postal' => 'nullable',
                 'direccion' => 'required',
                 'localidad' => 'required',
                 'galeria' => 'nullable',
@@ -158,6 +166,7 @@ class Edit extends Component
                 'alquiler_semana' => 'nullable',
                 'alquiler_mes' => 'nullable',
                 'estado' => 'nullable',
+                'tipo_inmueble' => 'nullable',
 
 
             ],
@@ -189,6 +198,8 @@ class Edit extends Component
         $inmuebles = Inmuebles::find($this->identificador);
         // Guardar datos validados
         $inmueblesSave = $inmuebles->update([
+            'tipo_inmueble' => $this->tipo_inmueble,
+            'descripcion' => $this->descripcion,
             'm2' => $this->m2,
             'm2_construidos' => $this->m2_construidos,
             'habitaciones' => $this->habitaciones,

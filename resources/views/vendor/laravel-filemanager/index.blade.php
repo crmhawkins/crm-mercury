@@ -71,7 +71,7 @@
   <nav class="bg-light fixed-bottom border-top d-none" id="actions">
     <a data-action="open" data-multiple="false"><i class="fas fa-folder-open"></i>{{ trans('laravel-filemanager::lfm.btn-open') }}</a>
     <a data-action="preview" data-multiple="true"><i class="fas fa-images"></i>{{ trans('laravel-filemanager::lfm.menu-view') }}</a>
-    <a data-action="use" data-multiple="true"><i class="fas fa-check"></i>{{ trans('Confirmar') }}</a>
+    <a data-action="use" data-multiple="true"><i class="fas fa-check"></i>{{ trans('laravel-filemanager::lfm.btn-confirm') }}</a>
   </nav>
 
   <div class="d-flex flex-row">
@@ -129,7 +129,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">{{ trans('Cerrar') }}</button>
+          <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-close') }}</button>
         </div>
       </div>
     </div>
@@ -140,8 +140,8 @@
       <div class="modal-content">
         <div class="modal-body"></div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">{{ trans('Cerrar') }}</button>
-          <button type="button" class="btn btn-primary w-100" data-dismiss="modal">{{ trans('Confirmar') }}</button>
+          <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-close') }}</button>
+          <button type="button" class="btn btn-primary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-confirm') }}</button>
         </div>
       </div>
     </div>
@@ -157,8 +157,8 @@
           <input type="text" class="form-control">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">{{ trans('Cerrar') }}</button>
-          <button type="button" class="btn btn-primary w-100" data-dismiss="modal">{{ trans('Confirmar') }}</button>
+          <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-close') }}</button>
+          <button type="button" class="btn btn-primary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-confirm') }}</button>
         </div>
       </div>
     </div>

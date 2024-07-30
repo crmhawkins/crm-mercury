@@ -67,6 +67,8 @@ class Show extends Component
     public $cliente_id;
     protected $listeners = ['fileSelected'];
     public $inmueblesRecibidos;
+    public $descripcion;
+    public $tipo_inmueble;
 
     public function mount()
     {
@@ -81,6 +83,7 @@ class Show extends Component
         $this->propietarios = Propietarios::all();
         $this->clientes = Clientes::all();
 
+        $this->descripcion = $this->inmuebles->descripcion;
         $this->m2 = $this->inmuebles->m2;
         $this->m2_construidos = $this->inmuebles->m2_construidos;
         $this->habitaciones = $this->inmuebles->habitaciones;
@@ -98,6 +101,7 @@ class Show extends Component
         $this->alquiler_semana = $this->inmuebles->alquiler_semana;
         $this->alquiler_mes = $this->inmuebles->alquiler_mes;
         $this->inmueblesRecibidos = InmueblesRecibidos::where('inmueble_id', $this->identificador)->get();
+        $this->tipo_inmueble = $this->inmuebles->tipo_inmueble;
 
    
         $this->disponibilidad = $this->inmuebles->disponibilidad;

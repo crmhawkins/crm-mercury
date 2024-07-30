@@ -33,6 +33,15 @@
                         Property details
                     </h5>
                     <div class="card-body">
+                        @if($descripcion != null && $descripcion != '') 
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="mb-3 col-10">
+                                    <p class="form-control">{{ $descripcion }}</p>
+                                </div>  
+                            </div>
+                        @endif
+                        
                         <div id="datos-inmueble" class="row ">
                             <div class="col-5 border rounded p-2">
                                 <h6 class="fw-bold">Property details</h6>
@@ -41,6 +50,7 @@
                                     <li><b>Location:</b> {{ $localidad }}</li>
                                     <li><b>Postal code:</b> {{ $cod_postal }}</li>
                                     <li><b>Availability:</b> {{ $disponibilidad }}</li>
+                                    <li><b>Type of property:</b> {{ $tipo_inmueble }}</li>
 
 
                                 </ul>

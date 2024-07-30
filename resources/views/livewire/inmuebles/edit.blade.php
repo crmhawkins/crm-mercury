@@ -40,6 +40,23 @@
                             </div>
                         </div>
                         <div class="mb-3 row d-flex align-items-center">
+                            <label for="cod_postal" class="col-sm-3 col-form-label"> <strong>Type of property
+                            </strong></label>
+                            <div class="col-sm-12">
+                                <select wire:model="tipo_inmueble" class="form-control" name="tipo_inmueble" id="tipo_inmueble">
+                                    <option value="">-- Choose a property type --</option>
+                                    @foreach ($tipos as $tipo)
+                                        <option value={{ $tipo->nombre }}>
+                                            {{ $tipo->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('tipo_inmueble')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex align-items-center">
                             <label for="estado" class="col-sm-3 col-form-label"> <strong>Status</strong></label>
                             <div class="col-sm-12">
                                 <select wire:model="estado" class="form-control" name="estado" id="estado">
@@ -48,6 +65,16 @@
                                     <option value="Vendido">Sold</option>
                                 </select>
                                 @error('estado')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="estado" class="col-sm-3 col-form-label"> <strong>Description</strong></label>
+                            <div class="col-sm-12">
+                                <textarea wire:model="descripcion" rows=3 class="form-control" name="descripcion"
+                                    id="descripcion" placeholder="Description"></textarea>
+                                @error('descripcion')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

@@ -69,6 +69,7 @@ Route::group(['middleware' => 'is.admin', 'prefix' => 'admin'], function () {
     Route::get('inmuebles/windowcard/{id}/{withLogo}', [InmueblesController::class, 'pdf'])->name('inmuebles.generar2');
 
     Route::get('caracteristicas', [CaracteristicasController::class, 'index'])->name('caracteristicas.index');
+    Route::get('settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings.index');
     
 });
 

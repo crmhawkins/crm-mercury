@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Inmuebles;
 use App\Models\Caracteristicas;
 use App\Models\Inmuebles;
 use App\Models\TipoVivienda;
+use App\Models\TipoInmueble;
 use App\Models\User;
 use App\Models\Propietarios;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -61,11 +62,13 @@ class Create extends Component
     public $piscina = 0;
     public $garaje = 0;
     public $ibi;
-
+    public $descripcion;
     public $coste_basura;
     public $precio_venta;
     public $alquiler_semana;
     public $alquiler_mes;
+    public $tipo_inmueble;
+    public $tipos;
 
     
     public $ruta_imagenes;
@@ -79,6 +82,7 @@ class Create extends Component
     public function mount()
     {
         $this->propietarios = Propietarios::all();
+        $this->tipos = TipoInmueble::all();
     }
 
     // Renderizado del Componente
@@ -97,11 +101,12 @@ class Create extends Component
         }
         $validatedData = $this->validate(
             [
+                'descripcion' => 'nullable',
                 'm2' => 'nullable',
                 'm2_construidos' => 'nullable',
                 'habitaciones' => 'nullable',
                 'banos' => 'nullable',
-                'cod_postal' => 'required',
+                'cod_postal' => 'nullable',
                 'galeria' => 'nullable',
                 'direccion' => 'required',
                 'localidad' => 'required',
@@ -116,6 +121,7 @@ class Create extends Component
                 'alquiler_semana' => 'nullable',
                 'alquiler_mes' => 'nullable',
                 'disponibilidad' => 'nullable', 
+                'tipo_inmueble' => 'nullable',
 
             ],
             //mensajes de error en ingles
