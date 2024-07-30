@@ -101,6 +101,19 @@
                             </a>
                         @endif
                     </li>
+                    <li class="nav-item mx-2">
+                        @if (Request::is('admin/settings'))
+                            <a class="btn btn-md btn-light text-dark  d-block w-100 p-2" href="/admin/settings">
+                                <i class="fa-solid fa-gear"></i>
+                                <strong>Settings</strong>
+                            </a>
+                        @else
+                            <a class="btn btn-md btn-outline-light d-block w-100 p-2" href="/admin/settings">
+                                <i class="fa-solid fa-gear"></i>
+                                <strong>Settings</strong>
+                            </a>
+                        @endif
+                    </li>
                     
                     {{-- <li class="nav-item mx-2">
                         @if (Request::is('admin/facturacion'))
@@ -191,6 +204,19 @@
                         <a class="btn btn-outline-light" href="/admin/usuarios">
                             <i class="fa-solid fa-user-gear"></i>
                             <strong>Users</strong>
+                        </a>
+                    @endif
+                </li>
+                <li class="nav-item">
+                    @if (Request::is('admin/settings'))
+                        <a class="btn btn-light text-dark " href="/admin/settings">
+                            <i class="fa-solid fa-gear"></i>
+                            <strong>Settings</strong>
+                        </a>
+                    @else
+                        <a class="btn btn-outline-light" href="/admin/settings">
+                            <i class="fa-solid fa-gear"></i>
+                            <strong>Settings</strong>
                         </a>
                     @endif
                 </li>
