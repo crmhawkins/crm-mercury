@@ -100,6 +100,85 @@ class Create extends Component
         if($this->propietario_id == ""){
             $this->propietario_id = null;
         }
+
+        if($this->dormitorios == ""){
+            $this->dormitorios = null;
+        }
+
+        if($this->piscina == ""){
+            $this->piscina = 0;
+        }
+
+        if($this->garaje == ""){
+            $this->garaje = 0;
+        }
+
+        if($this->ibi == ""){
+            $this->ibi = null;
+        }
+
+        if($this->coste_basura == ""){
+            $this->coste_basura = null;
+        }
+
+        if($this->precio_venta == ""){
+            $this->precio_venta = null;
+        }
+
+        if($this->alquiler_semana == ""){
+            $this->alquiler_semana = null;
+        }
+
+        if($this->alquiler_mes == ""){
+            $this->alquiler_mes = null;
+        }
+
+        if($this->daily_rental_price == ""){
+            $this->daily_rental_price = null;
+        }
+
+        if($this->tipo_inmueble == ""){
+            $this->tipo_inmueble = null;
+        }
+
+        if($this->m2 == ""){
+            $this->m2 = null;
+        }
+
+        if($this->m2_construidos == ""){
+            $this->m2_construidos = null;
+        }
+
+        if($this->habitaciones == ""){
+            $this->habitaciones = null;
+        }
+
+        if($this->banos == ""){
+            $this->banos = null;
+        }
+
+        if($this->cod_postal == ""){
+            $this->cod_postal = null;
+        }
+
+        if($this->direccion == ""){
+            $this->direccion = null;
+        }
+
+        if($this->localidad == ""){
+            $this->localidad = null;
+        }
+
+        if($this->disponibilidad == ""){
+            $this->disponibilidad = null;
+        }
+
+        if($this->descripcion == ""){
+            $this->descripcion = null;
+        }
+        
+
+
         $validatedData = $this->validate(
             [
                 'descripcion' => 'nullable',

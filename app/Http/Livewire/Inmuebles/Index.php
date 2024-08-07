@@ -54,6 +54,7 @@ class Index extends Component
 
     public $alquiler_semana_min;
     public $alquiler_semana_max;
+    public $daily_rental_price;
 
     protected $listeners = ['refreshComponent' => '$refresh'];
 
@@ -71,7 +72,7 @@ class Index extends Component
 
     private function opcionesDailyRentalPrice()
     {
-        return range(200, 10000, 200); // Asegúrate de que esto retorne un array
+        return range(20, 5000, 40); // Asegúrate de que esto retorne un array
     }
 
    private function opcionesPrecioAlquilerMensual()

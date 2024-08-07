@@ -172,7 +172,7 @@
                             <h6 class="fw-bold"> Rental/day</h6>
 
                             <div class="col-6">
-                                <select wire:model="daily_rental_price" class="w-100">
+                                <select wire:model="daily_rental_price_min" class="w-100">
                                     <option value="1">Minimum</option>
                                     @foreach ($opcionesDailyRentalPrice as $opcion)
                                         <option value="{{ $opcion }}">{{ $opcion }} €</option>
@@ -180,7 +180,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <select wire:model="daily_rental_price" class="w-100">
+                                <select wire:model="daily_rental_price_max" class="w-100">
                                     @foreach ($opcionesDailyRentalPrice as $opcion)
                                         <option value="{{ $opcion }}">{{ $opcion }} €</option>
                                     @endforeach
@@ -318,14 +318,14 @@
                             <div class="col-md-3">
                                 @if($inmueble->galeria != null && json_decode($inmueble->galeria, true) != null && count(json_decode($inmueble->galeria, true)) > 0)
                                     @foreach ( json_decode($inmueble->galeria, true) as $index => $galeria )
-                                            <img src="{{ $galeria }}" width="200px" height="270px"
-                                                class="rounded-start" alt="..." style="object-fit: cover; width: 200px; height: 270px;">
+                                            <img src="{{ $galeria }}" width="200px" height="100%"
+                                                class="rounded-start" alt="..." style="object-fit: cover; width: 200px; height: 100%;">
                                         @break
                                     @endforeach
                                     
                                 @else
                                     <img src="https://via.placeholder.com/200x270" class="rounded-start" alt="..."
-                                        style="object-fit: cover; width: 200px; height: 270px;">
+                                        style="object-fit: cover; width: 200px; height: 100%;">
                                 @endif
                             </div>
                             <div class="col-md-9" style="position:relative; min-height: 270px;">
@@ -346,7 +346,7 @@
                                         <h6 class="card-title" style="font-size: 1.2rem;">
                                             @if($inmueble->disponibilidad == "Alquiler" && $inmueble->alquiler_mes != null && $inmueble->alquiler_semana != null)
                                                 <span>{{ $inmueble->alquiler_mes }} €/month</span> <br>
-                                                <span>{{ $inmueble->alquiler_semana }} €/week </span>
+                                                <span>{{ $inmueble->alquiler_semana }} €/week </span> <br>
                                                 <span>{{ $inmueble->daily_rental_price }} €/day </span>
 
                                             @elseif($inmueble->disponibilidad == "Venta" && $inmueble->precio_venta != null)
@@ -377,7 +377,7 @@
 
                                     
                                         
-                                    <p class="card-text">{{ $inmueble->descripcion }}</p>
+                                    <p class="card-text my-5">{{ $inmueble->descripcion }}</p>
                                     <div class="accordion-header row" id="heading{{ $inmueble->id }}" style="position:absolute; bottom:10px; width: 100%;">
                                         <div class="col-6">
                                             <button class="accordion-button collapsed" type="button"
