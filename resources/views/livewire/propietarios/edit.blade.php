@@ -87,6 +87,8 @@
                                             @else
                                                 <small class="badge text-dark">{{ $inmueble->alquiler_mes }} €/month</small>
                                                 <small class="badge text-dark">{{ $inmueble->alquiler_semana }} €/week
+                                                <small class="badge text-dark">{{ $inmueble->daily_rental_price }} €/day
+
                                                 </small>
                                             @endif
                                             <a href="/admin/inmuebles?idinmueble={{ $inmueble->id }}" class="btn btn-primary" style="align-self: end">View</a>

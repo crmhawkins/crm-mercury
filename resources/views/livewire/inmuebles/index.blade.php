@@ -167,6 +167,27 @@
                             </div>
                         </div>
                     @endif
+                    @if (is_array($opcionesDailyRentalPrice) && !empty($opcionesDailyRentalPrice))
+                        <div class="mb-3 row d-flex align-items-center">
+                            <h6 class="fw-bold"> Rental/day</h6>
+
+                            <div class="col-6">
+                                <select wire:model="daily_rental_price" class="w-100">
+                                    <option value="1">Minimum</option>
+                                    @foreach ($opcionesDailyRentalPrice as $opcion)
+                                        <option value="{{ $opcion }}">{{ $opcion }} €</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <select wire:model="daily_rental_price" class="w-100">
+                                    @foreach ($opcionesDailyRentalPrice as $opcion)
+                                        <option value="{{ $opcion }}">{{ $opcion }} €</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    @endif
                     @if (is_array($opcionesTamano) && !empty($opcionesTamano))
                         <div class="mb-3 row d-flex align-items-center">
                             <h6 class="fw-bold"> Square meter </h6>
@@ -326,6 +347,8 @@
                                             @if($inmueble->disponibilidad == "Alquiler" && $inmueble->alquiler_mes != null && $inmueble->alquiler_semana != null)
                                                 <span>{{ $inmueble->alquiler_mes }} €/month</span> <br>
                                                 <span>{{ $inmueble->alquiler_semana }} €/week </span>
+                                                <span>{{ $inmueble->daily_rental_price }} €/day </span>
+
                                             @elseif($inmueble->disponibilidad == "Venta" && $inmueble->precio_venta != null)
                                                 {{ $inmueble->precio_venta }} €
                                             @endif

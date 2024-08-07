@@ -56,6 +56,7 @@ class Show extends Component
     public $precio_venta;
     public $alquiler_semana;
     public $alquiler_mes;
+    public $daily_rental_price;
 
 
     public $ruta_imagenes;
@@ -102,6 +103,7 @@ class Show extends Component
         $this->alquiler_mes = $this->inmuebles->alquiler_mes;
         $this->inmueblesRecibidos = InmueblesRecibidos::where('inmueble_id', $this->identificador)->get();
         $this->tipo_inmueble = $this->inmuebles->tipo_inmueble;
+        $this->daily_rental_price = $this->inmuebles->daily_rental_price;
 
    
         $this->disponibilidad = $this->inmuebles->disponibilidad;

@@ -110,11 +110,21 @@
                         </div>
 
                         <div class="mb-3 row d-flex align-items-center">
-                            <label for="precio" class="col-sm-3 col-form-label"> <strong>Price</strong></label>
+                            <label for="precio" class="col-sm-3 col-form-label"> <strong>Sale price</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" wire:model="precio_venta" class="form-control" name="precio"
                                     id="precio" placeholder="Price">
                                 @error('precio_venta')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex align-items-center">
+                            <label for="precio" class="col-sm-4 col-form-label"> <strong>Daily rental price</strong></label>
+                            <div class="col-sm-12">
+                                <input type="text" wire:model="daily_rental_price" class="form-control" name="daily_rental_price"
+                                    id="daily_rental_price" placeholder="Daily rental price">
+                                @error('daily_rental_price')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -129,6 +139,7 @@
                                 @enderror
                             </div>
                         </div>
+                        
 
                         <div class="mb-3 row d-flex align-items-center">
                             <label for="precio" class="col-sm-4 col-form-label"> <strong>Monthly rental price</strong></label>

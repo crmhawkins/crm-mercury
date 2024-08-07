@@ -159,6 +159,8 @@
             @else
                 <p><strong>Monthly rental price:</strong> <span>{{ $inmueble->alquiler_mes }} €/month </span></p>
                 <p><strong>Weekly rental price:</strong> {{ $inmueble->alquiler_semana }} €/week</p>
+                <p><strong>Daily rental price:</strong> {{ $inmueble->daily_rental_price }} €/day</p>
+
             @endif
         </div>
     </div>

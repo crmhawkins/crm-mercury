@@ -54,6 +54,7 @@ class Edit extends Component
     public $ibi;
     public $tipo_inmueble;
     public $tipos;
+    public $daily_rental_price;
 
     public $coste_basura;
     public $precio_venta;
@@ -103,6 +104,7 @@ class Edit extends Component
         $this->estado = $this->inmuebles->estado;
         $this->descripcion = $this->inmuebles->descripcion;
         $this->tipo_inmueble = $this->inmuebles->tipo_inmueble;
+        $this->daily_rental_price = $this->inmuebles->daily_rental_price;
         if($this->estado==null){
             $this->estado="Disponible";
         }
@@ -167,6 +169,7 @@ class Edit extends Component
                 'alquiler_mes' => 'nullable',
                 'estado' => 'nullable',
                 'tipo_inmueble' => 'nullable',
+                'daily_rental_price' => 'nullable',
 
 
             ],
@@ -219,6 +222,7 @@ class Edit extends Component
             'alquiler_semana' => $this->alquiler_semana,
             'alquiler_mes' => $this->alquiler_mes,
             'estado' => $this->estado,
+            'daily_rental_price' => $this->daily_rental_price,
 
         ]);
 

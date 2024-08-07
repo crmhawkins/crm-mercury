@@ -60,9 +60,11 @@
                                 <ul>
                                     <li><b>Ibi:</b> {{ $ibi }} €</li>
                                     <li><b>Garbage Cost:</b> {{ $coste_basura }} €</li>
-                                    <li><b>Price:</b> {{ $precio_venta }} €</li>
+                                    <li><b>Sale price:</b> {{ $precio_venta }} €</li>
                                     <li><b>Monthly rent:</b> {{ $alquiler_mes }} €</li>
                                     <li><b>Weekly Rental:</b> {{ $alquiler_semana }} €</li>
+                                    <li><b>Daily Rental:</b> {{ $daily_rental_price }} €</li>
+
                                 </ul>
                                
                             </div>

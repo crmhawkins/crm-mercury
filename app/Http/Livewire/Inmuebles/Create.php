@@ -69,6 +69,7 @@ class Create extends Component
     public $alquiler_mes;
     public $tipo_inmueble;
     public $tipos;
+    public $daily_rental_price;
 
     
     public $ruta_imagenes;
@@ -122,6 +123,7 @@ class Create extends Component
                 'alquiler_mes' => 'nullable',
                 'disponibilidad' => 'nullable', 
                 'tipo_inmueble' => 'nullable',
+                'daily_rental_price' => 'nullable',
 
             ],
             //mensajes de error en ingles
