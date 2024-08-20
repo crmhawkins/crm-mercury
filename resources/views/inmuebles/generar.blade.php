@@ -157,10 +157,16 @@
             @if($inmueble->disponibilidad == 'Venta')
                 <p style="text-align:center;"><span style="font-size: 50px;">{{ $inmueble->precio_venta }} €</span></p>
             @else
-                <p><strong>Monthly rental price:</strong> <span>{{ $inmueble->alquiler_mes }} €/month </span></p>
-                <p><strong>Weekly rental price:</strong> {{ $inmueble->alquiler_semana }} €/week</p>
-                <p><strong>Daily rental price:</strong> {{ $inmueble->daily_rental_price }} €/day</p>
+                @if($inmueble->alquiler_mes != null && $inmueble->alquiler_mes != '' )
+                    <p><strong>Monthly rental price:</strong> <span>{{ $inmueble->alquiler_mes }}</span></p>
+                @endif
 
+                @if($inmueble->alquiler_semana != null && $inmueble->alquiler_semana != '' )
+                    <p><strong>Weekly rental price:</strong> {{ $inmueble->alquiler_semana }}</p>
+                @endif
+                @if($inmueble->daily_rental_price != null && $inmueble->daily_rental_price != '' )
+                    <p><strong>Daily rental price:</strong> {{ $inmueble->daily_rental_price }}</p>
+                @endif
             @endif
         </div>
     </div>

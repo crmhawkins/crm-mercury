@@ -159,6 +159,7 @@ class Show extends Component
                 'cod_postal' => 'required',
                 'galeria' => 'nullable',
                 'disponibilidad' => 'required',
+                
             ],
             // Mensajes de error
             //en ingles
