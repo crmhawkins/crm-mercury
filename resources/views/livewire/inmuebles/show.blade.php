@@ -46,6 +46,7 @@
                             <div class="col-5 border rounded p-2">
                                 <h6 class="fw-bold">Property details</h6>
                                 <ul>
+                                    <li><b>Reference:</b> {{ $reference_number }}</li>
                                     <li><b>Address:</b> {{ $direccion }}</li>
                                     <li><b>Location:</b> {{ $localidad }}</li>
                                     <li><b>Postal code:</b> {{ $cod_postal }}</li>

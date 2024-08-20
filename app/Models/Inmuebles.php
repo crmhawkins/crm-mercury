@@ -47,6 +47,7 @@ class Inmuebles extends Model
         'localidad',
         'tipo_inmueble',
         'daily_rental_price',
+        'reference_number'
 
 
 

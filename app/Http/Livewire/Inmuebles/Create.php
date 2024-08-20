@@ -75,6 +75,7 @@ class Create extends Component
     public $ruta_imagenes;
     public $galeriaArray = [];
     public $galeria;
+    public $reference_number;
 
     protected $listeners = ['fileSelected'];
 
@@ -203,6 +204,7 @@ class Create extends Component
                 'disponibilidad' => 'nullable', 
                 'tipo_inmueble' => 'nullable',
                 'daily_rental_price' => 'nullable',
+                'reference_number' => 'nullable'
 
             ],
             //mensajes de error en ingles

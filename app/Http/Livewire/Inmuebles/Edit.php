@@ -64,6 +64,9 @@ class Edit extends Component
 
     public $galeriaArray = [];
     public $galeria;
+
+    public $reference_number;
+
     protected $listeners = ['fileSelected'];
 
     public function mount()
@@ -105,6 +108,7 @@ class Edit extends Component
         $this->descripcion = $this->inmuebles->descripcion;
         $this->tipo_inmueble = $this->inmuebles->tipo_inmueble;
         $this->daily_rental_price = $this->inmuebles->daily_rental_price;
+        $this->reference_number = $this->inmuebles->reference_number;
         if($this->estado==null){
             $this->estado="Disponible";
         }
@@ -275,6 +279,7 @@ class Edit extends Component
                 'estado' => 'nullable',
                 'tipo_inmueble' => 'nullable',
                 'daily_rental_price' => 'nullable',
+                'reference_number' => 'nullable',
 
 
             ],
@@ -328,6 +333,7 @@ class Edit extends Component
             'alquiler_mes' => $this->alquiler_mes,
             'estado' => $this->estado,
             'daily_rental_price' => $this->daily_rental_price,
+            'reference_number' => $this->reference_number,
 
         ]);
 

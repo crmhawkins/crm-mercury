@@ -10,6 +10,16 @@
                     </h5>
                     <div class="card-body">
                         <div class="mb-3 row d-flex align-items-center">
+                            <label for="reference_number" class="col-sm-3 col-form-label"> <strong>Reference number</strong></label>
+                            <div class="col-sm-12">
+                                <input type="text" wire:model="reference_number" class="form-control" name="reference_number"
+                                    id="direccion" placeholder="Reference number">
+                                @error('reference_number')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex align-items-center">
                             <label for="direccion" class="col-sm-3 col-form-label"> <strong>Address</strong></label>
                             <div class="col-sm-12">
                                 <input type="text" wire:model="direccion" class="form-control" name="direccion"

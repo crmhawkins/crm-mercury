@@ -55,6 +55,7 @@ class Index extends Component
     public $alquiler_semana_min;
     public $alquiler_semana_max;
     public $daily_rental_price;
+    public $reference_number;
 
     protected $listeners = ['refreshComponent' => '$refresh'];
 

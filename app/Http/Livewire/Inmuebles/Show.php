@@ -57,6 +57,7 @@ class Show extends Component
     public $alquiler_semana;
     public $alquiler_mes;
     public $daily_rental_price;
+    public $reference_number;
 
 
     public $ruta_imagenes;
@@ -104,6 +105,8 @@ class Show extends Component
         $this->inmueblesRecibidos = InmueblesRecibidos::where('inmueble_id', $this->identificador)->get();
         $this->tipo_inmueble = $this->inmuebles->tipo_inmueble;
         $this->daily_rental_price = $this->inmuebles->daily_rental_price;
+        $this->reference_number = $this->inmuebles->reference_number;
+
 
    
         $this->disponibilidad = $this->inmuebles->disponibilidad;
@@ -159,6 +162,7 @@ class Show extends Component
                 'cod_postal' => 'required',
                 'galeria' => 'nullable',
                 'disponibilidad' => 'required',
+                'reference_number' => 'nullable',
                 
             ],
             // Mensajes de error
