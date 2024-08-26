@@ -9,13 +9,13 @@
 
         .full-width-image {
             width: 100%;
-            max-height: 300px;
-            object-fit: contain; /* Cambiar de cover a contain */
+            height: auto; /* Mantiene la proporción de la imagen */
+            max-height: 300px; /* Limita la altura máxima */
         }
 
         .dynamic-width-image {
-            max-height: 300px;
-            object-fit: contain; /* Cambiar de cover a contain */
+            width: auto; /* Mantiene la proporción de la imagen */
+            max-height: 300px; /* Limita la altura máxima */
             float: left;
         }
 
@@ -154,7 +154,7 @@
             <img style="margin: 0 auto;" src="{{ public_path($imagen) }}" class="full-width-image" alt="Imagen del inmueble">
         </div>
 
-        @if($key == 3)
+        @if($key == 5)
 
         @break
 
