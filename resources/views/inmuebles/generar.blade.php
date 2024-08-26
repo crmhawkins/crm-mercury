@@ -194,6 +194,12 @@
                 <div style="height:300px; display:block; position:relative; width: 97%; padding: 10px;">
                     <img style="margin: 0 auto;" src="{{ public_path($imagen) }}" class="full-width-image" alt="Imagen del inmueble">
                 </div>
+
+                @if(key == 3)
+
+                    @break
+
+                @endif
             @endforeach
         @endif
 
