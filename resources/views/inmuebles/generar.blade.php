@@ -85,18 +85,18 @@
     </style>
 </head>
 
-<body>
+<body class="bg-dark" style="background:black;">
     @if($logo != null)
         <div class="logo">
-            <img src="{{ public_path('assets/logo.png') }}" alt="Logo de la empresa" style="width: 150px;">
+            <img src="{{ public_path('assets/logo.png') }}" alt="Logo de la empresa" style="width: 150px; background:white;">
         </div>
     @endif
     <div class="head-title">
-        <h1 class="text-center m-0 p-0" style="text-align:center; margin:0px; padding:0px;">{{ $inmueble->direccion }}</h1>
+        <h1 class="text-center m-0 p-0" style="text-align:center; margin:0px; padding:0px; color:white; font-size: 2.5rem">INVESTMENT OPORTUNITY</h1>
     </div>
     <div class="">
         <!-- Verificar si hay imágenes -->
-        <div class="info-container">
+        {{-- <div class="info-container">
             <table class="info-table">
                 <tr class="info-row">
                     <td class="info-item"><span style="background: black; color:white; padding: 5px 10px;">{{ $inmueble->cod_postal }}</span></td>
@@ -112,7 +112,7 @@
                     </span></td>
                 </tr>
             </table>
-        </div>
+        </div> --}}
         @if(count($galeria) > 0)
             <!-- Si hay al menos una imagen -->
             <!-- Primera imagen, ocupa todo el ancho -->
@@ -120,7 +120,7 @@
                 <img src="{{ public_path($galeria[1]) }}" class="full-width-image" alt="Imagen del inmueble">
             </div>
             <!-- Espacio entre las imágenes -->
-            <div style="margin-top:10px; display:block; position:relative; width:100%;">
+            {{-- <div style="margin-top:10px; display:block; position:relative; width:100%;">
                 <!-- Calcular el ancho de cada imagen -->
                 @php
                     $totalImages = count($galeria);
@@ -135,7 +135,7 @@
                 @endforeach
                 <!-- Clear float -->
                 <div class="clear"></div>
-            </div>
+            </div> --}}
         @else
             <!-- Si no hay imágenes, mostrar un mensaje -->
             <p>There are no images available for this property.</p>
@@ -144,31 +144,59 @@
         <!-- Sección de características del inmueble -->
         <div class="features-container">
             <!-- Fila de 4 elementos -->
-            <div class="feature-item large"><strong>Bedrooms:</strong> {{ $inmueble->dormitorios }}</div>
-            <div class="feature-item large"><strong>Bathrooms:</strong> {{ $inmueble->banos }}</div>
-            <div class="feature-item large"><strong>Garage:</strong> {{ $inmueble->garaje ? 'Yes' : 'No' }}</div>
-            <div class="feature-item large"><strong>Pool:</strong> {{ $inmueble->piscina ? 'Yes' : 'No' }}</div>
-
-            <!-- Fila de 2 elementos -->
-            <div class="feature-item small"><strong>m<sup>2</sup> built:</strong> {{ $inmueble->m2_construidos }}</div>
-            <div class="feature-item small"><strong>m<sup>2</sup>:</strong> {{ $inmueble->m2 }}</div>
+            <table style="width:100%; font-size: 2rem; padding:20px;">
+                <tr>
+                    <td class=" text-white" style="color:white ; width: 100%;"><strong>REF:</strong> {{ $inmueble->reference }}</td>
+                    <td class=" text-white"  style="color:white; width:100%;"> <strong>PRICE:</strong> 
+                        @if($inmueble->disponibilidad == 'Venta')
+                            {{ $inmueble->precio_venta }}
+                        @else
+                            @if($inmueble->daily_rental_price)
+                            {{ $inmueble->daily_rental_price }}
+                            @elseif($inmueble->alquiler_mes)
+                            {{ $inmueble->alquiler_mes }}
+                            @else
+                            {{ $inmueble->alquiler_semana }}
+                            @endif
+                        @endif
+                </tr>
+                @if( $inmueble->m2_construidos)
+                    <tr>
+                        <td class=" text-white" style="color:white ; width: 100%;"><strong>SIZE:</strong> {{ $inmueble->m2_construidos }}</td>
+                        <td class=" text-white" style="color:white ; width: 100%;"></td>
+                    </tr>
+                @endif
+                @if( $inmueble->garaje)
+                    <tr>
+                        <td class=" text-white" style="color:white ; width: 100%;"><strong>Garage:</strong> {{ $inmueble->garaje ? 'Yes' : 'No' }}</td>
+                        <td class=" text-white" style="color:white ; width: 100%;"></td>
+                    </tr>
+                @endif
+                @if( $inmueble->piscina)
+                    <tr>
+                        <td class=" text-white" style="color:white ; width: 100%;"><strong>Pool:</strong> {{ $inmueble->piscina ? 'Yes' : 'No' }}</td>
+                        <td class=" text-white" style="color:white ; width: 100%;"></td>
+                    </tr>
+                @endif
+            </table>
+            
         </div>
-        <div style="margin-top: 10px; border-top: 2px solid blue;">
-            @if($inmueble->disponibilidad == 'Venta')
-                <p style="text-align:center;"><span style="font-size: 50px;">{{ $inmueble->precio_venta }} €</span></p>
-            @else
-                @if($inmueble->alquiler_mes != null && $inmueble->alquiler_mes != '' )
-                    <p><strong>Monthly rental price:</strong> <span>{{ $inmueble->alquiler_mes }}</span></p>
-                @endif
-
-                @if($inmueble->alquiler_semana != null && $inmueble->alquiler_semana != '' )
-                    <p><strong>Weekly rental price:</strong> {{ $inmueble->alquiler_semana }}</p>
-                @endif
-                @if($inmueble->daily_rental_price != null && $inmueble->daily_rental_price != '' )
-                    <p><strong>Daily rental price:</strong> {{ $inmueble->daily_rental_price }}</p>
-                @endif
-            @endif
+        <div style="margin-top: 10px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; color:white">
+            <p style="margin-top: 10px; color:white; padding: 20px;"> {{ $inmueble->descripcion }}</p>
         </div>
+        @if(count($galeria) > 0)
+        
+            @foreach($galeria as $key => $imagen)
+            
+                @if($key == 1)
+                    @continue
+                @endif
+                <div style="height:300px; display:block; position:relative; width: 97%; padding: 10px;">
+                    <img style="margin: 0 auto;" src="{{ public_path($imagen) }}" class="full-width-image" alt="Imagen del inmueble">
+                </div>
+            @endforeach
+        @endif
+
     </div>
 </body>
 
