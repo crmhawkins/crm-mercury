@@ -195,7 +195,7 @@
                     <img style="margin: 0 auto;" src="{{ public_path($imagen) }}" class="full-width-image" alt="Imagen del inmueble">
                 </div>
 
-                @if(key == 3)
+                @if($key == 3)
 
                     @break
 
