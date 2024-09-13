@@ -153,7 +153,7 @@
             @foreach($galeria as $key => $imagen)
                 @if ($imagenesMostradas == 0 || $imagenesMostradas == 4)
                     <div style="max-height:300px; display:block; position:relative; width: 97%; padding: 10px;">
-                        <img style="margin: 0 auto;" src="{{ $imagen }}" class="full-width-image" alt="Imagen del inmueble">
+                        <img style="margin: 0 auto;" src="{{ public_path($imagen) }}" class="full-width-image" alt="Imagen del inmueble">
                     </div>
                 @endif
 
