@@ -90,13 +90,14 @@
         <img src="{{ public_path('assets/logo.png') }}" alt="Logo de la empresa" style="width: 150px; background:white;">
     </div>
     @endif
+
     <div class="head-title">
-        <h1 class="text-center m-0 p-0" style="text-align:center; margin:0px; padding:0px; color:white; font-size: 2.5rem">INVESTMENT OPORTUNITY</h1>
+        <h1 class="text-center m-0 p-0" style="text-align:center; margin:0px; padding:0px; color:white; font-size: 2.5rem">@if($inmueble->disponibilidad == 'Alquiler') RENTAL OPORTUNITY @else INVESTMENT OPORTUNITY  @endif</h1>
     </div>
     <div class="">
         @if(count($galeria) > 0)
         <div style="max-height:300px; display:block; position:relative; width: 100%;">
-            <img src="{{ public_path($galeria[1]) }}" class="full-width-image" alt="Imagen del inmueble">
+            <img src="{{ public_path(reset($galeria)) }}" class="full-width-image" alt="Imagen del inmueble">
         </div>
         @else
         <p>There are no images available for this property.</p>
@@ -145,21 +146,25 @@
         </div>
         @if(count($galeria) > 0)
 
-        @foreach($galeria as $key => $imagen)
+            @php
+            $imagenesMostradas = 0;
+            @endphp
 
-        @if($key == 1)
-        @continue
-        @endif
-        <div style="max-height:300px; display:block; position:relative; width: 97%; padding: 10px;">
-            <img style="margin: 0 auto;" src="{{ public_path($imagen) }}" class="full-width-image" alt="Imagen del inmueble">
-        </div>
+            @foreach($galeria as $key => $imagen)
+                @if ($imagenesMostradas == 0 || $imagenesMostradas == 4)
+                    <div style="max-height:300px; display:block; position:relative; width: 97%; padding: 10px;">
+                        <img style="margin: 0 auto;" src="{{ $imagen }}" class="full-width-image" alt="Imagen del inmueble">
+                    </div>
+                @endif
 
-        @if($key == 5)
+                @php
+                $imagenesMostradas++;
+                @endphp
 
-        @break
-
-        @endif
-        @endforeach
+                @if ($imagenesMostradas >= 5)
+                    @break
+                @endif
+            @endforeach
         @endif
 
     </div>
