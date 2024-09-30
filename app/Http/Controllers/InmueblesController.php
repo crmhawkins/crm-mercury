@@ -31,6 +31,7 @@ class InmueblesController extends Controller
     // Obtener el ID del inmueble del request
     $idinmueble = $request->id;
     $withLogo = $request->withLogo;
+    $title = $request->title;
     //dd($idinmueble, $withLogo);
 
     // Obtener los datos del inmueble
@@ -53,7 +54,8 @@ class InmueblesController extends Controller
     $datos = [
         'inmueble' => $inmueble,
         'galeria' => $galeria,
-        'logo' => $withLogo != null ? $logo : null
+        'logo' => $withLogo != null ? $logo : null,
+        'title' => $title
     ];
 
     // Generar el PDF con los datos del inmueble

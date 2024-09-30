@@ -92,7 +92,7 @@
     @endif
 
     <div class="head-title">
-        <h1 class="text-center m-0 p-0" style="text-align:center; margin:0px; padding:0px; color:white; font-size: 2.5rem">@if($inmueble->disponibilidad == 'Alquiler') RENTAL OPORTUNITY @else INVESTMENT OPORTUNITY  @endif</h1>
+        <h1 class="text-center m-0 p-0" style="text-align:center; margin:0px; padding:0px; color:white; font-size: 2.5rem"> @if($title != null) {{$title}}  @else  @if($inmueble->disponibilidad == 'Alquiler') RENTAL OPORTUNITY @else INVESTMENT OPORTUNITY  @endif @endif</h1>
     </div>
     <div class="">
         @if(count($galeria) > 0)
@@ -106,7 +106,7 @@
         <div class="features-container">
             <table style="width:100%; font-size: 2rem; padding:20px;">
                 <tr>
-                    <td class=" text-white" style="color:white ; width: 100%;"><strong>REF:</strong> {{ $inmueble->reference }}</td>
+                    <td class=" text-white" style="color:white ; width: 100%;"><strong>REF:</strong> {{ $inmueble->reference_number }}</td>
                     <td class=" text-white" style="color:white; width:100%;"> <strong>PRICE:</strong>
                         @if($inmueble->disponibilidad == 'Venta')
                         {{ $inmueble->precio_venta }}

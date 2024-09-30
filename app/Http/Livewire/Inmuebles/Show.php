@@ -72,6 +72,8 @@ class Show extends Component
     public $descripcion;
     public $tipo_inmueble;
 
+    public $widowCardTitle;
+
     public function mount()
     {
         
@@ -136,6 +138,8 @@ class Show extends Component
         }
     }
 
+
+    
     public function render()
     {
         return view('livewire.inmuebles.show');

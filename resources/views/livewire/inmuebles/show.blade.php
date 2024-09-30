@@ -130,11 +130,11 @@
                         <div class="tab-content" id="myTabContent" style="width: 100%;">
                             <div class="tab-pane fade show active" id="home" role="tabpanel"
                                 aria-labelledby="home-tab">
-                                @livewire('inmuebles.visita-create', ['inmueble_id' => $identificador], key(time() . 'inmueble-' . $identificador))
+                                @livewire('inmuebles.visita-create', ['inmueble_id' => $identificador], key(rand() . 'inmueble-' . $identificador))
 
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                @livewire('inmuebles.visita-index', ['inmueble_id' => $identificador], key(time() . 'inmueble-' . $identificador))
+                                @livewire('inmuebles.visita-index', ['inmueble_id' => $identificador], key(rand() . 'inmueble-' . $identificador))
                             </div>
                         </div>
                     </div>
@@ -226,7 +226,7 @@
                         <button type="button" class="btn btn-primary"
                             wire:click.prevent="enviarCorreoImagenes({{ $identificador }})"
                             id="enviarCorreoImagenes-{{ $identificador }}"
-                            wire:key="btn-correo-imgs-{{ $identificador }}">Send
+                            wire:key="btn-correo-imgs-{{ rand() }}">Send
                             Email</button>
                         <button type="button" class="btn btn-secondary" wire:click.prevent="registerMailed({{ $identificador }})">Just register</button>
 
@@ -240,7 +240,7 @@
                         Documents
                     </h5>
                     <div class="card-body">
-                        @livewire('inmuebles.documentos-create', ['inmueble_id' => $identificador], key(time() . $identificador))
+                        @livewire('inmuebles.documentos-create', ['inmueble_id' => $identificador], key(rand() . $identificador))
                     </div>
                 </div>
                 <div class="card mb-3">
@@ -248,8 +248,10 @@
                         Create Window Card
                     </h5>
                     <div class="card-body">
-                        <a target="blank_" href="{{ route('inmuebles.generar', ['id' => $identificador]) }}" class="btn btn-primary">Generate</a>
-                        <a target="blank_" href="{{ route('inmuebles.generar2', ['id' => $identificador, 'withLogo' => 1]) }}" class="btn btn-primary">Generate with logo</a>
+                        <label for="title" >Widow Card Title</label>
+                        <input type="text" placeholder="Rental opportunity..." wire:model="widowCardTitle" class="form-control mb-2 mt-2">
+                        <a target="blank_" href="{{ route('inmuebles.generar', ['id' => $identificador , 'title' => $widowCardTitle ]) }}" class="btn btn-primary">Generate</a>
+                        <a target="blank_" href="{{ route('inmuebles.generar2', ['id' => $identificador, 'withLogo' => 1 , 'title' => $widowCardTitle]) }}" class="btn btn-primary">Generate with logo</a>
                     </div>
                 </div>
             </div>
