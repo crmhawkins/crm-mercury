@@ -81,6 +81,10 @@
             margin-bottom: 20px;
             /* Espacio adicional arriba y abajo del logo */
         }
+        .head-title{
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
