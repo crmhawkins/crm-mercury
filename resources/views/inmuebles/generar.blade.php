@@ -80,14 +80,17 @@
     <!-- Imagen principal -->
     @if(count($galeria) > 0)
     <div>
-        <img src="{{ public_path($galeria[1]) }}" class="full-width-image" alt="Imagen principal del inmueble"> <!-- No es la primera imagen -->
+        <!-- Mostrar siempre la primera imagen del array, sin importar el índice -->
+        <img src="{{ public_path(reset($galeria)) }}" class="full-width-image" alt="Imagen principal del inmueble">
     </div>
     @endif
+
     <div>
         <p style="text-align: right; font-size: 1rem; margin-top: 20px; margin-bottom: 20px;">
             Ref: {{ $inmueble->reference_number }}
         </p>
     </div>
+
     <div class="info-container">
         <table>
             <tr>
@@ -106,7 +109,6 @@
                     <strong>Location:</strong> {{ $inmueble->direccion }}, {{ $inmueble->localidad }}<br>
                     <strong>Property type:</strong> {{ $inmueble->tipo_inmueble }}<br>
                     <strong>Zone:</strong> {{ $inmueble->localidad }}
-
                 </td>
                 <td class="right" style="padding-left: 10px;">
                     <strong>Area:</strong> {{ $inmueble->m2 ?? '-' }} m²<br>
@@ -128,25 +130,24 @@
     <!-- Galería de fotos en dos columnas con tamaño uniforme -->
     @if(count($galeria) > 0)
     <div style="text-align: center;">
-        <strong >PHOTO REPORT</strong>
-
+        <strong>PHOTO REPORT</strong>
     </div>
-    <div class="gallery">
 
+    <div class="gallery">
         @foreach($galeria as $key => $imagen)
-        @if ($key > 0) <!-- Evitar mostrar la imagen principal -->
+        <!-- Evitar mostrar la primera imagen nuevamente -->
+        @if ($key > 0)
         <img src="{{ public_path($imagen) }}" alt="Imagen del inmueble">
 
-        @if (($loop->index - 1) % 2 == 1) <!-- Limpiar después de cada dos imágenes -->
+        @if (($loop->iteration - 1) % 2 == 1) <!-- Limpiar después de cada dos imágenes -->
         <div class="clear"></div>
         @endif
-
         @endif
         @endforeach
     </div>
-@else
+    @else
     <p>No hay imágenes disponibles para esta propiedad.</p>
-@endif
+    @endif
 
 </body>
 
