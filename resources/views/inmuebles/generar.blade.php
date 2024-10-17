@@ -64,9 +64,7 @@
         }
 
         /* Forzamos que la siguiente fila de imágenes comience en una nueva fila */
-        .gallery img:nth-child(2n+1) {
-            clear: both;
-        }
+        
 
         .clear {
             clear: both;
@@ -134,14 +132,11 @@
     </div>
 
     <div class="gallery">
-        @foreach($galeria as $key => $imagen)
+        @foreach($galeria as $imagen)
         <!-- Evitar mostrar la primera imagen nuevamente -->
-        @if ($key > 0)
-        <img src="{{ public_path($imagen) }}" alt="Imagen del inmueble">
-
-        @if (($loop->iteration - 1) % 2 == 1) <!-- Limpiar después de cada dos imágenes -->
+        <img src="{{ public_path($imagen) }}" alt="Imagen del inmueble">    
+        @if (($loop->iteration ) % 2 == 0) <!-- Limpiar después de cada dos imágenes -->
         <div class="clear"></div>
-        @endif
         @endif
         @endforeach
     </div>
