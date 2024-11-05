@@ -95,23 +95,23 @@
                 <td class="left" style="padding-right: 10px; border-right: 1px solid #ccc;">
                     @if($inmueble->disponibilidad == 'Alquiler')
                         @if($inmueble->alquiler_semana)
-                            <strong>{{ $inmueble->alquiler_semana }}</strong>
+                            <strong>{{ $inmueble->alquiler_semana }}</strong><br>
                         @elseif($inmueble->alquiler_mes)
-                            <strong>{{ $inmueble->alquiler_mes }} </strong>
+                            <strong>{{ $inmueble->alquiler_mes }} </strong><br>
                         @else   
                             <strong>{{ $inmueble->daily_rental_price ?? '-' }}</strong><br>
                         @endif
                     @else
-                        <strong>{{ $inmueble->precio_venta ?? '-' }}</strong>
+                        <strong>{{ $inmueble->precio_venta ?? '-' }}</strong><br>
                     @endif
-                    <strong>Location:</strong> {{ $inmueble->direccion }}, {{ $inmueble->localidad }}<br>
+                    <strong>Location:</strong> {{ $inmueble->localidad }}<br>
                     <strong>Property type:</strong> {{ $inmueble->tipo_inmueble }}<br>
                     <strong>Zone:</strong> {{ $inmueble->localidad }}
                 </td>
                 <td class="right" style="padding-left: 10px;">
                     <strong>Area:</strong> {{ $inmueble->m2 ?? '-' }} m²<br>
                     <strong>Built area:</strong> {{ $inmueble->m2_construidos ?? '-' }} m²<br>
-                    <strong>Rooms:</strong> {{ $inmueble->habitaciones ?? '-' }}<br>
+                    <strong>Bedrooms:</strong> {{ $inmueble->dormitorios ?? '-' }}<br>
                     <strong>Bathrooms:</strong> {{ $inmueble->banos }}<br>
                 </td>
             </tr>
