@@ -38,7 +38,7 @@
     <div class="ml-auto px-2">
       <a class="navbar-link d-none" id="multi_selection_toggle">
         <i class="fa fa-check-double fa-fw"></i>
-        <span class="d-none d-lg-inline">{{ trans('laravel-filemanager::lfm.menu-multiple') }}</span>
+        <span class="d-none d-lg-inline">Multiple selection</span>
       </a>
     </div>
     <a class="navbar-toggler collapsed border-0 px-1 py-2 m-0" data-toggle="collapse" data-target="#nav-buttons">
@@ -71,7 +71,7 @@
   <nav class="bg-light fixed-bottom border-top d-none" id="actions">
     <a data-action="open" data-multiple="false"><i class="fas fa-folder-open"></i>{{ trans('laravel-filemanager::lfm.btn-open') }}</a>
     <a data-action="preview" data-multiple="true"><i class="fas fa-images"></i>{{ trans('laravel-filemanager::lfm.menu-view') }}</a>
-    <a data-action="use" data-multiple="true"><i class="fas fa-check"></i>{{ trans('laravel-filemanager::lfm.btn-confirm') }}</a>
+    <a data-action="use" data-multiple="true"><i class="fas fa-check"></i>Confirm</a>
   </nav>
 
   <div class="d-flex flex-row">
@@ -141,7 +141,7 @@
         <div class="modal-body"></div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-close') }}</button>
-          <button type="button" class="btn btn-primary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-confirm') }}</button>
+          <button type="button" class="btn btn-primary w-100" data-dismiss="modal">Confirm }}</button>
         </div>
       </div>
     </div>
@@ -158,7 +158,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-close') }}</button>
-          <button type="button" class="btn btn-primary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-confirm') }}</button>
+          <button type="button" class="btn btn-primary w-100" data-dismiss="modal">Confirm</button>
         </div>
       </div>
     </div>
